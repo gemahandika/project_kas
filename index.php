@@ -557,8 +557,8 @@
             <?php
             // Koordinat untuk lokasi Anda
             
-            $latitude = 3.536351024553521;
-            $longitude = 98.73703733047418;
+            $latitude = 3.536116123814281;
+            $longitude = 98.73714831566002;
 
             // Fungsi untuk menghasilkan URL Google Maps
             function generateGoogleMapsURL($latitude, $longitude) {
