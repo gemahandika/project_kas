@@ -100,7 +100,7 @@ if (isset($_POST['login'])) {
   </section>
   <section class="login-content">
     <div class="logo text-center" style="font-family: 'Arial-black';">
-      <h2>Kreasi Anugerah Sejahtera 1</h2>
+      <h2>Kreasi Anugerah Sejahtera 2</h2>
     </div>
     <div class="login-box">
       <form class="login-form" action="" method="post">
