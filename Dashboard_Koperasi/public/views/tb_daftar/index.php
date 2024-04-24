@@ -48,12 +48,12 @@ $time = date("H:i");
                     <p><b>2.</b> Bersedia membayar simpanan pokok dan wajib di Koperasi</p>
                     <p><b>3.</b> Bersedia Membayar Simpanan Pokok sebesar Rp. 100.000 dibulan pertama keangggotaan </p>
                     <p><b>4.</b> Bersedia Membayar Simpanan Wajib sebesar Rp. 100.000 setiap bulannya ( Jika
-                                karyawan akan dipotong langsung melalui payroll gaji setiap tanggal 25, Jika
+                                karyawan akan dipotong langsung melalui payroll gaji setiap tanggal 25,   Jika
                                 Karyawan Outsourcing,pimpinan cabang dan agen dapat melakukan pembayaran
                                 melalui Transfer )
                     </p>
                     <p><b>5.</b> Uang simpanan Pokok diawal (Sebesar Rp. 100.000) tidak dikembalikan jika keluar dari keanggotaan</p>
-                    <p><b>6.</b> jika keluar dari keanggotaan, maka tidak dapat kembali menjadi anggota koperasi KAS</p>
+                    <p><b>6.</b> Jika keluar dari keanggotaan, maka tidak dapat kembali menjadi anggota koperasi KAS</p>
                 
                 </div>
             </div>
@@ -68,7 +68,7 @@ $time = date("H:i");
                             <!--  -->
                             <div class="form-group">
                                 <label class="control-label">NAMA *</label>
-                                <input class="form-control" type="text" name="nama" placeholder="Enter full name">
+                                <input class="form-control" type="text" name="nama" placeholder="Input Fullname">
                             </div>
 
                             <div class="form-group">
@@ -96,26 +96,18 @@ $time = date("H:i");
                                 <label for="nik" class="control-label">NIK</label>
                                 <input class="form-control" type="text" name="nik" id="nik" placeholder="Input NIK">
                             </div>
-
-                            <div class="form-group"><br>
+                            <div class="form-group">
+                                <label class="control-label">Unit *</label>
+                                <input class="form-control" type="unit" name="unit" placeholder="Input Unit">
+                            </div>
+                            <div class="form-group">
                                 <label class="control-label">Alamat *</label>
                                 <input class="form-control" type="alamat" name="alamat" placeholder="Enter full address">
                             </div>
                             <div class="form-group">
-                                <label class="control-label">NIK Khusus Kayawan Kantor Cabang Utama Medan/Silangit atau Karyawan Cabang Milik JNE (tetap/Pkwt/Outsourching JNE)</label>
-                                <input class="form-control" type="text" name="nik" placeholder="Enter your NIK">
+                                <label class="control-label">No. Handphone</label>
+                                <input class="form-control" type="text" name="phone" placeholder="Enter your Phone">
                             </div>
-
-                            <div class="form-group">
-                                <label class="control-label">UNIT / Nama Cabang / Nama Agen *</label>
-                                <input class="form-control" type="text" name="unit" placeholder="Enter your Unit">
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label">No. telepon / HP *</label>
-                                <input class="form-control" type="text" name="hp" placeholder="Enter your Unit">
-                            </div>
-                            <input type="hidden" name="status_daftar" value="belum diterima">
-                            <input type="hidden" name="tgl" value="<?= $date ?>">
                             <div class="tile-footer">
                                 <button class="btn btn-primary" name="add" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Daftar</button>
                             </div>
