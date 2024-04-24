@@ -46,8 +46,15 @@ $time = date("H:i");
                     <p><b>Syarat dan Ketentuan untuk Join di koperasi KAS JNE :</b> </p>
                     <p><b>1.</b> Kantor Cabang Utama Medan/Silangit (Karyawan Tetap/PKWT JNE/Outsourching), Kepala Cabang Mitra, Karyawan Tetap Cabang, Pimpinan Agen Kota Medan </p>
                     <p><b>2.</b> Bersedia membayar simpanan pokok dan wajib di Koperasi</p>
-                    <p><b>3.</b> Simpanan Pokok sebesar Rp. 100.000 setiap bulannya ( Jika karyawan akan dipotong langsung melalui payroll gaji setiap tanggal 25 , Jika pimpinan cabang dan agen dapat melakukan pembayaran melalui Transfer ) </p>
-                    <p><b>4.</b> Bukti Transfer dapat dikirimkan kenomor WA : 081370050026 an Nuhasanah</p>
+                    <p><b>3.</b> Bersedia Membayar Simpanan Pokok sebesar Rp. 100.000 dibulan pertama keangggotaan </p>
+                    <p><b>4.</b> Bersedia Membayar Simpanan Wajib sebesar Rp. 100.000 setiap bulannya ( Jika
+                                karyawan akan dipotong langsung melalui payroll gaji setiap tanggal 25, Jika
+                                Karyawan Outsourcing,pimpinan cabang dan agen dapat melakukan pembayaran
+                                melalui Transfer )
+                    </p>
+                    <p><b>5.</b> Uang simpanan Pokok diawal (Sebesar Rp. 100.000) tidak dikembalikan jika keluar dari keanggotaan</p>
+                    <p><b>6.</b> jika keluar dari keanggotaan, maka tidak dapat kembali menjadi anggota koperasi KAS</p>
+                
                 </div>
             </div>
         </div>
@@ -58,24 +65,39 @@ $time = date("H:i");
                     <h3 class="tile-title">Form Pendaftaran</h3>
                     <div class="tile-body">
                         <form action="../../../app/controller/Daftar.php" method="post">
+                            <!--  -->
                             <div class="form-group">
-                                <label class="control-label">Apakah anda setuju, jika iuran wajib koperasi dipotong langsung dari gaji pokok Khusus Kayawan Kantor Cabang Utama Medan/Silangit atau Karyawan Cabang Milik JNE (tetap/Pkwt JNE)</label>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="syarat" value="setuju">Setuju
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="syarat" value="tidak setuju">Tidak Setuju
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label">NAMA KARYAWAN / PIMPINANAN CABANG / PIMPINAN AGEN *</label>
+                                <label class="control-label">NAMA *</label>
                                 <input class="form-control" type="text" name="nama" placeholder="Enter full name">
                             </div>
+
                             <div class="form-group">
+                            <label for="status">STATUS *</label><br>
+                            <select class="form-control" name="status" type="text" id="role" onchange="showInput()" required>
+                                <option value="">- Pilih Status -</option>
+                                <option value="KARYAWAN">KARYAWAN</option>
+                                <option value="CABANG">CABANG</option>
+                                <option value="AGEN">AGEN</option>
+                            </select>
+                            <div class="form-group" id="status_input" style="display: none;"><br>
+                                <label class="control-label">STATUS KARYAWAN</label>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="radio" name="syarat" value="KARYAWAN TETAP">Karyawan Tetap
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="radio" name="syarat" value="OUTSOURCING">Outsourcing
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group" id="nik_input" style="display: none;">
+                                <label for="nik" class="control-label">NIK</label>
+                                <input class="form-control" type="text" name="nik" id="nik" placeholder="Input NIK">
+                            </div>
+
+                            <div class="form-group"><br>
                                 <label class="control-label">Alamat *</label>
                                 <input class="form-control" type="alamat" name="alamat" placeholder="Enter full address">
                             </div>
@@ -103,6 +125,34 @@ $time = date("H:i");
             </div>
         </div>
     </main>
+
+    <script>
+        function showInput() {
+            var role = document.getElementById("role").value;
+            var nikInput = document.getElementById("nik_input");
+            var statusInput = document.getElementById("status_input");
+
+            if (role === "KARYAWAN") {
+                nikInput.style.display = "block";
+                statusInput.style.display = "block";
+            } else {
+                nikInput.style.display = "none";
+                statusInput.style.display = "none";
+            }
+        }
+    </script>
+
+    <!-- <?php
+    // Logika PHP untuk menghasilkan NIK otomatis
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if ($_POST['role'] == 'karyawan') {
+            // Generate NIK otomatis, misalnya dengan angka acak
+            $nik = mt_rand(100000, 999999);
+            echo "<p>NIK: $nik</p>";
+        }
+    }
+    ?> -->
+
     <!-- Essential javascripts for application to work-->
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/popper.min.js"></script>
