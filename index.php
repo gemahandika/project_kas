@@ -1,5 +1,5 @@
- <!DOCTYPE html>
- <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
  <?php
     include("Dashboard_Koperasi/app/config/koneksi.php");
@@ -172,25 +172,25 @@
          </div>
          <!-- Navbar & Hero End -->
 
-         <!-- Newsletter Start -->
-         <div class="container-xxl bg-primary my-6 wow fadeInUp" data-wow-delay="0.1s">
-             <div class="container px-lg-5">
-                 <div class="row align-items-center" style="height: 250px;">
-                     <div class="col-12 col-md-6">
-                         <h3 class="text-white">Ayo Mulai Bergabung</h3>
-                         <!--<small class="text-white">Ingin mendapatkan informasi tentang kami.</small>-->
-                         <!--<div class="position-relative w-100 mt-3">-->
-                         <!--    <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text" placeholder="Enter Your Email" style="height: 48px;">-->
-                         <!--    <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i class="fa fa-paper-plane text-primary fs-4"></i></button>-->
-                         <!--</div>-->
-                     </div>
-                     <div class="col-md-6 text-center mb-n5 d-none d-md-block">
-                         <img class="img-fluid mt-5" style="max-height: 250px;" src="img/newsletter.png">
-                     </div>
-                 </div>
-             </div>
-         </div>
-         <!-- Newsletter End -->
+            <!-- Newsletter Start -->
+            <div class="container-xxl bg-primary my-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="container px-lg-5">
+                    <div class="row align-items-center" style="height: 250px;">
+                        <div class="col-12 col-md-6">
+                            <h3 class="text-white">Ayo Mulai Bergabung</h3>
+                            <!--<small class="text-white">Ingin mendapatkan informasi tentang kami.</small>-->
+                            <!--<div class="position-relative w-100 mt-3">-->
+                            <!--    <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text" placeholder="Enter Your Email" style="height: 48px;">-->
+                            <!--    <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i class="fa fa-paper-plane text-primary fs-4"></i></button>-->
+                            <!--</div>-->
+                        </div>
+                        <div class="col-md-6 text-center mb-n5 d-none d-md-block">
+                            <img class="img-fluid mt-5" style="max-height: 250px;" src="img/newsletter.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Newsletter End -->
 
 
          <!-- Service Start -->
@@ -198,7 +198,7 @@
              <div class="container">
                  <div class="mx-auto text-center wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                      <div class="d-inline-block border rounded-pill text-primary px-4 mb-3">Our Services</div>
-                     <h2 class="mb-5">VALUE DAN PROGRAM</h2>
+                     <h2 class="mb-5">VALUE AND PROGRAM</h2>
                  </div>
                  <div class="row g-4">
                      <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -393,62 +393,52 @@
          <!-- Client End -->
 
 
-         <!-- Testimonial Start -->
-         <!--<div class="container-xxl py-6">-->
-         <!--    <div class="container">-->
-         <!--        <div class="mx-auto text-center wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">-->
-         <!--            <div class="d-inline-block border rounded-pill text-primary px-4 mb-3">Testimonial</div>-->
-         <!--            <h2 class="mb-5">What Our Clients Say!</h2>-->
-         <!--        </div>-->
-         <!--        <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">-->
-         <!--            <div class="testimonial-item rounded p-4">-->
-         <!--                <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>-->
-         <!--                <p>Informasi</p>-->
-         <!--                <div class="d-flex align-items-center">-->
-         <!--                    <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-1.jpg">-->
-         <!--                    <div class="ps-3">-->
-         <!--                        <h6 class="mb-1">Client Name</h6>-->
-         <!--                        <small>Profession</small>-->
-         <!--                    </div>-->
-         <!--                </div>-->
-         <!--            </div>-->
-         <!--            <div class="testimonial-item rounded p-4">-->
-         <!--                <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>-->
-         <!--                <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>-->
-         <!--                <div class="d-flex align-items-center">-->
-         <!--                    <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-2.jpg">-->
-         <!--                    <div class="ps-3">-->
-         <!--                        <h6 class="mb-1">Client Name</h6>-->
-         <!--                        <small>Profession</small>-->
-         <!--                    </div>-->
-         <!--                </div>-->
-         <!--            </div>-->
-         <!--            <div class="testimonial-item rounded p-4">-->
-         <!--                <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>-->
-         <!--                <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>-->
-         <!--                <div class="d-flex align-items-center">-->
-         <!--                    <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-3.jpg">-->
-         <!--                    <div class="ps-3">-->
-         <!--                        <h6 class="mb-1">Client Name</h6>-->
-         <!--                        <small>Profession</small>-->
-         <!--                    </div>-->
-         <!--                </div>-->
-         <!--            </div>-->
-         <!--            <div class="testimonial-item rounded p-4">-->
-         <!--                <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>-->
-         <!--                <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>-->
-         <!--                <div class="d-flex align-items-center">-->
-         <!--                    <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-4.jpg">-->
-         <!--                    <div class="ps-3">-->
-         <!--                        <h6 class="mb-1">Client Name</h6>-->
-         <!--                        <small>Profession</small>-->
-         <!--                    </div>-->
-         <!--                </div>-->
-         <!--            </div>-->
-         <!--        </div>-->
-         <!--    </div>-->
-         <!--</div>-->
-         <!-- Testimonial End -->
+        <!-- Program Kerja -->
+        <div class="container-xxl py-6">
+            <div class="container">
+                <div class="mx-auto text-center wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                    <div class="d-inline-block border rounded-pill text-primary px-4 mb-3"></div>
+                    <h2 class="mb-5">PROJECT AND INFORMATION</h2>
+                </div>
+                <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
+                <?php
+                    $no = 0;
+                    $sql = mysqli_query($koneksi, "SELECT * FROM tb_notif ORDER bY id_notif  DESC") or die(mysqli_error($koneksi));
+                    $result = array();
+                    while ($data = mysqli_fetch_array($sql)) {
+                    $result[] = $data;
+                    }
+                    foreach ($result as $data) {
+                    $no++;
+                    ?>
+                    <div class="testimonial-item rounded p-4">
+                        <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
+                        <p><?=$data['nama_notif'] ?>  </p>
+                        <div class="d-flex align-items-center">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-2.jpg">
+                            <div class="ps-3">
+                                <h6 class="mb-1">Client Name</h6>
+                                <small>Profession</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-item rounded p-4">
+                        <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
+                        <p>Program</p>
+                        <div class="d-flex align-items-center">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-4.jpg">
+                            <div class="ps-3">
+                                <h6 class="mb-1">Client Name</h6>
+                                <small>Profession</small>
+                            </div>
+                        </div>
+                    </div>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+        <!-- Project and informasi end  -->
 
 
             <!-- Team Start -->
