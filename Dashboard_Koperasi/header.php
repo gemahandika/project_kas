@@ -99,8 +99,8 @@ $data_saldo_user = mysqli_fetch_array($saldo_user);
                 </li>
             <?php } ?>
             <?php if (in_array("super_admin", $_SESSION['admin_akses'])) { ?>
-            <li><a class="app-menu__item" href="#"><i class="app-menu__icon fa fa-pie-chart"></i><span class="app-menu__label">Informasi</span></a></li>
-             <?php } ?>
+                <li><a class="app-menu__item" href="../tb_informasi"><i class="app-menu__icon fa fa-pie-chart"></i><span class="app-menu__label">Informasi</span></a></li>
+            <?php } ?>
             <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-paypal"></i><span class="app-menu__label">Bukti Transfer</span><i class="treeview-indicator fa fa-angle-right"></i></a>
                 <ul class="treeview-menu">
                     <?php if (in_array("user", $_SESSION['admin_akses'])) { ?>
