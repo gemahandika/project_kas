@@ -395,47 +395,45 @@
 
         <!-- Program Kerja -->
         <div class="container-xxl py-6">
-            <div class="container">
-                <div class="mx-auto text-center wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                    <div class="d-inline-block border rounded-pill text-primary px-4 mb-3"></div>
-                    <h2 class="mb-5">PROJECT AND INFORMATION</h2>
+    <div class="container">
+        <div class="mx-auto text-center wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+            <div class="d-inline-block border rounded-pill text-primary px-4 mb-3"></div>
+            <h2 class="mb-5">PROJECT AND INFORMATION</h2>
+        </div>
+        <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
+            <?php
+            $no = 0;
+            $sql = mysqli_query($koneksi, "SELECT * FROM tb_notif ORDER BY id_notif DESC") or die(mysqli_error($koneksi));
+            $result = array();
+            while ($data = mysqli_fetch_array($sql)) {
+                $result[] = $data;
+            }
+            foreach ($result as $data) {
+                $no++;
+                $gambar = $data['image'];
+                if ($gambar == null) {
+                    $img = 'No Photo';
+                } else {
+                    $img = 'Dashboard_Koperasi/app/assets/img/img_notif/' . $gambar;
+                }
+            ?>
+                <div class="testimonial-item rounded p-4 border-5">
+                    <div class="d-flex flex-row align-items-start">
+                        <div class="me-3" style="width: 100px; height: 100px;">
+                            <img class="img-fluid rounded-circle" src="<?= $img ?>" alt="User Image" style="width: 100%; height: 100%;">
+                        </div>
+                        <div class="flex-grow-1">
+                            <h1 class="mb-1"><h6><?= $data['nama_notif'] ?></h6></h1>
+                            <small style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 200px; display: block;"><?= $data['isi_notif'] ?></small>
+                            <a href="#" class="text-decoration-none">Read more</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
-                <?php
-                    $no = 0;
-                    $sql = mysqli_query($koneksi, "SELECT * FROM tb_notif ORDER bY id_notif  DESC") or die(mysqli_error($koneksi));
-                    $result = array();
-                    while ($data = mysqli_fetch_array($sql)) {
-                    $result[] = $data;
-                    }
-                    foreach ($result as $data) {
-                    $no++;
-                    ?>
-                    <div class="testimonial-item rounded p-4">
-    <div class="d-flex flex-row align-items-start">
-        <img class="img-fluid rounded-circle me-3" src="img/testimonial-2.jpg" style="width: 100px; height: 100px;">
-        <div class="flex-grow-1">
-            <a href="#" class="mb-1"><h6><?=$data['nama_notif'] ?></h6></a>
-            <small style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 200px; display: block;"><?=$data['isi_notif'] ?></small><a href="#" class="text-decoration-none">Read more</a>
+            <?php } ?>
         </div>
     </div>
 </div>
-                    
-                    <div class="testimonial-item rounded p-4">
-                        <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                        <p>Program</p>
-                        <div class="d-flex align-items-center">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-4.jpg">
-                            <div class="ps-3">
-                                <h6 class="mb-1">Client Name</h6>
-                                <small>Profession</small>
-                            </div>
-                        </div>
-                    </div>
-                    <?php } ?>
-                </div>
-            </div>
-        </div>
+
         <!-- Project and informasi end  -->
 
 
