@@ -418,7 +418,7 @@
                 }
             ?>
                 <div class="testimonial-item rounded p-4 border-5">
-                    <div class="d-flex flex-row align-items-start">
+                <div class="d-flex flex-row align-items-start">
                         <div class="me-3" style="width: 100px; height: 100px;">
                             <img class="img-fluid rounded-circle" src="<?= $img ?>" alt="User Image" style="width: 100%; height: 100%;">
                         </div>

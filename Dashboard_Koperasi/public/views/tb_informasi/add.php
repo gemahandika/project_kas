@@ -37,8 +37,8 @@ $time = date("H:i");
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="exampleFormControlFile1"><strong>INPUT PHOTO</strong></label>
-                  <input type="file" name="file" class="form-control-file" id="exampleFormControlFile1" onchange="previewImage(this)">
-                  <img id="preview" src="#" alt="Preview" style="display:none; max-width:100%; margin-top:10px;">
+                    <input type="file" name="file" class="form-control-file" id="exampleFormControlFile1" onchange="previewImage(this)">
+                    <img id="preview" src="#" alt="Preview" style="display:none; max-width:100%; margin-top:10px;">
                   <button type="button" class="btn btn-danger btn-sm mt-2" id="removeImage" style="display:none;">Remove</button>
                 </div>
               </div>
