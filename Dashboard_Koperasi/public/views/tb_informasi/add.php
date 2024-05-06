@@ -21,7 +21,7 @@ $time = date("H:i");
     <div class="col-md-12">
       <div class="tile">
         <div class="tile-body">
-          <form action="../../../app/controller/Notif.php" method="post" enctype="multipart/form-data">
+          <form action="../../../app/controller/Notif.php" method="POST" enctype="multipart/form-data">
             <div class="row">
               <div class="col-md-8">
                 <div class="form-group">

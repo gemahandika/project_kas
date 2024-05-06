@@ -23,7 +23,6 @@ if (isset($_POST['add'])) {
     $judul_info = trim(mysqli_real_escape_string($koneksi, $_POST['judul_info']));
     $isi_info = trim(mysqli_real_escape_string($koneksi, $_POST['isi_info']));
     $tgl_info = trim(mysqli_real_escape_string($koneksi, $_POST['tgl_info']));
-   
 
     mysqli_query($koneksi, "INSERT INTO tb_notif (nama_notif, isi_notif, tgl_notif, image) 
     VALUES('$judul_info', '$isi_info', '$tgl_info', '$image')");
