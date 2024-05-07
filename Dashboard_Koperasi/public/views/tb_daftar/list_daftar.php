@@ -34,9 +34,10 @@ $time = date("H:i");
                                     <th class="small">UNIT</th>
                                     <th class="small">NO HANDPHONE</th>
                                     <th class="small">ALAMAT </th>
-                                    <th class="small">SYARAT POTONGAN </th>
+                                    <!-- <th class="small">SYARAT & KETENTUAN </th> -->
                                     <th class="small">TANGGAL</th>
                                     <th class="small">STATUS</th>
+                                    <th class="small">STATUS KARYAWAN</th>
                                     <th class="small">ACTION</th>
                                 </tr>
                             </thead>
@@ -58,9 +59,10 @@ $time = date("H:i");
                                     <td class="small"><?= $data['unit_daftar'] ?></td>
                                     <td class="small"><?= $data['hp_daftar'] ?></td>
                                     <td class="small"><?= $data['alamat_daftar'] ?></td>
-                                    <td class="small"><?= $data['syarat_daftar'] ?></td>
+                                    <!-- <td class="small"><?= $data['syarat_daftar'] ?></td> -->
                                     <td class="small"><?= $data['tgl_daftar'] ?></td>
                                     <td class="small"><?= $data['status_daftar'] ?></td>
+                                    <td class="small"><?= $data['status_karyawan'] ?></td>
                                     <td class="d-flex">
                                         <a href="#" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#editModal<?= $data['id_daftar'] ?>"><i class="fa fa-fw fa-lg fa-check-circle" aria-hidden="true"></i>Terima</a>
                                          <?php if (in_array("super_admin", $_SESSION['admin_akses'])) { ?>

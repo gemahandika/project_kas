@@ -59,63 +59,81 @@ $time = date("H:i");
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="tile">
-                    <h3 class="tile-title">Form Pendaftaran</h3>
-                    <div class="tile-body">
-                        <form action="../../../app/controller/Daftar.php" method="post">
-                            <!--  -->
-                            <div class="form-group">
-                                <label class="control-label">NAMA *</label>
-                                <input class="form-control" type="text" name="nama" placeholder="Input Fullname">
-                            </div>
+        <script>
+    // Fungsi untuk memeriksa apakah checkbox dicentang
+    function validateForm() {
+        var checkBox = document.getElementById("syarat");
+        var button = document.getElementById("submitBtn");
+        if (checkBox.checked == true){
+            button.disabled = false;
+        } else {
+            button.disabled = true;
+        }
+    }
+</script>
 
-                            <div class="form-group">
-                            <label for="status">STATUS *</label><br>
-                            <select class="form-control" name="status" type="text" id="role" onchange="showInput()" required>
-                                <option value="">- Pilih Status -</option>
-                                <option value="KARYAWAN">KARYAWAN</option>
-                                <option value="CABANG">CABANG</option>
-                                <option value="AGEN">AGEN</option>
-                            </select>
-                            <div class="form-group" id="status_input" style="display: none;"><br>
-                                <label class="control-label">STATUS KARYAWAN</label>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="syarat" value="KARYAWAN TETAP">Karyawan Tetap
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="syarat" value="OUTSOURCING">Outsourcing
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="form-group" id="nik_input" style="display: none;">
-                                <label for="nik" class="control-label">NIK</label>
-                                <input class="form-control" type="text" name="nik" id="nik" placeholder="Input NIK">
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label">Unit *</label>
-                                <input class="form-control" type="unit" name="unit" placeholder="Input Unit">
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label">Alamat *</label>
-                                <input class="form-control" type="alamat" name="alamat" placeholder="Enter full address">
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label">No. Handphone</label>
-                                <input class="form-control" type="text" name="phone" placeholder="Enter your Phone">
-                            </div>
-                            <div class="tile-footer">
-                                <button class="btn btn-primary" name="add" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Daftar</button>
-                            </div>
-                        </form>
+<div class="row">
+    <div class="col-md-12">
+        <div class="tile">
+            <h3 class="tile-title">Form Pendaftaran</h3>
+            <div class="tile-body">
+                <form action="../../../app/controller/Daftar.php" method="post" onsubmit="return validateForm()">
+                    <!-- -->
+                    <input type="hidden" name="tgl_daftar" value="<?=$date?>">
+                    <div class="form-group">
+                        <label class="control-label"><Strong>Nama :</Strong></label>
+                        <input class="form-control" type="text" name="nama" placeholder="Input Fullname">
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label for="status"><strong>Status :</strong></label><br>
+                        <select class="form-control" name="status" type="text" id="role" onchange="showInput()" required>
+                            <option value="">- Pilih Status -</option>
+                            <option value="KARYAWAN">KARYAWAN</option>
+                            <option value="CABANG">CABANG</option>
+                            <option value="AGEN">AGEN</option>
+                        </select>
+                        <div class="form-group" id="status_input" style="display: none;"><br>
+                            <label class="control-label"><strong>Status Karyawan :</strong></label>
+                            <select class="form-control" name="status_karyawan" type="text" id="role" onchange="showInput()">
+                                <option value="">- Pilih Status -</option>
+                                <option value="KARYAWAN TETAP">KARYAWAN TETAP</option>
+                                <option value="OUTSOURCING">OUTSOURCING</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="nik_input" style="display: none;">
+                            <label for="nik" class="control-label"><strong>Nik :</strong></label>
+                            <input class="form-control" type="text" name="nik" id="nik" placeholder="Input NIK">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label"><strong>Unit :</strong></label>
+                            <input class="form-control" type="text" name="unit" placeholder="Input Unit">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label"><strong>Alamat :</strong></label>
+                            <input class="form-control" type="text" name="alamat" placeholder="Enter full address">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label"><strong>No. Handphone :</strong></label>
+                            <input class="form-control" type="text" name="phone" placeholder="Enter your Phone">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label"><strong><em>Syarat dan Ketentuan</em></strong></label>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" name="syarat" id="syarat" value="SETUJU" onchange="validateForm()"><em>Saya sudah membaca syarat dan
+                                        sudah memahami ketentuan yang sudah dijabarkan diatas.</em>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="tile-footer">
+                            <button class="btn btn-primary" id="submitBtn" name="add" type="submit" disabled><i class="fa fa-fw fa-lg fa-check-circle"></i>Daftar</button>
+                        </div>
+                </form>
             </div>
         </div>
+    </div>
+</div>
+
     </main>
 
     <script>
