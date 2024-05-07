@@ -149,29 +149,29 @@
                         <ul>
                             <li>
                                 <img src="assets/images/berkah.png" alt="" style="max-width: 52px;">
-                                <h4 style="color: darkgoldenrod;">Keberkahan</h4>
+                                <h6 style="color: darkgoldenrod;">Keberkahan</h6>
                             </li>
                             <li>
                                 <img src="assets/images/adil.png" alt="" style="max-width: 52px;">
-                                <h4 style="color: darkred;">Berkeadilan</h4>
+                                <h6 style="color: darkred;">Berkeadilan</h6>
                             </li>
                             <li>
                                 <img src="assets/images/bersama.png" alt="" style="max-width: 52px;">
-                                <h4 style="color: darkorange;">Kebersamaan</h4>
+                                <h6 style="color: darkorange;">Kebersamaan</h6>
                             </li>
                             <li>
                                 <img src="assets/images/peduli.png" alt="" style="max-width: 52px;">
-                                <h4 style="color: darkmagenta;">Peduli</h4>
+                                <h6 style="color: darkmagenta;">Peduli</h6>
                             </li>
                             <li>
                                 <img src="assets/images/pemberdaya.png" alt="" style="max-width: 52px;">
-                                <h4 style="color: darkgreen;">Pemberdayaan</h4>
+                                <h6 style="color: darkgreen;">Pemberdayaan</h6>
                             </li>
                             <li>
                                 <img src="assets/images/pemasaran.png" alt="" style="max-width: 52px;">
-                                <h4 style="color: darkturquoise;">Pemasaran Bersama</h4>
+                                <h6 style="color: darkturquoise;">Pemasaran Bersama</h6>
                             </li>
-                            </ul>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -193,13 +193,10 @@
                             <div class="nav-wrapper ">
                                 <ul class="nav nav-tabs" role="tablist">
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link active" id="appartment-tab" data-bs-toggle="tab" data-bs-target="#appartment" type="button" role="tab" aria-controls="appartment" aria-selected="true">Appartment</button>
+                                    <a href="../tb_daftar/index.php" class="nav-link active" type="button" role="tab" aria-controls="appartment" aria-selected="true">Daftar</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="villa-tab" data-bs-toggle="tab" data-bs-target="#villa" type="button" role="tab" aria-controls="villa" aria-selected="false">Villa House</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="penthouse-tab" data-bs-toggle="tab" data-bs-target="#penthouse" type="button" role="tab" aria-controls="penthouse" aria-selected="false">Penthouse</button>
+                                    <a href="../login/index.php" class="nav-link" type="button" role="tab" aria-controls="villa" aria-selected="false">Log In</a>
                                 </li>
                                 </ul>
                             </div>              
