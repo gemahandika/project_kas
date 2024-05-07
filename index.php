@@ -11,10 +11,6 @@
     foreach ($result as $data) {
     }
     ?>
-
-
-
-
     <head>
         <meta charset="utf-8">
         <title>KOPERASI - Kreasi Anugrah Sejahtera</title>
@@ -425,7 +421,7 @@
                         <div class="flex-grow-1">
                             <h1 class="mb-1"><h6><?= $data['nama_notif'] ?></h6></h1>
                             <small style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 200px; display: block;"><?= $data['isi_notif'] ?></small>
-                            <a href="#" class="text-decoration-none">Read more</a>
+                            <a href="Dashboard_Koperasi/public/views/tb_informasi/view_info.php?id=<?= $data['id_notif'] ?>" class="text-decoration-none" target="_blank">Read more</a>
                         </div>
                     </div>
                 </div>

@@ -13,7 +13,7 @@ $row = mysqli_fetch_array($result);
 <main class="app-content">
     <div class="app-title">
         <div>
-            <h1><i class="fa fa-info"></i> Add Information</h1>
+            <h1><i class="fa fa-info"></i> Edit Information</h1>
         </div>
         <ul class="app-breadcrumb breadcrumb side">
             <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
