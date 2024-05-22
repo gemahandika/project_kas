@@ -11,13 +11,14 @@ if (isset($_POST['add'])) {
     $alamat = trim(mysqli_real_escape_string($koneksi, $_POST['alamat']));
     $phone = trim(mysqli_real_escape_string($koneksi, $_POST['phone']));
     $syarat = trim(mysqli_real_escape_string($koneksi, $_POST['syarat']));
-  
-    
+    $generate = trim(mysqli_real_escape_string($koneksi, $_POST['generate']));
+
+
 
     // Masukan data ke tabel anggota
-    mysqli_query($koneksi, "INSERT INTO tb_daftar ( nama_daftar, alamat_daftar, nik_daftar, unit_daftar, hp_daftar, syarat_daftar, tgl_daftar, status_daftar,status_karyawan) 
-    VALUES( '$nama', '$alamat', '$nik', '$unit', '$phone','$syarat','$tgl_daftar','$status','$status_karyawan')");
+    mysqli_query($koneksi, "INSERT INTO tb_daftar ( nama_daftar, alamat_daftar, nik_daftar, unit_daftar, hp_daftar, syarat_daftar, tgl_daftar, status_daftar,status_karyawan, generate) 
+    VALUES( '$nama', '$alamat', '$nik', '$unit', '$phone','$syarat','$tgl_daftar','$status','$status_karyawan','$generate')");
     // Masukan data ke table transaksi
 
     showSweetAlert('success', 'Sukses', 'Data Berhasil DI kirim', '#3085d6', '../../../');
-    }
+}

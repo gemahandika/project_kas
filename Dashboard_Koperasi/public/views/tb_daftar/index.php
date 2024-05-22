@@ -48,91 +48,92 @@ $time = date("H:i");
                     <p><b>2.</b> Bersedia membayar simpanan pokok dan wajib di Koperasi</p>
                     <p><b>3.</b> Bersedia Membayar Simpanan Pokok sebesar Rp. 100.000 dibulan pertama keangggotaan </p>
                     <p><b>4.</b> Bersedia Membayar Simpanan Wajib sebesar Rp. 100.000 setiap bulannya ( Jika
-                                karyawan akan dipotong langsung melalui payroll gaji setiap tanggal 25,   Jika
-                                Karyawan Outsourcing,pimpinan cabang dan agen dapat melakukan pembayaran
-                                melalui Transfer )
+                        karyawan akan dipotong langsung melalui payroll gaji setiap tanggal 25, Jika
+                        Karyawan Outsourcing,pimpinan cabang dan agen dapat melakukan pembayaran
+                        melalui Transfer )
                     </p>
                     <p><b>5.</b> Uang simpanan Pokok diawal (Sebesar Rp. 100.000) tidak dikembalikan jika keluar dari keanggotaan</p>
                     <p><b>6.</b> Jika keluar dari keanggotaan, maka tidak dapat kembali menjadi anggota koperasi KAS</p>
-                
+
                 </div>
             </div>
         </div>
 
         <script>
-    // Fungsi untuk memeriksa apakah checkbox dicentang
-    function validateForm() {
-        var checkBox = document.getElementById("syarat");
-        var button = document.getElementById("submitBtn");
-        if (checkBox.checked == true){
-            button.disabled = false;
-        } else {
-            button.disabled = true;
-        }
-    }
-</script>
+            // Fungsi untuk memeriksa apakah checkbox dicentang
+            function validateForm() {
+                var checkBox = document.getElementById("syarat");
+                var button = document.getElementById("submitBtn");
+                if (checkBox.checked == true) {
+                    button.disabled = false;
+                } else {
+                    button.disabled = true;
+                }
+            }
+        </script>
 
-<div class="row">
-    <div class="col-md-12">
-        <div class="tile">
-            <h3 class="tile-title">Form Pendaftaran</h3>
-            <div class="tile-body">
-                <form action="../../../app/controller/Daftar.php" method="post" onsubmit="return validateForm()">
-                    <!-- -->
-                    <input type="hidden" name="tgl_daftar" value="<?=$date?>">
-                    <div class="form-group">
-                        <label class="control-label"><Strong>Nama :</Strong></label>
-                        <input class="form-control" type="text" name="nama" placeholder="Input Fullname">
-                    </div>
-                    <div class="form-group">
-                        <label for="status"><strong>Status :</strong></label><br>
-                        <select class="form-control" name="status" type="text" id="role" onchange="showInput()" required>
-                            <option value="">- Pilih Status -</option>
-                            <option value="KARYAWAN">KARYAWAN</option>
-                            <option value="CABANG">CABANG</option>
-                            <option value="AGEN">AGEN</option>
-                        </select>
-                        <div class="form-group" id="status_input" style="display: none;"><br>
-                            <label class="control-label"><strong>Status Karyawan :</strong></label>
-                            <select class="form-control" name="status_karyawan" type="text" id="role" onchange="showInput()">
-                                <option value="">- Pilih Status -</option>
-                                <option value="KARYAWAN TETAP">KARYAWAN TETAP</option>
-                                <option value="OUTSOURCING">OUTSOURCING</option>
-                            </select>
-                        </div>
-                        <div class="form-group" id="nik_input" style="display: none;">
-                            <label for="nik" class="control-label"><strong>Nik :</strong></label>
-                            <input class="form-control" type="text" name="nik" id="nik" placeholder="Input NIK">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label"><strong>Unit :</strong></label>
-                            <input class="form-control" type="text" name="unit" placeholder="Input Unit">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label"><strong>Alamat :</strong></label>
-                            <input class="form-control" type="text" name="alamat" placeholder="Enter full address">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label"><strong>No. Handphone :</strong></label>
-                            <input class="form-control" type="text" name="phone" placeholder="Enter your Phone">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label"><strong><em>Syarat dan Ketentuan</em></strong></label>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox" name="syarat" id="syarat" value="SETUJU" onchange="validateForm()"><em>Saya sudah membaca syarat dan
-                                        sudah memahami ketentuan yang sudah dijabarkan diatas.</em>
-                                </label>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="tile">
+                    <h3 class="tile-title">Form Pendaftaran</h3>
+                    <div class="tile-body">
+                        <form action="../../../app/controller/Daftar.php" method="post" onsubmit="return validateForm()">
+                            <!-- -->
+                            <input type="hidden" name="tgl_daftar" value="<?= $date ?>">
+                            <div class="form-group">
+                                <label class="control-label"><Strong>Nama :</Strong></label>
+                                <input class="form-control" type="text" name="nama" placeholder="Input Fullname">
                             </div>
-                        </div>
-                        <div class="tile-footer">
-                            <button class="btn btn-primary" id="submitBtn" name="add" type="submit" disabled><i class="fa fa-fw fa-lg fa-check-circle"></i>Daftar</button>
-                        </div>
-                </form>
+                            <div class="form-group">
+                                <label for="status"><strong>Status :</strong></label><br>
+                                <select class="form-control" name="status" type="text" id="role" onchange="showInput()" required>
+                                    <option value="">- Pilih Status -</option>
+                                    <option value="KARYAWAN">KARYAWAN</option>
+                                    <option value="CABANG">CABANG</option>
+                                    <option value="AGEN">AGEN</option>
+                                </select>
+                                <div class="form-group" id="status_input" style="display: none;"><br>
+                                    <label class="control-label"><strong>Status Karyawan :</strong></label>
+                                    <select class="form-control" name="status_karyawan" type="text" id="role" onchange="showInput()">
+                                        <option value="-">- Pilih Status -</option>
+                                        <option value="KARYAWAN TETAP">KARYAWAN TETAP</option>
+                                        <option value="OUTSOURCING">OUTSOURCING</option>
+                                    </select>
+                                </div>
+                                <div class="form-group" id="nik_input" style="display: none;">
+                                    <label for="nik" class="control-label"><strong>Nik :</strong></label>
+                                    <input class="form-control" type="text" name="nik" id="nik" value="0" placeholder="Input NIK">
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label"><strong>Unit :</strong></label>
+                                    <input class="form-control" type="text" name="unit" placeholder="Input Unit">
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label"><strong>Alamat :</strong></label>
+                                    <input class="form-control" type="text" name="alamat" placeholder="Enter full address">
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label"><strong>No. Handphone :</strong></label>
+                                    <input class="form-control" type="text" name="phone" placeholder="Enter your Phone">
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label"><strong><em>Syarat dan Ketentuan</em></strong></label>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox" name="syarat" id="syarat" value="SETUJU" onchange="validateForm()"><em>Saya sudah membaca syarat dan
+                                                sudah memahami ketentuan yang sudah dijabarkan diatas.</em>
+                                        </label>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="generate" value="waiting">
+                                <div class="tile-footer">
+                                    <button class="btn btn-primary" id="submitBtn" name="add" type="submit" disabled><i class="fa fa-fw fa-lg fa-check-circle"></i>Daftar</button>
+                                </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
     </main>
 
@@ -153,15 +154,15 @@ $time = date("H:i");
     </script>
 
     <!-- <?php
-    // Logika PHP untuk menghasilkan NIK otomatis
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if ($_POST['role'] == 'karyawan') {
-            // Generate NIK otomatis, misalnya dengan angka acak
-            $nik = mt_rand(100000, 999999);
-            echo "<p>NIK: $nik</p>";
-        }
-    }
-    ?> -->
+            // Logika PHP untuk menghasilkan NIK otomatis
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if ($_POST['role'] == 'karyawan') {
+                    // Generate NIK otomatis, misalnya dengan angka acak
+                    $nik = mt_rand(100000, 999999);
+                    echo "<p>NIK: $nik</p>";
+                }
+            }
+            ?> -->
 
     <!-- Essential javascripts for application to work-->
     <script src="js/jquery-3.2.1.min.js"></script>

@@ -41,11 +41,14 @@ if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_S
                 <tr class="btn-primary">
                   <th><input type="checkbox" id="select_all"></th>
                   <th class="small">ACTION</th>
-                  <th class="small">NIP</th>
-                  <th class="small">TANGGAL</th>
+                  <th class="small">NIK</th>
+                  <th class="small">JOIN DATE</th>
                   <th class="small">NAMA ANGGOTA</th>
                   <th class="small">DIVISI</th>
-                  <th class="small">CABANG</th>
+                  <th class="small">KARYAWAN/CABANG/AGEN</th>
+                  <th class="small">STATUS KARYAWAN</th>
+                  <th class="small">PHONE</th>
+                  <th class="small">ALAMAT</th>
                   <th class="small">SALDO </th>
                   <th class="small">STATUS </th>
                 </tr>
@@ -53,7 +56,7 @@ if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_S
 
               <?php
               $no = 0;
-              $sql = mysqli_query($koneksi, "SELECT * FROM tb_anggota WHERE status = 'AKTIF' ORDER BY id_anggota DESC") or die(mysqli_error($koneksi));
+              $sql = mysqli_query($koneksi, "SELECT * FROM tb_anggota WHERE status = 'AKTIF' ORDER BY id_anggota ASC") or die(mysqli_error($koneksi));
               $result = array();
               while ($data = mysqli_fetch_array($sql)) {
                 $result[] = $data;
@@ -76,11 +79,14 @@ if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_S
                   <td class="small"><?= $data['nama_anggota'] ?></td>
                   <td class="small"><?= $data['divisi'] ?></td>
                   <td class="small"><?= $data['cabang'] ?></td>
+                  <td class="small"><?= $data['status_karyawan'] ?></td>
+                  <td class="small"><?= $data['phone'] ?></td>
+                  <td class="small"><?= $data['alamat'] ?></td>
                   <td class="small"><?= $data['saldo'] ?></td>
                   <td class="small"><?= $data['status'] ?></td>
                 </tr>
           </form>
-           <!-- Modal Edit -->
+          <!-- Modal Edit -->
           <div class="modal fade" id="editModal<?= $data['id_anggota'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <form action="../../../app/controller/Anggota.php" method="post">

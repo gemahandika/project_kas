@@ -37,15 +37,18 @@ if (isset($_POST['add'])) {
     $nip = trim(mysqli_real_escape_string($koneksi, $_POST['nip']));
     $join_date = trim(mysqli_real_escape_string($koneksi, $_POST['join_date']));
     $nama_anggota = trim(mysqli_real_escape_string($koneksi, $_POST['nama_anggota']));
-    $divisi = trim(mysqli_real_escape_string($koneksi, $_POST['divisi']));
+    $divisi = trim(mysqli_real_escape_string($koneksi, $_POST['unit']));
     $cabang = trim(mysqli_real_escape_string($koneksi, $_POST['cabang']));
     $keterangan = trim(mysqli_real_escape_string($koneksi, $_POST['keterangan']));
     $saldo = trim(mysqli_real_escape_string($koneksi, $_POST['saldo']));
+    $status_karyawan = trim(mysqli_real_escape_string($koneksi, $_POST['status_karyawan']));
+    $phone = trim(mysqli_real_escape_string($koneksi, $_POST['hp']));
+    $alamat = trim(mysqli_real_escape_string($koneksi, $_POST['alamat']));
     $status = trim(mysqli_real_escape_string($koneksi, $_POST['status']));
     $pass = trim(mysqli_real_escape_string($koneksi, $_POST['password']));
     $status_user = trim(mysqli_real_escape_string($koneksi, $_POST['status_user']));
     $id_daftar = trim(mysqli_real_escape_string($koneksi, $_POST['id_daftar']));
-    $status_daftar = trim(mysqli_real_escape_string($koneksi, $_POST['status_daftar']));
+    $generate = trim(mysqli_real_escape_string($koneksi, $_POST['generate']));
 
     // Validasi NIK agar tidak ganda
     $check_query = "SELECT * FROM tb_anggota WHERE nip = '$nip'";
@@ -54,13 +57,13 @@ if (isset($_POST['add'])) {
         showSweetAlert('warning', 'Oops...', $pesan, '#3085d6', $tujuan_2);
     } else {
         // Masukan data ke tabel anggota
-        mysqli_query($koneksi, "INSERT INTO tb_anggota ( nip, join_date, nama_anggota, divisi, cabang, saldo, status) 
-    VALUES( '$nip', '$join_date', '$nama_anggota', '$divisi', '$cabang',$saldo,'$status')");
+        mysqli_query($koneksi, "INSERT INTO tb_anggota ( nip, join_date, nama_anggota, divisi, cabang, status_karyawan, phone, alamat, saldo, status) 
+    VALUES( '$nip', '$join_date', '$nama_anggota', '$divisi', '$cabang','$status_karyawan','$phone','$alamat',$saldo,'$status')");
         // Masukan data ke table transaksi
         mysqli_query($koneksi, "INSERT INTO tb_transaksi (nip, nama_anggota, jenis_transaksi, jumlah_transaksi, keterangan, tgl_transaksi) 
     VALUES('$nip', '$nama_anggota', '$pemasukan', $saldo, '$keterangan', '$join_date')");
         // Update status tb daftar
-        mysqli_query($koneksi, "UPDATE tb_daftar SET status_daftar='$status_daftar' WHERE id_daftar='$id_daftar'");
+        mysqli_query($koneksi, "UPDATE tb_daftar SET generate='$generate' WHERE id_daftar='$id_daftar'");
         //  Masukan data ke table User Aplikasi
         mysqli_query($koneksi, "INSERT INTO user (nip, nama_user, username, password, status) 
     VALUES('$nip', '$nama_anggota', '$nip', '$pass', '$status_user')");

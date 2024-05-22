@@ -36,7 +36,7 @@ $time = date("H:i");
                                     <th class="small">ALAMAT </th>
                                     <!-- <th class="small">SYARAT & KETENTUAN </th> -->
                                     <th class="small">TANGGAL</th>
-                                    <th class="small">STATUS</th>
+                                    <th class="small">*KARYAWAN *CABANG *AGEN</th>
                                     <th class="small">STATUS KARYAWAN</th>
                                     <th class="small">ACTION</th>
                                 </tr>
@@ -44,7 +44,7 @@ $time = date("H:i");
 
                             <?php
                             $no = 0;
-                            $sql = mysqli_query($koneksi, "SELECT * FROM tb_daftar ORDER BY id_daftar DESC") or die(mysqli_error($koneksi));
+                            $sql = mysqli_query($koneksi, "SELECT * FROM tb_daftar WHERE generate = 'waiting' ORDER BY id_daftar DESC") or die(mysqli_error($koneksi));
                             $result = array();
                             while ($data = mysqli_fetch_array($sql)) {
                                 $result[] = $data;
@@ -65,7 +65,7 @@ $time = date("H:i");
                                     <td class="small"><?= $data['status_karyawan'] ?></td>
                                     <td class="d-flex">
                                         <a href="#" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#editModal<?= $data['id_daftar'] ?>"><i class="fa fa-fw fa-lg fa-check-circle" aria-hidden="true"></i>Terima</a>
-                                         <?php if (in_array("super_admin", $_SESSION['admin_akses'])) { ?>
+                                        <?php if (in_array("super_admin", $_SESSION['admin_akses'])) { ?>
                                             <a href="delete.php?id=<?= $data['id_daftar'] ?>" onclick="return confirm('Yakin Ingin Menghapus Data?')" class=" btn btn-danger btn-sm ml-1"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                         <?php } ?>
                                     </td>
@@ -98,24 +98,37 @@ $time = date("H:i");
                                                 <input class="form-control" type="text" id="nama_anggota" name="nama_anggota" value="<?= $data['nama_daftar'] ?>" required>
                                             </div>
                                             <div class="form-group">
-                                                <label for="divisi">Divisi :</label><br>
-                                                <input class="form-control" type="text" id="divisi" name="divisi" value="<?= $data['unit_daftar'] ?>" required>
+                                                <label for="unit">Unit :</label><br>
+                                                <input class="form-control" type="text" id="unit" name="unit" value="<?= $data['unit_daftar'] ?>" required>
                                             </div>
                                             <div class="form-group">
-                                                <label for="cabang">Cabang :</label><br>
-                                                <input class="form-control" type="text" id="cabang" name="cabang" required>
+                                                <label for="hp">No. Handphone :</label><br>
+                                                <input class="form-control" type="text" id="hp" name="hp" value="<?= $data['hp_daftar'] ?>" required>
                                             </div>
+                                            <div class="form-group">
+                                                <label for="alamat">Alamat :</label><br>
+                                                <input class="form-control" type="text" id="alamat" name="alamat" value="<?= $data['alamat_daftar'] ?>" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="cabang">Karyawan / Cabang / Agen :</label><br>
+                                                <input class="form-control" type="text" id="cabang" name="cabang" value="<?= $data['status_daftar'] ?>" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="status_karyawan">Status Karyawan :</label><br>
+                                                <input class="form-control" type="text" id="status_karyawan" name="status_karyawan" value="<?= $data['status_karyawan'] ?>" required>
+                                            </div>
+
                                             <div class="form-group">
                                                 <label for="saldo">Saldo :</label><br>
                                                 <input class="form-control" type="text" id="saldo" name="saldo" value="0" required onkeypress="return inputAngka(event)">
                                             </div>
                                             <input type="hidden" name="status" value="AKTIF">
-                                            <input type="hidden" name="status_daftar" value="diterima">
+                                            <input type="hidden" name="generate" value="diterima">
                                         </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-success" id="demoNotify" name="add_daftar">Update</button>
+                                        <button type="submit" class="btn btn-success" id="demoNotify" name="add_daftar">Approve</button>
                                     </div>
                                 </div>
                             </form>

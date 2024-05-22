@@ -77,7 +77,7 @@ $data_saldo_user = mysqli_fetch_array($saldo_user);
         </div>
         <ul class="app-menu">
             <li><a class="app-menu__item active" href="../dashboard/index.php"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
-            
+
             <?php if (in_array("super_admin", $_SESSION['admin_akses']) || in_array("admin", $_SESSION['admin_akses'])) { ?>
                 <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">Anggota</span><i class="treeview-indicator fa fa-angle-right"></i></a>
                     <ul class="treeview-menu">
@@ -91,9 +91,9 @@ $data_saldo_user = mysqli_fetch_array($saldo_user);
                         <li><a class="treeview-item" href="../tb_transaksi/"><i class="icon fa fa-circle-o ml-4"></i> Iuran Anggota</a></li>
                         <li><a class="treeview-item" href="../buku_besar/"><i class="icon fa fa-circle-o ml-4"></i> Buku Besar</a></li>
                         <?php if (in_array("super_admin", $_SESSION['admin_akses'])) { ?>
-                        <li><a class="treeview-item" href="form-samples.html"><i class="icon fa fa-circle-o ml-4"></i> Data Asset</a></li>
-                        <li><a class="treeview-item" href="form-notifications.html"><i class="icon fa fa-circle-o ml-4"></i> Piutang</a></li>
-                        <li><a class="treeview-item" href="form-notifications.html"><i class="icon fa fa-circle-o ml-4"></i> Pengeluaran</a></li>
+                            <li><a class="treeview-item" href="../pnl_usaha_kantin/"><i class="icon fa fa-circle-o ml-4"></i> PNL Usaha Kantin</a></li>
+                            <li><a class="treeview-item" href="form-notifications.html"><i class="icon fa fa-circle-o ml-4"></i> Piutang</a></li>
+                            <li><a class="treeview-item" href="form-notifications.html"><i class="icon fa fa-circle-o ml-4"></i> Pengeluaran</a></li>
                         <?php } ?>
                     </ul>
                 </li>
@@ -101,7 +101,7 @@ $data_saldo_user = mysqli_fetch_array($saldo_user);
             <?php if (in_array("super_admin", $_SESSION['admin_akses']) || in_array("admin", $_SESSION['admin_akses'])) { ?>
                 <li><a class="app-menu__item" href="../tb_informasi"><i class="app-menu__icon fa fa-pie-chart"></i><span class="app-menu__label">Informasi</span></a></li>
             <?php } ?>
-            <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-paypal"></i><span class="app-menu__label">Bukti Transfer</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+            <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-dollar"></i><span class="app-menu__label">Bukti Transfer</span><i class="treeview-indicator fa fa-angle-right"></i></a>
                 <ul class="treeview-menu">
                     <?php if (in_array("user", $_SESSION['admin_akses'])) { ?>
                         <li><a class="treeview-item" href="../tb_transfer/"><i class="icon fa fa-circle-o ml-4"></i> Unggah Bukti Transfer</a></li>

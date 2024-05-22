@@ -1,8 +1,7 @@
 <?php
 
 include '../../../app/config/koneksi.php';
-$date = date("Y-m-d");
-$time = date("H:i");
+
 if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_SESSION['admin_akses'])) {
     echo "Ooopss!! Kamu Tidak Punya Akses";
     exit();
@@ -14,7 +13,7 @@ if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_S
         <form action="../../../app/controller/Anggota.php" method="post">
             <div class="modal-content">
                 <div class="modal-header btn btn-success">
-                    <h5 class="modal-title fs-5" id="exampleModalLabel">Tambah Data Anggota</h5>
+                    <h6 class="modal-title fs-5" id="exampleModalLabel">Tambah Data Anggota</h6>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
