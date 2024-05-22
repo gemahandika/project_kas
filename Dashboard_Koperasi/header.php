@@ -90,8 +90,8 @@ $data_saldo_user = mysqli_fetch_array($saldo_user);
                     <ul class="treeview-menu">
                         <li><a class="treeview-item" href="../tb_transaksi/"><i class="icon fa fa-circle-o ml-4"></i> Iuran Anggota</a></li>
                         <li><a class="treeview-item" href="../buku_besar/"><i class="icon fa fa-circle-o ml-4"></i> Buku Besar</a></li>
+                        <li><a class="treeview-item" href="../pnl_usaha_kantin/"><i class="icon fa fa-circle-o ml-4"></i> PNL Usaha Kantin</a></li>
                         <?php if (in_array("super_admin", $_SESSION['admin_akses'])) { ?>
-                            <li><a class="treeview-item" href="../pnl_usaha_kantin/"><i class="icon fa fa-circle-o ml-4"></i> PNL Usaha Kantin</a></li>
                             <li><a class="treeview-item" href="form-notifications.html"><i class="icon fa fa-circle-o ml-4"></i> Piutang</a></li>
                             <li><a class="treeview-item" href="form-notifications.html"><i class="icon fa fa-circle-o ml-4"></i> Pengeluaran</a></li>
                         <?php } ?>
