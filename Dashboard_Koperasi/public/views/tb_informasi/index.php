@@ -15,26 +15,16 @@ include '../../../app/config/koneksi.php';
       <li class="breadcrumb-item active"><a href="#">Data Table</a></li>
     </ul>
   </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="tile">
-        <div class="tile-body">
-          <div class="form-group mr-2 ">
-          <a href="add.php" type="button" class="btn btn-primary mr-2">Create</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div class="row">
     <div class="col-md-12">
       <div class="tile">
         <div class="tile-body">
+          <a href="add.php" type="button" class="btn btn-success mr-2">Create</a>
           <form action="../../../app/controller/Report.php" method="post">
             <table class="table table-hover table-bordered table-responsive-sm" id="sampleTable">
               <thead>
-                <tr class="btn-secondary">
+                <tr class="btn-success">
                   <th class="small">NO</th>
                   <th class="small">JUDUL INFORMASI</th>
                   <th class="small">ISI INFORMASI</th>
@@ -52,7 +42,7 @@ include '../../../app/config/koneksi.php';
               foreach ($result as $data) {
                 $no++;
                 $gambar = $data['image'];
-                  if ($gambar == null) {
+                if ($gambar == null) {
                   $img1 = 'No Photo';
                 } else {
                   $img = '<img src="../../../app/assets/img/img_notif/' . $gambar . '" class="zoomable">';
@@ -61,7 +51,7 @@ include '../../../app/config/koneksi.php';
                 <tr>
                   <td><?php echo $no; ?></td>
                   <td class="small"><?= $data['nama_notif'] ?></td>
-                  <td class="small"><a href="edit.php?id=<?= $data['id_notif'] ?>" class="btn btn-success btn-sm">Detail Informasi</a></td>
+                  <td class="small"><a href="edit.php?id=<?= $data['id_notif'] ?>" class="btn btn-primary btn-sm">Detail Informasi</a></td>
                   <td class="small"><?= $data['tgl_notif'] ?></td>
                   <td class="d-flex align-items-center">
                     <a href="delete.php?id=<?= $data['id_notif'] ?>" onclick="return confirm('Yakin Ingin Menghapus Data?')" class="action btn btn-danger btn-sm">
@@ -69,7 +59,7 @@ include '../../../app/config/koneksi.php';
                     </a>
                   </td>
                 </tr>
-            </form>
+          </form>
         <?php } ?>
         </table>
         </div>

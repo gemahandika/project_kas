@@ -1,13 +1,12 @@
 <?php
 include '../../../header.php';
 include 'modal.php';
-// include 'modal_katagori.php';
 include '../../../app/config/koneksi.php';
 ?>
 <main class="app-content">
   <div class="app-title">
     <div>
-      <h1><i class="fa fa-th-list"></i> Pnl Usaha Kantin</h1>
+      <h1><i class="fa fa-th-list"></i>Usaha Kantin</h1>
     </div>
     <ul class="app-breadcrumb breadcrumb side">
       <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
@@ -51,7 +50,7 @@ include '../../../app/config/koneksi.php';
               <input class="form-control" type="date" name="ke" value="<?= $date ?>">
             </div>
             <div class="ml-2">
-              <button type="submit" name="approve" class="btn btn-primary icon-btn form-group"><i class="fa fa-search"></i>Cari</button>
+              <button type="submit" name="approve" class="btn btn-info icon-btn form-group"><i class="fa fa-search"></i>Cari</button>
             </div>
             <label class="ml-2 ">
               <?php
@@ -63,9 +62,9 @@ include '../../../app/config/koneksi.php';
               ?>
             </label>
             <div class="ml-2 d-flex">
-              <p><button type="button" class="btn btn-success icon-btn mr-2 btn-sm" data-bs-toggle="modal" data-bs-target="#katagoriModal"><i class="fa fa-plus"></i>Add Data Katagori </button></p>
-              <p><a href="../tb_katagori/index.php" class="btn btn-secondary btn-sm mr-2"><i class="fa fa-database" aria-hidden="true"></i>Katagori</a></p>
-              <p><a href="index.php?>" class="btn btn-secondary btn-sm"><i class="fa fa-refresh" aria-hidden="true"></i></a></p>
+              <!-- <p><button type="button" class="btn btn-success icon-btn mr-2 " data-bs-toggle="modal" data-bs-target="#kantinModal"><i class="fa fa-plus"></i>Tambah Kantin</button></p> -->
+              <p><a href="data_kantin.php" class="btn btn-secondary mr-2"><i class="fa fa-database" aria-hidden="true"></i>Kantin</a></p>
+              <p><a href="index.php?>" class="btn btn-secondary "><i class="fa fa-refresh" aria-hidden="true"></i></a></p>
             </div>
           </div>
         </form>
@@ -76,18 +75,18 @@ include '../../../app/config/koneksi.php';
     <div class="col-md-12">
       <div class="tile">
         <div class="tile-body">
-          <button type="button" class="btn btn-success icon-btn btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-plus"></i>Add Data </button>
+          <button type="button" class="btn btn-info icon-btn btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-plus"></i>Add Data </button>
           <form action="../../../app/controller/Usaha_kantin.php" method="post">
             <table class="table table-hover table-bordered table-responsive-sm" id="sampleTable">
               <thead>
-                <tr class="btn-warning">
+                <tr class="btn-info">
                   <th class="small">NO</th>
                   <th class="small">NAMA KANTIN</th>
                   <th class="small">PENDAPATAN</th>
                   <th class="small">KOMISI</th>
                   <th class="small">PEMBELIAN</th>
                   <th class="small">KETERANGAN</th>
-                  <th class="small">PERIODE</th>
+                  <th class="small">TANGGAL</th>
                   <th class="small">ACTION</th>
                 </tr>
               </thead>
@@ -113,7 +112,7 @@ include '../../../app/config/koneksi.php';
                   <td class="small"><?php echo number_format($d['komisi']) ?></td>
                   <td class="small"><?php echo number_format($d['pembelian']);  ?></td>
                   <td class="small"><?= $d['keterangan']; ?></td>
-                  <td class="small"><?= $d['periode'] ?></td>
+                  <td class="small"><?= $d['date'] ?></td>
                   <td class="d-flex align-items-center">
                     <a href="#" class="btn btn-warning btn-sm mr-1" data-bs-toggle="modal" data-bs-target="#editModal<?= $d['id_usaha'] ?>">
                       <i class="fa fa-pencil-square-o" aria-hidden="true"></i>

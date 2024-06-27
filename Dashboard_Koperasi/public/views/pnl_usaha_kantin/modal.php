@@ -9,8 +9,8 @@ $time = date("H:i");
     <div class="modal-dialog">
         <form action="../../../app/controller/Usaha_kantin.php" method="post">
             <div class="modal-content">
-                <div class="modal-header btn btn-warning">
-                    <h5 class="modal-title fs-5" id="exampleModalLabel" style="color: blue;">Tambah Data</h5>
+                <div class="modal-header btn btn-info">
+                    <h5 class="modal-title fs-5" id="exampleModalLabel">Tambah Data</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -32,6 +32,7 @@ $time = date("H:i");
                                 <?php } ?>
                             </select>
                         </div>
+
                         <div class="form-group">
                             <label for="pendapatan">Pendapatan :</label><br>
                             <input class="form-control" type="number" id="pendapatan" name="pendapatan" value="0" required>
@@ -56,7 +57,7 @@ $time = date("H:i");
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-warning" name="add" style="color: blue;">Create</button>
+                    <button type="submit" class="btn btn-info" name="add">Create</button>
                 </div>
             </div>
         </form>

@@ -23,13 +23,13 @@ if (isset($_POST['add'])) {
     $nama_transfer = trim(mysqli_real_escape_string($koneksi, $_POST['nama_transfer']));
     $nip_transfer = trim(mysqli_real_escape_string($koneksi, $_POST['nip_transfer']));
     $tgl_transfer = trim(mysqli_real_escape_string($koneksi, $_POST['tgl_transfer']));
+    $jenis_transfer = trim(mysqli_real_escape_string($koneksi, $_POST['jenis_transfer']));
     $nominal_transfer = trim(mysqli_real_escape_string($koneksi, $_POST['nominal_transfer']));
     $status_transfer = trim(mysqli_real_escape_string($koneksi, $_POST['status_transfer']));
-    $file = trim(mysqli_real_escape_string($koneksi, $_POST['file']));
+    // $file = trim(mysqli_real_escape_string($koneksi, $_POST['file']));
 
-    mysqli_query($koneksi, "INSERT INTO tb_transfer (nama_transfer, nip_transfer, tgl_transfer, nominal_transfer, status_transfer, file_transfer) 
-    VALUES('$nama_transfer', '$nip_transfer', '$tgl_transfer', '$nominal_transfer', '$status_transfer', '$image')");
+    mysqli_query($koneksi, "INSERT INTO tb_transfer (nama_transfer, nip_transfer, tgl_transfer, jenis_transfer, nominal_transfer, status_transfer, file_transfer) 
+    VALUES('$nama_transfer', '$nip_transfer', '$tgl_transfer','$jenis_transfer', $nominal_transfer, '$status_transfer', '$image')");
 
     showSweetAlert('success', 'Sukses', $pesan_ok, '#3085d6', '../../public/views/tb_transfer/list_data.php');
-    
 }

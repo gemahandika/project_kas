@@ -85,6 +85,10 @@ $time = date("H:i");
                                 <input class="form-control" type="text" name="nama" placeholder="Input Fullname">
                             </div>
                             <div class="form-group">
+                                <label for="nik" class="control-label"><strong>Nik :</strong></label>
+                                <input class="form-control" type="text" name="nik" id="nik" placeholder="Input NIK" required>
+                            </div>
+                            <div class="form-group">
                                 <label for="status"><strong>Status :</strong></label><br>
                                 <select class="form-control" name="status" type="text" id="role" onchange="showInput()" required>
                                     <option value="">- Pilih Status -</option>
@@ -100,10 +104,7 @@ $time = date("H:i");
                                         <option value="OUTSOURCING">OUTSOURCING</option>
                                     </select>
                                 </div>
-                                <div class="form-group" id="nik_input" style="display: none;">
-                                    <label for="nik" class="control-label"><strong>Nik :</strong></label>
-                                    <input class="form-control" type="text" name="nik" id="nik" value="0" placeholder="Input NIK">
-                                </div>
+
                                 <div class="form-group">
                                     <label class="control-label"><strong>Unit :</strong></label>
                                     <input class="form-control" type="text" name="unit" placeholder="Input Unit">
@@ -140,14 +141,12 @@ $time = date("H:i");
     <script>
         function showInput() {
             var role = document.getElementById("role").value;
-            var nikInput = document.getElementById("nik_input");
             var statusInput = document.getElementById("status_input");
 
             if (role === "KARYAWAN") {
-                nikInput.style.display = "block";
+
                 statusInput.style.display = "block";
             } else {
-                nikInput.style.display = "none";
                 statusInput.style.display = "none";
             }
         }

@@ -32,7 +32,7 @@ $time = date("H:i");
           <form method="post" name="proses">
             <table class="table table-hover table-bordered" id="sampleTable">
               <thead>
-                <tr class="btn-info">
+                <tr class="btn-primary">
                   <th class="small">NO</th>
                   <th class="small">ACTION</th>
                   <th class="small">NIP</th>

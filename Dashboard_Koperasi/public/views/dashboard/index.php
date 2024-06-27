@@ -1,6 +1,8 @@
 <?php
 include '../../../header.php';
 include '../../../app/models/Dashboard_models1.php';
+$date = date("Y-m-d");
+$time = date("H:i");
 ?>
 
 <main class="app-content">
@@ -19,7 +21,7 @@ include '../../../app/models/Dashboard_models1.php';
             <div class="tile">
                 <form action="index.php" method="get">
                     <div class="tile-body d-flex align-items-center">
-                        <label class="control-label">Periode : </label>
+                        <label class="control-label mr-3">Periode : </label>
                         <div class="form-group">
                             <input class="form-control" type="date" name="dari" value="<?= $date ?>">
                         </div>
@@ -52,7 +54,7 @@ include '../../../app/models/Dashboard_models1.php';
                 <div class="widget-small primary coloured-icon"><i class="icon fa fa-dollar fa-3x"></i>
                     <div class="info">
                         <h4>Saldo</h4>
-                        <p><b><?php echo number_format($saldo) ?></b></p>
+                        <h3><strong><?php echo number_format($saldo) ?></strong></h3>
                     </div>
                 </div>
             </div>
@@ -67,7 +69,6 @@ include '../../../app/models/Dashboard_models1.php';
                 </div>
             </div>
         <?php } ?>
-
         <div class="col-md-6 col-lg-3">
             <div class="widget-small danger coloured-icon"><i class="icon fa fa-users fa-3x"></i>
                 <div class="info">
@@ -77,21 +78,66 @@ include '../../../app/models/Dashboard_models1.php';
             </div>
         </div>
     </div>
+
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div class="tile">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h6>Data Profitabilitas Usaha</h6>
-                    <h6>Data Anggota</h6>
-                    <h6>Data Anggota Baru</h6>
+                <div class="mb-3">
+                    <div class="d-flex justify-content-around">
+                        <?php
+                        $data = mysqli_query($koneksi, "SELECT * FROM tb_kantin ORDER BY id_kantin ASC");
+                        $no = 1;
+                        $colors = [
+                            "rgba(255, 99, 132, 1)", // Merah
+                            "rgba(54, 162, 235, 1)", // Biru
+                            "rgba(255, 206, 86, 1)", // Kuning
+                            "rgba(75, 192, 192, 1)", // Hijau
+                            "rgba(153, 102, 255, 1)", // Ungu
+                            // Anda bisa menambahkan warna tambahan sesuai kebutuhan
+                        ];
+                        while ($d = mysqli_fetch_array($data)) {
+                            // Gunakan indeks untuk mendapatkan warna dari palet warna
+                            $color_index = $no - 1;
+                            $btn_style = "background-color: " . $colors[$color_index] . ";"; // Style untuk tombol
+                        ?>
+                            <h6 class="btn btn-dark btn-sm ml-1" style="<?= $btn_style ?>"><span><?= $d['nama_kantin'] ?> </span></h6>
+                        <?php
+                            $no++; // Naikkan nomor untuk warna selanjutnya
+                        }
+                        ?>
+                    </div>
                 </div>
-                <div class="d-flex">
+                <div>
                     <div class="embed-responsive embed-responsive-16by9">
                         <canvas class="embed-responsive-item" id="lineChartDemo"></canvas>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="tile">
+                <div class="mb-3">
+                    <div class="d-flex justify-content-around">
+                        <button class="btn btn-danger">Agen : <?= $jumlah_agen ?> </button>
+                        <button class="btn btn-info">Karyawan : <?= $jumlah_karyawan ?> </button>
+                        <button class="btn btn-warning" style="color: white;">Cabang : <?= $jumlah_cabang ?> </button>
+                    </div>
+                </div>
+                <div>
                     <div class="embed-responsive embed-responsive-16by9">
                         <canvas class="embed-responsive-item" id="pieChartDemo"></canvas>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="tile">
+                <div>
+                    <h6>Data Anggota Baru</h6>
+                </div>
+                <div>
                     <div class="embed-responsive embed-responsive-16by9">
                         <canvas class="embed-responsive-item" id="barChartDemo"></canvas>
                     </div>
@@ -110,32 +156,44 @@ include '../../../app/models/Dashboard_models1.php';
 <script src="../../../app/assets/js/plugins/pace.min.js"></script>
 <!-- Page specific javascripts-->
 <script type="text/javascript" src="../../../app/assets/js/plugins/chart.js"></script>
+<!-- Chart -->
 <script type="text/javascript">
+    var colors = [
+        "rgba(255, 99, 132, 1)", // Merah
+        "rgba(54, 162, 235, 1)", // Biru
+        "rgba(255, 206, 86, 1)", // Kuning
+        "rgba(75, 192, 192, 1)", // Hijau
+        "rgba(153, 102, 255, 1)", // Ungu
+        // Anda bisa menambahkan warna tambahan sesuai kebutuhan
+    ];
+    // Mendapatkan data kantin dari PHP
+    var datasets = <?php echo $json_datasets; ?>;
+
+    // Membuat variabel untuk menyimpan data chart
     var data = {
-        labels: ["January", "February", "March", "April", "May"],
-        datasets: [{
-                label: "My First dataset",
-                fillColor: "rgba(220,220,220,0.2)",
-                strokeColor: "rgba(220,220,220,1)",
-                pointColor: "rgba(220,220,220,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(220,220,220,1)",
-                data: [65, 59, 80, 81, 56]
-            },
-            {
-                label: "My Second dataset",
-                fillColor: "rgba(151,187,205,0.2)",
-                strokeColor: "rgba(151,187,205,1)",
-                pointColor: "rgba(151,187,205,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(151,187,205,1)",
-                data: [28, 48, 40, 19, 86]
-            }
-        ]
+        labels: datasets[0]['data_labels'], // Menggunakan data labels dari kantin pertama
+        datasets: datasets.map(function(dataset) {
+            return {
+                label: dataset['label'],
+                fillColor: "rgba(0, 0, 0, 0)", // Transparan untuk area chart
+                strokeColor: colors[datasets.indexOf(dataset) % colors.length], // Menggunakan palet warna, berulang jika jumlah kantin melebihi jumlah warna yang tersedia
+                pointColor: colors[datasets.indexOf(dataset) % colors.length], // Warna titik pada garis chart
+                pointStrokeColor: "#fff", // Warna border titik
+                pointHighlightFill: "#fff", // Warna fill titik saat di sorot
+                pointHighlightStroke: colors[datasets.indexOf(dataset) % colors.length], // Warna border titik saat di sorot
+                highlightFill: "rgba(220,220,220,0.75)",
+                highlightStroke: "rgba(220,220,220,1)",
+                data: dataset['data_values']
+            };
+        })
     };
 
+    // Update chart
+    var ctxl = $("#lineChartDemo").get(0).getContext("2d");
+    var lineChart = new Chart(ctxl).Line(data);
+
+
+    // pie chart
     var pdata = <?php echo $json_data; ?>;
     var ctxp = document.getElementById("pieChartDemo").getContext("2d");
     var pieChart = new Chart(ctxp, {
@@ -154,35 +212,62 @@ include '../../../app/models/Dashboard_models1.php';
         }
     });
 
+    var ctxp = $("#pieChartDemo").get(0).getContext("2d");
+    var pieChart = new Chart(ctxp).Pie(pdata);
 
-    var ctxl = $("#lineChartDemo").get(0).getContext("2d");
-    var lineChart = new Chart(ctxl).Line(data);
+
+
+    // bar Chart
+    var data_anggota = <?php echo $json_data_anggota; ?>;
+
+    // Definisi warna untuk batang-batang
+    var backgroundColors = [
+        "rgba(255, 99, 132, 1)", // Merah
+        "rgba(54, 162, 235, 1)", // Biru
+        "rgba(255, 206, 86, 1)", // Kuning
+        "rgba(75, 192, 192, 1)", // Hijau
+        "rgba(153, 102, 255, 1)", // Ungu
+        // Anda bisa menambahkan lebih banyak warna sesuai kebutuhan
+    ];
+
+    // Mendapatkan label bulan dan jumlah anggota dari data
+    var bulan_labels = data_anggota.map(function(item) {
+        return item.bulan;
+    });
+
+    var jumlah_anggota_data = data_anggota.map(function(item) {
+        return item.jumlah_anggota;
+    });
+
+    var backgroundColorsMapped = bulan_labels.map(function(label, index) {
+        return backgroundColors[index % backgroundColors.length];
+    });
+    // Menggunakan warna secara berulang jika jumlah bulan melebihi jumlah warna yang ditentukan
+    var data = {
+        labels: bulan_labels,
+        datasets: [{
+            label: 'Jumlah Anggota',
+            backgroundColor: backgroundColorsMapped, // Menggunakan array warna yang telah ditentukan sebelumnya
+            borderColor: 'rgba(54, 162, 235, 1)', // Warna border batang
+            borderWidth: 1,
+            data: jumlah_anggota_data
+        }]
+    };
+
+    var options = {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    };
 
     var ctxb = $("#barChartDemo").get(0).getContext("2d");
     var barChart = new Chart(ctxb).Bar(data);
-
-    var ctxp = $("#pieChartDemo").get(0).getContext("2d");
-    var pieChart = new Chart(ctxp).Pie(pdata);
 </script>
 
-<!-- Google analytics script-->
-<script type="text/javascript">
-    if (document.location.hostname == 'pratikborsadiya.in') {
-        (function(i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r;
-            i[r] = i[r] || function() {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
-            a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;
-            m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-        ga('create', 'UA-72504830-1', 'auto');
-        ga('send', 'pageview');
-    }
-</script>
 </body>
 
 </html>

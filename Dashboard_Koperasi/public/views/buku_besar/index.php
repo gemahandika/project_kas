@@ -39,7 +39,7 @@ include '../../../app/config/koneksi.php';
             </div>
             <div class="form-group d-flex flex-wrap">
               <p><button type="submit" class="btn btn-info icon-btn mr-2 btn-sm"><i class="fa fa-search"></i>Cari</button></p>
-              <p><button type="button" class="btn btn-success icon-btn mr-2 btn-sm" data-bs-toggle="modal" data-bs-target="#katagoriModal"><i class="fa fa-plus"></i>Add Data Katagori </button></p>
+              <p><button type="button" class="btn btn-info icon-btn mr-2 btn-sm" data-bs-toggle="modal" data-bs-target="#katagoriModal"><i class="fa fa-plus"></i>Add Data Katagori </button></p>
               <p><a href="../tb_katagori/index.php" class="btn btn-secondary btn-sm mr-2"><i class="fa fa-database" aria-hidden="true"></i>Katagori</a></p>
               <p><a href="index.php?>" class="btn btn-secondary btn-sm"><i class="fa fa-refresh" aria-hidden="true"></i></a></p>
             </div>
@@ -52,11 +52,11 @@ include '../../../app/config/koneksi.php';
     <div class="col-md-12">
       <div class="tile">
         <div class="tile-body">
-          <button type="button" class="btn btn-primary icon-btn btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-plus"></i>Add Data </button>
+          <button type="button" class="btn btn-info icon-btn btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-plus"></i>Tambah Data </button>
           <form action="../../../app/controller/Report.php" method="post">
             <table class="table table-hover table-bordered table-responsive-sm" id="sampleTable">
               <thead>
-                <tr class="btn-secondary">
+                <tr class="btn-info">
                   <th class="small">NO</th>
                   <th class="small">KATAGORI</th>
                   <th class="small">TANGGAL</th>

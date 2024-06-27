@@ -26,7 +26,7 @@ $sql = "SELECT 'cabang' AS cabang, COUNT(*) AS total FROM tb_anggota WHERE caban
         UNION 
         SELECT 'karyawan' AS cabang, COUNT(*) AS total FROM tb_anggota WHERE cabang = 'KARYAWAN' 
         UNION 
-        SELECT 'cb.mes' AS cabang, COUNT(*) AS total FROM tb_anggota WHERE cabang = 'CB.MES'";
+        SELECT 'agen' AS cabang, COUNT(*) AS total FROM tb_anggota WHERE cabang = 'AGEN'";
 $result = mysqli_query($koneksi, $sql);
 
 if (!$result) {
@@ -46,9 +46,9 @@ while ($row = mysqli_fetch_assoc($result)) {
   if ($cabang == 'cabang') {
     $color = '#FDB45C';
   } elseif ($cabang == 'karyawan') {
-    $color = '#F7464A';
-  } elseif ($cabang == 'cb.mes') {
     $color = '#46BFBD';
+  } elseif ($cabang == 'agen') {
+    $color = '#F7464A';
   }
 
   // Tambahkan data ke array $pdata
@@ -63,8 +63,109 @@ while ($row = mysqli_fetch_assoc($result)) {
 // Konversi array $pdata menjadi format JSON
 $json_data = json_encode($pdata);
 
+$karyawan = mysqli_query($koneksi, "SELECT * FROM tb_anggota WHERE cabang = 'karyawan' ") or die(mysqli_error($koneksi));
+$jumlah_karyawan = mysqli_num_rows($karyawan);
+$cabang = mysqli_query($koneksi, "SELECT * FROM tb_anggota WHERE cabang = 'cabang' ") or die(mysqli_error($koneksi));
+$jumlah_cabang = mysqli_num_rows($cabang);
+$agen = mysqli_query($koneksi, "SELECT * FROM tb_anggota WHERE cabang = 'agen' ") or die(mysqli_error($koneksi));
+$jumlah_agen = mysqli_num_rows($agen);
 
 
+function getAllKantinData($koneksi)
+{
+  $datasets = array();
+
+  // Ambil semua data kantin dari database
+  $result = mysqli_query($koneksi, "SELECT DISTINCT nama_kantin FROM usaha_kantin") or die(mysqli_error($koneksi));
+
+  while ($row = mysqli_fetch_assoc($result)) {
+    $nama_kantin = $row['nama_kantin'];
+
+    // Inisialisasi array data kosong untuk setiap kantin
+    $data = array();
+
+    // Ambil semua bulan yang mungkin dalam rentang waktu yang relevan
+    $result_bulan = mysqli_query($koneksi, "SELECT DISTINCT DATE_FORMAT(date, '%Y-%m') AS bulan FROM usaha_kantin") or die(mysqli_error($koneksi));
+    $bulan_mungkin = array();
+    while ($row_bulan = mysqli_fetch_assoc($result_bulan)) {
+      $bulan_mungkin[] = $row_bulan['bulan'];
+    }
+
+    // Ambil data dari database untuk kantin tertentu
+    $sql = mysqli_query($koneksi, "SELECT DATE_FORMAT(date, '%Y-%m') AS bulan, SUM(pendapatan) AS total_pendapatan FROM usaha_kantin WHERE nama_kantin='$nama_kantin' GROUP BY bulan") or die(mysqli_error($koneksi));
+
+    // Buat array data untuk kantin saat ini
+    while ($inner_row = mysqli_fetch_assoc($sql)) {
+      $data[$inner_row['bulan']] = $inner_row['total_pendapatan'];
+    }
+
+    // Cek setiap bulan yang mungkin dan tambahkan data ke array data
+    foreach ($bulan_mungkin as $bulan) {
+      if (!isset($data[$bulan])) {
+        // Jika tidak ada data untuk bulan ini, tambahkan entri dengan nilai 0
+        $data[$bulan] = 0;
+      }
+    }
+
+    // Sort array data berdasarkan kunci (periode)
+    ksort($data);
+
+    // Ubah format bulan dari 'YYYY-MM' menjadi nama bulan
+    $data_labels = array_map(function ($bulan) {
+      return date("F", strtotime($bulan));
+    }, array_keys($data));
+
+    // Pisahkan nilai (pendapatan) dari array data
+    $data_values = array_values($data);
+
+    // Tambahkan data ke dalam datasets
+    $datasets[] = array(
+      'label' => $nama_kantin,
+      'data_labels' => $data_labels,
+      'data_values' => $data_values
+    );
+  }
+
+  return $datasets;
+}
+
+// Panggil fungsi untuk mengambil data dari database untuk semua kantin
+$datasets = getAllKantinData($koneksi);
+
+// Convert $datasets ke dalam format JSON
+$json_datasets = json_encode($datasets);
+
+
+// Bar
+// Fungsi untuk mengambil data dari database
+function getDataForBarChart($koneksi)
+{
+  $data = array();
+
+  // Query untuk mengambil jumlah anggota yang bergabung pada setiap bulan tahun
+  $query = "SELECT DATE_FORMAT(join_date, '%Y-%m') AS bulan, COUNT(*) AS jumlah_anggota FROM tb_anggota GROUP BY DATE_FORMAT(join_date, '%Y-%m')";
+  $result = mysqli_query($koneksi, $query);
+
+  // Memproses hasil query
+  while ($row = mysqli_fetch_assoc($result)) {
+    $bulan = $row['bulan'];
+    $jumlah_anggota = $row['jumlah_anggota'];
+
+    // Menambahkan data ke dalam array
+    $data[] = array(
+      'bulan' => $bulan,
+      'jumlah_anggota' => $jumlah_anggota
+    );
+  }
+
+  return $data;
+}
+
+// Panggil fungsi untuk mendapatkan data
+$data_anggota = getDataForBarChart($koneksi);
+
+// Convert data ke dalam format JSON
+$json_data_anggota = json_encode($data_anggota);
 
 
 

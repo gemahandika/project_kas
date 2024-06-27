@@ -24,9 +24,9 @@ if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_S
     <div class="col-md-12">
       <div class="tile">
         <div class="tile-body d-flex justify-content-start">
-          <p><button type="button" class="btn btn-primary icon-btn mr-2" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-plus"></i>Add Data </button></p>
+          <!-- <p><button type="button" class="btn btn-primary icon-btn mr-2" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-plus"></i>Add Data </button></p> -->
           <p><a href="export.php" type="button" class="btn btn-danger icon-btn mr-2"><i class="fa fa-download"></i>Download</a></p>
-          <p><button type="button" class="btn btn-info icon-btn" onclick="edit()"><i class="fa fa-paper-plane"></i>Proses</button></p>
+          <!-- <p><button type="button" class="btn btn-info icon-btn" onclick="edit()"><i class="fa fa-paper-plane"></i>Proses</button></p> -->
         </div>
       </div>
     </div>
@@ -39,7 +39,7 @@ if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_S
             <table class="table table-hover table-bordered table-responsive-sm" id="sampleTable">
               <thead>
                 <tr class="btn-primary">
-                  <th><input type="checkbox" id="select_all"></th>
+                  <!-- <th><input type="checkbox" id="select_all"></th> -->
                   <th class="small">ACTION</th>
                   <th class="small">NIK</th>
                   <th class="small">JOIN DATE</th>
@@ -65,9 +65,9 @@ if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_S
                 $no++;
               ?>
                 <tr>
-                  <td>
+                  <!-- <td>
                     <input type="checkbox" name="checked[]" class="check" value="<?= $data['id_anggota'] ?>">
-                  </td>
+                  </td> -->
                   <td class="d-flex">
                     <a href="#" class="btn btn-warning btn-sm mr-1" data-bs-toggle="modal" data-bs-target="#editModal<?= $data['id_anggota'] ?>"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
                     <?php if (in_array("super_admin", $_SESSION['admin_akses'])) { ?>

@@ -25,12 +25,8 @@ function showSweetAlert($icon, $title, $text, $confirmButtonColor, $tujuan)
     </script>";
 }
 
- include '../../../app/config/koneksi.php';
+include '../../../app/config/koneksi.php';
 
- $tujuan_index = "index.php";
- mysqli_query($koneksi, "DELETE FROM tb_transaksi WHERE id_transaksi ='$_GET[id]'") or die(mysqli_error($koneksi));
- showSweetAlert('success', 'Success', 'Data Berhasil di Hapus', '#3085d6', $tujuan_index);
- 
- 
- 
- 
+$tujuan_index = "index.php";
+mysqli_query($koneksi, "DELETE FROM tb_transaksi WHERE id_transaksi ='$_GET[id]'") or die(mysqli_error($koneksi));
+showSweetAlert('success', 'Success', 'Data Berhasil di Hapus', '#dc3545', $tujuan_index);

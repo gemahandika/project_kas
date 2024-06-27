@@ -43,7 +43,7 @@ include '../../../app/config/koneksi.php';
               <input class="form-control" type="date" name="ke" value="<?= $date ?>">
             </div>
             <div class="ml-2">
-              <button type="submit" name="approve" class="btn btn-primary icon-btn form-group"><i class="fa fa-search"></i>Cari</button>
+              <button type="submit" name="approve" class="btn btn-info icon-btn form-group"><i class="fa fa-search"></i>Cari</button>
             </div>
             <p><a href="index.php?>" class="btn btn-secondary ml-1"><i class="fa fa-refresh" aria-hidden="true"></i></a></p>
             <label class="ml-2 ">
@@ -96,23 +96,23 @@ include '../../../app/config/koneksi.php';
               while ($d = mysqli_fetch_array($data)) {
                 $pemasukan += $d['jumlah_transaksi'];
               ?>
-               
-                  <tr>
-                    <td class="small"><?= $no++ ?></td>
-                    <td class="small"><?= $d['nip'] ?></td>
-                    <td class="small"><?= $d['nama_anggota'] ?></td>
-                    <td class="small"><?= $d['jenis_transaksi'] ?></td>
-                    <td class="small"><?= $d['jumlah_transaksi'] ?></td>
-                    <td class="small"><?= $d['keterangan'] ?></td>
-                    <td class="small"><?= $d['tgl_transaksi'] ?></td>
-                    <td class="d-flex">
+
+                <tr>
+                  <td class="small"><?= $no++ ?></td>
+                  <td class="small"><?= $d['nip'] ?></td>
+                  <td class="small"><?= $d['nama_anggota'] ?></td>
+                  <td class="small"><?= $d['jenis_transaksi'] ?></td>
+                  <td class="small"><?= $d['jumlah_transaksi'] ?></td>
+                  <td class="small"><?= $d['keterangan'] ?></td>
+                  <td class="small"><?= $d['tgl_transaksi'] ?></td>
+                  <td class="d-flex">
                     <a href="#" class="btn btn-warning btn-sm mr-1" data-bs-toggle="modal" data-bs-target="#editModal<?= $d['id_transaksi'] ?>"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
                     <?php if (in_array("super_admin", $_SESSION['admin_akses'])) { ?>
                       <a href="delete.php?id=<?= $d['id_transaksi'] ?>" onclick="return confirm('Yakin Ingin Menghapus Data?')" class="btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a>
                     <?php } ?>
                   </td>
-                  </tr>
-                
+                </tr>
+
               <?php } ?>
               <div class="tile-body d-flex flex-wrap align-items-center mt-2">
                 <label class="control-label mx-2">Total :</label>

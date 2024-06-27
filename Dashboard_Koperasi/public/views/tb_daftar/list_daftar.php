@@ -27,7 +27,7 @@ $time = date("H:i");
                     <form method="post" name="proses">
                         <table class="table table-hover table-bordered table-responsive-sm" id="sampleTable">
                             <thead>
-                                <tr class="btn-dark">
+                                <tr class="btn-primary">
                                     <th class="small">NO</th>
                                     <th class="small">NAMA</th>
                                     <th class="small">NIK</th>
@@ -64,7 +64,9 @@ $time = date("H:i");
                                     <td class="small"><?= $data['status_daftar'] ?></td>
                                     <td class="small"><?= $data['status_karyawan'] ?></td>
                                     <td class="d-flex">
-                                        <a href="#" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#editModal<?= $data['id_daftar'] ?>"><i class="fa fa-fw fa-lg fa-check-circle" aria-hidden="true"></i>Terima</a>
+                                        <a href="#" class="btn btn-info btn-sm mr-2" data-bs-toggle="modal" data-bs-target="#editModal<?= $data['id_daftar'] ?>"><i class="fa fa-fw fa-lg fa-check-circle" aria-hidden="true"></i>Terima</a>
+                                        <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#tolakModal<?= $data['id_daftar'] ?>"><i class="fa fa-fw fa-lg fa-check-circle" aria-hidden="true"></i>Tolak</a>
+
                                         <?php if (in_array("super_admin", $_SESSION['admin_akses'])) { ?>
                                             <a href="delete.php?id=<?= $data['id_daftar'] ?>" onclick="return confirm('Yakin Ingin Menghapus Data?')" class=" btn btn-danger btn-sm ml-1"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                         <?php } ?>
@@ -85,7 +87,7 @@ $time = date("H:i");
                                             <input type="hidden" name="password" value="123" required onkeyup="myFunction()">
                                             <input type="hidden" name="status_user" value="NON AKTIF" readonly>
                                             <input type="hidden" id="pemasukan" name="pemasukan" value="pemasukan" readonly>
-                                            <input type="hidden" id="keterangan" name="keterangan" value="iuran bulanan anggota">
+                                            <input type="hidden" id="keterangan" name="keterangan" value="IURAN WAJIB ANGGOTA">
 
                                             <input type="hidden" name="id_daftar" value="<?= $data['id_daftar'] ?>">
                                             <div class="form-group">
@@ -124,6 +126,10 @@ $time = date("H:i");
                                             </div>
                                             <input type="hidden" name="status" value="AKTIF">
                                             <input type="hidden" name="generate" value="diterima">
+
+                                            <!-- UNTUK KE TABLE TAGIHAN -->
+                                            <input type="hidden" name="jumlah_tagihan" value=100000>
+
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -134,6 +140,37 @@ $time = date("H:i");
                             </form>
                         </div>
                     </div>
+
+                    <!-- Modal Tolak -->
+                    <div class="modal fade" id="tolakModal<?= $data['id_daftar'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <form action="../../../app/controller/Daftar.php" method="post">
+                                <div class="modal-content">
+                                    <div class="modal-header btn btn-danger">
+                                        <h5 class="modal-title fs-5" id="exampleModalLabel">Tolak Anggota</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="report-it">
+                                            <input type="hidden" name="id_daftar" value="<?= $data['id_daftar'] ?>">
+                                            <input type="hidden" name="join_date" value="<?= $date ?>">
+                                            <div class="form-group">
+                                                <label for="nama_anggota">Apakah Anda Ingin Menolak Pendaftaran Atas nama : <strong><?= $data['nama_daftar'] ?></strong> </label><br>
+                                            </div>
+                                            <input type="hidden" name="generate" value="ditolak">
+
+
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-danger" id="demoNotify" name="tolak_daftar">Proses</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
                 <?php } ?>
                 </table>
                 </div>

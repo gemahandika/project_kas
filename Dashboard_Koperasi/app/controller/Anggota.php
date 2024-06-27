@@ -30,6 +30,9 @@ if (isset($_POST['add'])) {
         //  Masukan data ke table User Aplikasi
         mysqli_query($koneksi, "INSERT INTO user (nip, nama_user, username, password, status) 
     VALUES('$nip', '$nama_anggota', '$nip', '$pass', '$status_user')");
+        // Masukan data ke table history
+        mysqli_query($koneksi, "INSERT INTO tb_history (nama, nik, tanggal, nominal, keterangan) 
+    VALUES('$nama_anggota', '$nip', '$join_date', $saldo, '$keterangan')");
         showSweetAlert('success', 'Sukses', $pesan_ok, '#3085d6', $tujuan);
     }
 } else if (isset($_POST['add_daftar'])) {
@@ -49,6 +52,7 @@ if (isset($_POST['add'])) {
     $status_user = trim(mysqli_real_escape_string($koneksi, $_POST['status_user']));
     $id_daftar = trim(mysqli_real_escape_string($koneksi, $_POST['id_daftar']));
     $generate = trim(mysqli_real_escape_string($koneksi, $_POST['generate']));
+    $jumlah_tagihan = trim(mysqli_real_escape_string($koneksi, $_POST['jumlah_tagihan']));
 
     // Validasi NIK agar tidak ganda
     $check_query = "SELECT * FROM tb_anggota WHERE nip = '$nip'";
@@ -67,6 +71,15 @@ if (isset($_POST['add'])) {
         //  Masukan data ke table User Aplikasi
         mysqli_query($koneksi, "INSERT INTO user (nip, nama_user, username, password, status) 
     VALUES('$nip', '$nama_anggota', '$nip', '$pass', '$status_user')");
+
+        // Masukan data ke table Tagihan
+        mysqli_query($koneksi, "INSERT INTO tb_tagihan ( nama_anggota, nik, jumlah_tagihan, tanggal, keterangan) 
+    VALUES( '$nama_anggota', '$nip', '$jumlah_tagihan', '$join_date', '$keterangan')");
+
+        // Masukan data ke table History
+        mysqli_query($koneksi, "INSERT INTO tb_history (nama, nik, tanggal, nominal, keterangan) 
+            VALUES('$nama_anggota', '$nip', '$join_date', $saldo, '$keterangan')");
+
         showSweetAlert('success', 'Success', $pesan_ok, '#3085d6', $tujuan_2);
     }
 } else if (isset($_POST['edit'])) {

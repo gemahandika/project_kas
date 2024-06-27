@@ -44,8 +44,18 @@ $time = date("H:i");
                             <input class="form-control" type="text" name="tgl_transfer" value="<?= $date ?>" required readonly>
                         </div>
                         <div class="form-group">
+                            <label class="control-label">Jenis Transfer :</label>
+                            <select class="form-control" name="jenis_transfer" type="text" id="role" required>
+                                <option value="">- Pilih Jenis Transaksi -</option>
+                                <option value="SIMPANAN WAJIB">SIMPANAN WAJIB</option>
+                                <option value="MURABAHAH">MURABAHAH</option>
+                                <option value="MUDHARABAH">MUDHARABAH</option>
+                                <option value="TABUNGAN EMAS">TABUNGAN EMAS</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label class="control-label">Nominal Transfer:</label>
-                            <input class="form-control" type="text" name="nominal_transfer" value="100000" required readonly>
+                            <input class="form-control" type="number" name="nominal_transfer" required>
                         </div>
                         <input class="form-control" type="hidden" name="status_transfer" value="waiting" required readonly>
                         <div class="form-group">

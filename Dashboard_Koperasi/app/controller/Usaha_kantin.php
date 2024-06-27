@@ -10,9 +10,16 @@ if (isset($_POST['add'])) {
     $tanggal = trim(mysqli_real_escape_string($koneksi, $_POST['tanggal']));
 
     // Masukan data ke tabel anggota
-    mysqli_query($koneksi, "INSERT INTO usaha_kantin ( nama_kantin, pendapatan, komisi, pembelian, keterangan, periode) 
+    mysqli_query($koneksi, "INSERT INTO usaha_kantin ( nama_kantin, pendapatan, komisi, pembelian, keterangan, date) 
     VALUES( '$nama_kantin', '$pendapatan', '$komisi', '$pembelian', '$keterangan','$tanggal')");
     // Masukan data ke table transaksi
 
     showSweetAlert('success', 'Sukses', 'Data Berhasil DI kirim', '#3085d6', '../../public/views/pnl_usaha_kantin/');
+} else if (isset($_POST['tambah_kantin'])) {
+    $kantin = trim(mysqli_real_escape_string($koneksi, $_POST['kantin']));
+
+    // Masukan data ke tabel kantin
+    mysqli_query($koneksi, "INSERT INTO tb_kantin ( nama_kantin) 
+    VALUES( '$kantin')");
+    showSweetAlert('success', 'Sukses', 'Data Berhasil DI Tambah', '#3085d6', '../../public/views/pnl_usaha_kantin/data_kantin.php');
 }

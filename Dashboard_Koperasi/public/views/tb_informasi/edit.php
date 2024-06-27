@@ -27,6 +27,7 @@ $row = mysqli_fetch_array($result);
                     <form action="../../../app/controller/Notif.php" method="post" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-8">
+                                <input type="hidden" name="id_notif" value="<?= $row['id_notif'] ?>" required readonly>
                                 <div class="form-group">
                                     <input type="hidden" name="tgl_info" value="<?= $date ?>" required readonly>
                                     <label for="exampleFormControlInput1"><strong>JUDUL INFORMASI</strong></label>
@@ -43,14 +44,14 @@ $row = mysqli_fetch_array($result);
                                     <div>
                                         <img id="preview" src="../../../app/assets/img/img_notif/<?= $row['image'] ?>" alt="Preview" style="max-width:100%; margin-top:10px;">
                                     </div>
-                                    <input type="file" name="file" class="form-control-file mt-2" id="exampleFormControlFile1" onchange="previewImage(this)">
-                                    <button type="button" class="btn btn-danger btn-sm mt-2" id="removeImage" style="display:none;">Remove</button>
+                                    <!-- <input type="file" name="file" class="form-control-file mt-2" id="exampleFormControlFile1" onchange="previewImage(this)">
+                                    <button type="button" class="btn btn-danger btn-sm mt-2" id="removeImage" style="display:none;">Remove</button> -->
                                 </div>
                             </div>
                         </div>
                         <div class="row justify-content-end">
                             <div class="col-md-4">
-                                <input type="submit" class="btn btn-info btn-block" name="add" value="Create">
+                                <input type="submit" class="btn btn-info btn-block" name="edit_info" value="Update Informasi    ">
                             </div>
                         </div>
                     </form>
