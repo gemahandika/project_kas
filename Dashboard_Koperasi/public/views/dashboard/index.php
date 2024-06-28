@@ -77,9 +77,19 @@ $time = date("H:i");
                 </div>
             </div>
         </div>
+        <?php if (in_array("user", $_SESSION['admin_akses'])) { ?>
+            <div class="col-md-4 col-lg-3 text-center">
+                <div class="widget-small danger coloured-icon"><i class="icon fa fa-file-invoice-dollar fa-3x"></i>
+                    <div class="info">
+                        <h4 style="border-bottom: 1px solid black;">OTS MURABAHAH</h4>
+                        <h3><b>0</b></h3>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
         <?php if (in_array("super_admin", $_SESSION['admin_akses']) || in_array("admin", $_SESSION['admin_akses'])) { ?>
             <div class="col-md-6 col-lg-3 text-center">
-                <div class="widget-small warning coloured-icon"><i class="icon fa fa-user fa-3x"></i>
+                <div class="widget-small warning coloured-icon"><i class="icon fa fa-id-card fa-3x"></i>
                     <div class="info">
                         <h4 style="border-bottom: 1px solid black;">Daftar</h4>
                         <a href="../tb_daftar/list_daftar.php" style="text-decoration: none;">
