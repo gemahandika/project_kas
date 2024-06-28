@@ -49,6 +49,7 @@ include '../../../app/config/koneksi.php';
             <div class="tile">
                 <div class="tile-body">
                     <form class="row g-3" action="../../../app/controller/Produk.php" method="post">
+
                         <div class="col-md-4">
                             <label for="nama" class="form-label">Nama <strong class="text-danger">*</strong></label>
                             <input type="text" class="form-control" id="nama" name="nama" required>

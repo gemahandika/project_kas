@@ -2,6 +2,7 @@
 include '../../../header.php';
 include '../../../app/models/Dashboard_models1.php';
 include '../../../app/models/Daftar_models.php';
+include '../../../app/models/Murabahah_models.php';
 $date = date("Y-m-d");
 $time = date("H:i");
 ?>
@@ -9,7 +10,7 @@ $time = date("H:i");
 <main class="app-content">
     <div class="app-title">
         <div>
-            <h1><i class="fa fa-dashboard"></i> Dashboard</h1>
+            <h1><i class="fas fa-university"></i> Dashboard</h1>
         </div>
     </div>
 
@@ -30,7 +31,7 @@ $time = date("H:i");
                             <button type="submit" name="approve" class="btn btn-primary icon-btn form-group"><i class="fa fa-search"></i>Cari</button>
                         </div>
                         <div class="ml-2">
-                            <p><a href="index.php" class="btn btn-secondary ml-1 btn-sm"><i class="fa fa-refresh" aria-hidden="true"></i></a></p>
+                            <p><a href="index.php" class="btn btn-secondary ml-1 btn-sm">Refresh</a></p>
                         </div>
                         <label class="ml-2 ">
                             <?php
@@ -92,7 +93,7 @@ $time = date("H:i");
 
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="tile">
                 <div class="mb-3" style="border-bottom: 1px solid black;">
                     <div class="d-flex justify-content-around">
@@ -127,7 +128,7 @@ $time = date("H:i");
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="tile">
                 <div class="mb-3">
                     <div class="d-flex justify-content-around pb-2" style="border-bottom: 1px solid black;">
@@ -144,14 +145,58 @@ $time = date("H:i");
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="tile">
-                <div class="text-center" style="border-bottom: 1px solid black;">
-                    <h6 class="text-primary">DATA ANGGOTA BARU</h6>
+                <div class="mb-3">
+                    <div class="text-center pb-2" style="border-bottom: 1px solid black;">
+                        <h6 class="text-primary">DATA ANGGOTA BARU</h6>
+                    </div>
                 </div>
                 <div>
                     <div class=" embed-responsive embed-responsive-16by9">
                         <canvas class="embed-responsive-item" id="barChartDemo"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="tile">
+                <div class="mb-3">
+                    <div class="text-center" style="border-bottom: 1px solid black;">
+                        <h6 class="text-info"><strong>PRODUK YANG DIMINATI</strong></h6>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-center flex-column flex-md-row">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <i class="fas fa-money-check-alt fa-4x mb-3" style="opacity: 0.6;"></i>
+                                <h6 class="card-title">PRODUK MURABAHAH</h6>
+                                <h1 class="card-text mb-4"><?= $terima_murabahah ?></h1>
+                                <a href="../produk/data_murabahah.php" class="btn btn-primary">Lihat</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <i class="fas fa-handshake fa-4x mb-3" style="opacity: 0.6;"></i>
+                                <h6 class="card-title">PRODUK MUDHARABAH</h6>
+                                <h1 class="card-text mb-4"><?= $terima_mudharabah ?></h1>
+                                <a href="../produk/data_mudharabah.php" class="btn btn-primary">Lihat</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <i class="fas fa-bank fa-4x mb-3" style="opacity: 0.6;"></i>
+                                <h6 class="card-title">TABUNGAN EMAS</h6>
+                                <h1 class="card-text mb-4"><?= $terima_emas ?></h1>
+                                <a href="../produk/data_emas.php" class="btn btn-primary">Lihat</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -169,6 +214,7 @@ $time = date("H:i");
 <!-- Page specific javascripts-->
 <script type="text/javascript" src="../../../app/assets/js/plugins/chart.js"></script>
 <!-- Chart -->
+
 <script type="text/javascript">
     var colors = [
         "rgba(255, 99, 132, 1)", // Merah
@@ -228,8 +274,8 @@ $time = date("H:i");
     var pieChart = new Chart(ctxp).Pie(pdata);
 
 
+    // bar Chart anggota ===================================================================================================
 
-    // bar Chart
     var data_anggota = <?php echo $json_data_anggota; ?>;
 
     // Definisi warna untuk batang-batang

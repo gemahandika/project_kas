@@ -7,7 +7,7 @@ include '../../../app/config/koneksi.php';
 <main class="app-content">
   <div class="app-title">
     <div>
-      <h1><i class="fa fa-th-list"></i> Buku Besar</h1>
+      <h1><i class="fa fa-edit"></i> Buku Besar</h1>
       <p>Table Buku Besar</p>
     </div>
     <ul class="app-breadcrumb breadcrumb side">

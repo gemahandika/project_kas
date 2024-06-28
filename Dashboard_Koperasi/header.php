@@ -43,6 +43,10 @@ $data_saldo_user = mysqli_fetch_array($saldo_user);
     <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.0/css/dataTables.dataTables.css">
+
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 </head>
 
 
@@ -77,7 +81,7 @@ $data_saldo_user = mysqli_fetch_array($saldo_user);
             </div>
         </div>
         <ul class="app-menu">
-            <li><a class="app-menu__item" href="../dashboard/index.php"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
+            <li><a class="app-menu__item" href="../dashboard/index.php"><i class="app-menu__icon fas fa-university"></i><span class="app-menu__label">Dashboard</span></a></li>
 
             <?php if (in_array("super_admin", $_SESSION['admin_akses']) || in_array("admin", $_SESSION['admin_akses'])) { ?>
                 <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">Anggota</span><i class="treeview-indicator fa fa-angle-right"></i></a>
@@ -98,7 +102,7 @@ $data_saldo_user = mysqli_fetch_array($saldo_user);
                         <?php } ?>
                     </ul>
                 </li>
-                <li><a class="app-menu__item" href="../pnl_usaha_kantin/"><i class="app-menu__icon fa fa-cutlery"></i><span class="app-menu__label">Usaha Kantin</span></a></li>
+                <li><a class="app-menu__item" href="../pnl_usaha_kantin/"><i class="app-menu__icon fas fa-utensils"></i><span class="app-menu__label">Usaha Kantin</span></a></li>
             <?php } ?>
             <?php if (in_array("super_admin", $_SESSION['admin_akses']) || in_array("admin", $_SESSION['admin_akses'])) { ?>
                 <li><a class="app-menu__item" href="../tb_informasi"><i class="app-menu__icon fa fa-pie-chart"></i><span class="app-menu__label">Informasi</span></a></li>
@@ -112,7 +116,7 @@ $data_saldo_user = mysqli_fetch_array($saldo_user);
                 </ul>
             </li>
             <li><a class="app-menu__item" href="../history/"><i class="app-menu__icon fa fa-file"></i><span class="app-menu__label">History</span></a></li>
-            <li><a class="app-menu__item" href="../produk/"><i class="app-menu__icon fa fa-product-hunt"></i><span class="app-menu__label">Produk</span></a></li>
+            <li><a class="app-menu__item" href="../produk/"><i class="app-menu__icon fas fa-handshake"></i><span class="app-menu__label">Produk</span></a></li>
             <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">Data Report</span><i class="treeview-indicator fa fa-angle-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a class="treeview-item" href="../master_report/"><i class="icon fa fa-circle-o ml-4"></i> Master Report</a></li>

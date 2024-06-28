@@ -7,7 +7,7 @@ include '../../../app/config/koneksi.php';
 <main class="app-content">
   <div class="app-title">
     <div>
-      <h1><i class="fa fa-database"></i>Katagori</h1>
+      <h1><i class="fa fa-database"></i> Katagori</h1>
       <p>Table Detail Katagori</p>
     </div>
     <ul class="app-breadcrumb breadcrumb side">

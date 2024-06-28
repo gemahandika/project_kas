@@ -20,7 +20,7 @@ include '../../../app/config/koneksi.php';
 <main class="app-content">
   <div class="app-title">
     <div>
-      <h1><i class="fa fa-th-list"></i> Data Transaksi</h1>
+      <h1><i class="fa fa-edit"></i> Data Transaksi</h1>
       <p>Table Transaksi Iuran Anggota</p>
     </div>
     <ul class="app-breadcrumb breadcrumb side">

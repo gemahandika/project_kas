@@ -32,7 +32,11 @@ include '../../../app/models/Murabahah_models.php';
                 <div class="tile-body d-flex justify-content-around">
                     <div class="card text-center bg-info mr-2 mb-2" style="width: 18rem;">
                         <div class="card-body">
-                            <h4 class="card-title text-white" style="border-bottom: 1px solid white;"><strong>MURABAHAH</strong></h4><br>
+
+                            <h4 class="card-title text-white text-center d-flex flex-column align-items-center" style="border-bottom: 1px solid white;">
+                                <i class="fas fa-money-check-alt fa-4x mb-1" style="opacity: 0.5;"></i>
+                                <strong>MURABAHAH</strong>
+                            </h4>
                             <div class="info d-flex justify-content-around text-white">
                                 <?php if (in_array("super_admin", $_SESSION['admin_akses']) || in_array("admin", $_SESSION['admin_akses'])) { ?>
                                     <a href="index_murabahah.php" class="text-white" style="text-decoration: none;">
@@ -54,7 +58,10 @@ include '../../../app/models/Murabahah_models.php';
                     </div>
                     <div class="card text-center bg-primary mr-2 mb-2" style="width: 18rem;">
                         <div class="card-body">
-                            <h4 class="card-title text-white" style="border-bottom: 1px solid white;">MUDHARABAH</h4><br>
+                            <h4 class="card-title text-white text-center d-flex flex-column align-items-center" style="border-bottom: 1px solid white;">
+                                <i class="fas fa-handshake fa-4x mb-1" style="opacity: 0.5;"></i>
+                                <strong>MUDHARABAH</strong>
+                            </h4>
                             <div class="info d-flex justify-content-around text-white">
                                 <?php if (in_array("super_admin", $_SESSION['admin_akses']) || in_array("admin", $_SESSION['admin_akses'])) { ?>
                                     <a href="index_mudharabah.php" class="text-white" style="text-decoration: none;">
@@ -76,7 +83,10 @@ include '../../../app/models/Murabahah_models.php';
                     </div>
                     <div class="card text-center bg-success" style="width: 18rem;">
                         <div class="card-body">
-                            <h5 class="card-title text-white" style="border-bottom: 1px solid white;">TABUNGAN EMAS</h5><br>
+                            <h4 class="card-title text-white text-center d-flex flex-column align-items-center" style="border-bottom: 1px solid white;">
+                                <i class="fas fa-bank fa-4x mb-1" style="opacity: 0.5;"></i>
+                                <strong>TABUNGAN EMAS</strong>
+                            </h4>
                             <div class="info d-flex justify-content-around text-white">
                                 <?php if (in_array("super_admin", $_SESSION['admin_akses']) || in_array("admin", $_SESSION['admin_akses'])) { ?>
                                     <a href="index_emas.php" class="text-white" style="text-decoration: none;">

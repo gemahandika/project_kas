@@ -11,7 +11,7 @@ $time = date("H:i");
 <main class="app-content">
     <div class="app-title">
         <div>
-            <h1><i class="fa fa-th-list"></i> Data List Register</h1>
+            <h1><i class="fa fa-users"></i> Data List Register</h1>
             <p>Data Seluruh Anggota Yang Ingin Join</p>
         </div>
         <ul class="app-breadcrumb breadcrumb side">
