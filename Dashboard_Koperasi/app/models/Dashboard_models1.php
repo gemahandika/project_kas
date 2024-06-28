@@ -21,12 +21,22 @@ while ($data_in = mysqli_fetch_array($sql)) {
   $result[] = $data_in;
 }
 
+// =================================================================================================================================
+
+$dari = isset($_GET['dari']) ? $_GET['dari'] : '';
+$ke = isset($_GET['ke']) ? $_GET['ke'] : '';
+
+$where_clause = "";
+if ($dari != '' && $ke != '') {
+  $where_clause = "AND join_date BETWEEN '$dari' AND '$ke'";
+}
+
 // Query untuk mengambil data dari database
-$sql = "SELECT 'cabang' AS cabang, COUNT(*) AS total FROM tb_anggota WHERE cabang = 'CABANG' 
+$sql = "SELECT 'cabang' AS cabang, COUNT(*) AS total FROM tb_anggota WHERE cabang = 'CABANG' $where_clause
         UNION 
-        SELECT 'karyawan' AS cabang, COUNT(*) AS total FROM tb_anggota WHERE cabang = 'KARYAWAN' 
+        SELECT 'karyawan' AS cabang, COUNT(*) AS total FROM tb_anggota WHERE cabang = 'KARYAWAN' $where_clause
         UNION 
-        SELECT 'agen' AS cabang, COUNT(*) AS total FROM tb_anggota WHERE cabang = 'AGEN'";
+        SELECT 'agen' AS cabang, COUNT(*) AS total FROM tb_anggota WHERE cabang = 'AGEN' $where_clause";
 $result = mysqli_query($koneksi, $sql);
 
 if (!$result) {
@@ -63,19 +73,29 @@ while ($row = mysqli_fetch_assoc($result)) {
 // Konversi array $pdata menjadi format JSON
 $json_data = json_encode($pdata);
 
-$karyawan = mysqli_query($koneksi, "SELECT * FROM tb_anggota WHERE cabang = 'karyawan' ") or die(mysqli_error($koneksi));
+$karyawan = mysqli_query($koneksi, "SELECT * FROM tb_anggota WHERE cabang = 'karyawan' $where_clause") or die(mysqli_error($koneksi));
 $jumlah_karyawan = mysqli_num_rows($karyawan);
-$cabang = mysqli_query($koneksi, "SELECT * FROM tb_anggota WHERE cabang = 'cabang' ") or die(mysqli_error($koneksi));
+$cabang = mysqli_query($koneksi, "SELECT * FROM tb_anggota WHERE cabang = 'cabang' $where_clause") or die(mysqli_error($koneksi));
 $jumlah_cabang = mysqli_num_rows($cabang);
-$agen = mysqli_query($koneksi, "SELECT * FROM tb_anggota WHERE cabang = 'agen' ") or die(mysqli_error($koneksi));
+$agen = mysqli_query($koneksi, "SELECT * FROM tb_anggota WHERE cabang = 'agen' $where_clause") or die(mysqli_error($koneksi));
 $jumlah_agen = mysqli_num_rows($agen);
 
+// ==================================================================================================
 
+// INI CHART LINE UNTUK USAHA
 function getAllKantinData($koneksi)
 {
   $datasets = array();
+  $date_condition = "";
 
-  // Ambil semua data kantin dari database
+  // Tetapkan tanggal default jika tidak ada tanggal yang diberikan
+  if (isset($_GET['dari']) && isset($_GET['ke'])) {
+    $start_date = $_GET['dari'];
+    $end_date = $_GET['ke'];
+    $date_condition = "WHERE date BETWEEN '$start_date' AND '$end_date'";
+  }
+
+  // Ambil semua nama kantin dari database
   $result = mysqli_query($koneksi, "SELECT DISTINCT nama_kantin FROM usaha_kantin") or die(mysqli_error($koneksi));
 
   while ($row = mysqli_fetch_assoc($result)) {
@@ -85,14 +105,20 @@ function getAllKantinData($koneksi)
     $data = array();
 
     // Ambil semua bulan yang mungkin dalam rentang waktu yang relevan
-    $result_bulan = mysqli_query($koneksi, "SELECT DISTINCT DATE_FORMAT(date, '%Y-%m') AS bulan FROM usaha_kantin") or die(mysqli_error($koneksi));
+    $result_bulan = mysqli_query($koneksi, "SELECT DISTINCT DATE_FORMAT(date, '%Y-%m') AS bulan FROM usaha_kantin $date_condition") or die(mysqli_error($koneksi));
     $bulan_mungkin = array();
     while ($row_bulan = mysqli_fetch_assoc($result_bulan)) {
       $bulan_mungkin[] = $row_bulan['bulan'];
     }
 
-    // Ambil data dari database untuk kantin tertentu
-    $sql = mysqli_query($koneksi, "SELECT DATE_FORMAT(date, '%Y-%m') AS bulan, SUM(pendapatan) AS total_pendapatan FROM usaha_kantin WHERE nama_kantin='$nama_kantin' GROUP BY bulan") or die(mysqli_error($koneksi));
+    // Ambil data dari database untuk kantin tertentu dalam rentang tanggal yang diberikan
+    $sql_query = "SELECT DATE_FORMAT(date, '%Y-%m') AS bulan, SUM(pendapatan) AS total_pendapatan FROM usaha_kantin WHERE nama_kantin='$nama_kantin'";
+    if ($date_condition != "") {
+      $sql_query .= " AND date BETWEEN '$start_date' AND '$end_date'";
+    }
+    $sql_query .= " GROUP BY bulan";
+
+    $sql = mysqli_query($koneksi, $sql_query) or die(mysqli_error($koneksi));
 
     // Buat array data untuk kantin saat ini
     while ($inner_row = mysqli_fetch_assoc($sql)) {
@@ -135,15 +161,23 @@ $datasets = getAllKantinData($koneksi);
 // Convert $datasets ke dalam format JSON
 $json_datasets = json_encode($datasets);
 
+// ===========================================================================================//
 
-// Bar
+
+// BAR CHART 
 // Fungsi untuk mengambil data dari database
-function getDataForBarChart($koneksi)
+function getDataForBarChart($koneksi, $dari = '', $ke = '')
 {
   $data = array();
 
+  // Menambahkan klausa WHERE jika rentang tanggal diberikan
+  $where_clause = "";
+  if ($dari != '' && $ke != '') {
+    $where_clause = "WHERE join_date BETWEEN '$dari' AND '$ke'";
+  }
+
   // Query untuk mengambil jumlah anggota yang bergabung pada setiap bulan tahun
-  $query = "SELECT DATE_FORMAT(join_date, '%Y-%m') AS bulan, COUNT(*) AS jumlah_anggota FROM tb_anggota GROUP BY DATE_FORMAT(join_date, '%Y-%m')";
+  $query = "SELECT DATE_FORMAT(join_date, '%Y-%m') AS bulan, COUNT(*) AS jumlah_anggota FROM tb_anggota $where_clause GROUP BY DATE_FORMAT(join_date, '%Y-%m')";
   $result = mysqli_query($koneksi, $query);
 
   // Memproses hasil query
@@ -161,14 +195,19 @@ function getDataForBarChart($koneksi)
   return $data;
 }
 
+// Mengambil parameter dari form (jika ada)
+$dari = isset($_GET['dari']) ? $_GET['dari'] : '';
+$ke = isset($_GET['ke']) ? $_GET['ke'] : '';
+
 // Panggil fungsi untuk mendapatkan data
-$data_anggota = getDataForBarChart($koneksi);
+$data_anggota = getDataForBarChart($koneksi, $dari, $ke);
 
 // Convert data ke dalam format JSON
 $json_data_anggota = json_encode($data_anggota);
 
 
 
+// =============================================================================================================================
 
 
 $data_pemasukan = mysqli_query($koneksi, "SELECT tgl_transaksi, SUM(jumlah_transaksi) AS jumlah_transaksi FROM tb_transaksi WHERE jenis_transaksi = 'pemasukan' GROUP BY tgl_transaksi");

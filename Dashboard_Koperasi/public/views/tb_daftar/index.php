@@ -81,41 +81,41 @@ $time = date("H:i");
                             <!-- -->
                             <input type="hidden" name="tgl_daftar" value="<?= $date ?>">
                             <div class="form-group">
-                                <label class="control-label"><Strong>Nama :</Strong></label>
-                                <input class="form-control" type="text" name="nama" placeholder="Input Fullname">
+                                <label class="control-label"><Strong>Nama <strong class="text-danger">*</strong></Strong></label>
+                                <input class="form-control" type="text" name="nama" placeholder="Input Fullname" required oninput="convertToUppercase(this)">
                             </div>
                             <div class="form-group">
-                                <label for="nik" class="control-label"><strong>Nik :</strong></label>
-                                <input class="form-control" type="text" name="nik" id="nik" placeholder="Input NIK" required>
+                                <label for="nik" class="control-label"><strong>Nik <strong class="text-danger">*</strong></strong></label>
+                                <input class="form-control" type="text" name="nik" id="nik" placeholder="Input NIK" required oninput="convertToUppercase(this)">
                             </div>
                             <div class="form-group">
-                                <label for="status"><strong>Status :</strong></label><br>
+                                <label for="status"><strong>Status <strong class="text-danger">*</strong></strong></label><br>
                                 <select class="form-control" name="status" type="text" id="role" onchange="showInput()" required>
-                                    <option value="">- Pilih Status -</option>
+                                    <option value="">- Select Status -</option>
                                     <option value="KARYAWAN">KARYAWAN</option>
                                     <option value="CABANG">CABANG</option>
                                     <option value="AGEN">AGEN</option>
                                 </select>
                                 <div class="form-group" id="status_input" style="display: none;"><br>
-                                    <label class="control-label"><strong>Status Karyawan :</strong></label>
-                                    <select class="form-control" name="status_karyawan" type="text" id="role" onchange="showInput()">
-                                        <option value="-">- Pilih Status -</option>
+                                    <label class="control-label"><strong>Status Karyawan <strong class="text-danger">*</strong></strong></label>
+                                    <select class="form-control" name="status_karyawan" type="text" id="role" onchange="showInput()" required>
+                                        <option value="-">- Select Status -</option>
                                         <option value="KARYAWAN TETAP">KARYAWAN TETAP</option>
                                         <option value="OUTSOURCING">OUTSOURCING</option>
                                     </select>
                                 </div>
 
-                                <div class="form-group">
-                                    <label class="control-label"><strong>Unit :</strong></label>
-                                    <input class="form-control" type="text" name="unit" placeholder="Input Unit">
+                                <div class="form-group mt-2">
+                                    <label class="control-label"><strong>Unit <strong class="text-danger">*</strong></strong></label>
+                                    <input class="form-control" type="text" name="unit" placeholder="Input Unit" required oninput="convertToUppercase(this)">
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label"><strong>Alamat :</strong></label>
-                                    <input class="form-control" type="text" name="alamat" placeholder="Enter full address">
+                                    <label class="control-label"><strong>Alamat <strong class="text-danger">*</strong></strong></label>
+                                    <input class="form-control" type="text" name="alamat" placeholder="Enter full address" required oninput="convertToUppercase(this)">
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label"><strong>No. Handphone :</strong></label>
-                                    <input class="form-control" type="text" name="phone" placeholder="Enter your Phone">
+                                    <label class="control-label"><strong>No. Handphone <strong class="text-danger">*</strong></strong></label>
+                                    <input class="form-control" type="text" name="phone" placeholder="Enter your Phone" required onkeypress="return inputAngka(event)">
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label"><strong><em>Syarat dan Ketentuan</em></strong></label>
@@ -151,17 +151,19 @@ $time = date("H:i");
             }
         }
     </script>
-
-    <!-- <?php
-            // Logika PHP untuk menghasilkan NIK otomatis
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                if ($_POST['role'] == 'karyawan') {
-                    // Generate NIK otomatis, misalnya dengan angka acak
-                    $nik = mt_rand(100000, 999999);
-                    echo "<p>NIK: $nik</p>";
-                }
-            }
-            ?> -->
+    <script>
+        function inputAngka(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+            return true;
+        }
+    </script>
+    <script>
+        function convertToUppercase(input) {
+            input.value = input.value.toUpperCase();
+        }
+    </script>
 
     <!-- Essential javascripts for application to work-->
     <script src="js/jquery-3.2.1.min.js"></script>

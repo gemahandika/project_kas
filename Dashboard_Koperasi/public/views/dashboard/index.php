@@ -1,6 +1,7 @@
 <?php
 include '../../../header.php';
 include '../../../app/models/Dashboard_models1.php';
+include '../../../app/models/Daftar_models.php';
 $date = date("Y-m-d");
 $time = date("H:i");
 ?>
@@ -20,7 +21,7 @@ $time = date("H:i");
         <div class="col-md-12">
             <div class="tile">
                 <form action="index.php" method="get">
-                    <div class="tile-body d-flex align-items-center">
+                    <div class="tile-body d-flex align-items-center flex-column flex-md-row">
                         <label class="control-label mr-3">Periode : </label>
                         <div class="form-group">
                             <input class="form-control" type="date" name="dari" value="<?= $date ?>">
@@ -32,7 +33,9 @@ $time = date("H:i");
                         <div class="ml-2">
                             <button type="submit" name="approve" class="btn btn-primary icon-btn form-group"><i class="fa fa-search"></i>Cari</button>
                         </div>
-                        <p><a href="index.php" class="btn btn-secondary ml-1"><i class="fa fa-refresh" aria-hidden="true"></i></a></p>
+                        <div class="ml-2">
+                            <p><a href="index.php" class="btn btn-secondary ml-1 btn-sm"><i class="fa fa-refresh" aria-hidden="true"></i></a></p>
+                        </div>
                         <label class="ml-2 ">
                             <?php
                             if (isset($_GET['dari']) && isset($_GET['ke'])) {
@@ -50,39 +53,52 @@ $time = date("H:i");
 
     <div class="row">
         <?php if (in_array("super_admin", $_SESSION['admin_akses']) || in_array("admin", $_SESSION['admin_akses'])) { ?>
-            <div class="col-md-6 col-lg-3">
+            <div class="col-md-6 col-lg-3 text-center">
                 <div class="widget-small primary coloured-icon"><i class="icon fa fa-dollar fa-3x"></i>
                     <div class="info">
-                        <h4>Saldo</h4>
+                        <h4 style="border-bottom: 1px solid black;">Saldo</h4>
                         <h3><strong><?php echo number_format($saldo) ?></strong></h3>
                     </div>
                 </div>
             </div>
         <?php } ?>
         <?php if (in_array("user", $_SESSION['admin_akses'])) { ?>
-            <div class="col-md-6 col-lg-3">
+            <div class="col-md-6 col-lg-3 text-center">
                 <div class="widget-small primary coloured-icon"><i class="icon fa fa-dollar fa-3x"></i>
                     <div class="info">
-                        <h4>Saldo</h4>
-                        <p><b><?= number_format($data_saldo_user['saldo']) ?></b></p>
+                        <h4 style="border-bottom: 1px solid black;">Saldo</h4>
+                        <h3><b><?= number_format($data_saldo_user['saldo']) ?></b></h3>
                     </div>
                 </div>
             </div>
         <?php } ?>
-        <div class="col-md-6 col-lg-3">
-            <div class="widget-small danger coloured-icon"><i class="icon fa fa-users fa-3x"></i>
+        <div class="col-md-4 col-lg-3 text-center">
+            <div class="widget-small info coloured-icon"><i class="icon fa fa-users fa-3x"></i>
                 <div class="info">
-                    <h4>Anggota Aktif</h4>
-                    <h3><strong><?= $jumlah_data3 ?></strong></h3>
+                    <h4 style="border-bottom: 1px solid black;">Anggota</h4>
+                    <h3><b><?= $jumlah_data3 ?></b></h3>
                 </div>
             </div>
         </div>
+        <?php if (in_array("super_admin", $_SESSION['admin_akses']) || in_array("admin", $_SESSION['admin_akses'])) { ?>
+            <div class="col-md-6 col-lg-3 text-center">
+                <div class="widget-small warning coloured-icon"><i class="icon fa fa-user fa-3x"></i>
+                    <div class="info">
+                        <h4 style="border-bottom: 1px solid black;">Daftar</h4>
+                        <a href="../tb_daftar/list_daftar.php" style="text-decoration: none;">
+                            <h3><strong><?= $data_daftar ?></strong></h3>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
     </div>
+
 
     <div class="row">
         <div class="col-md-6">
             <div class="tile">
-                <div class="mb-3">
+                <div class="mb-3" style="border-bottom: 1px solid black;">
                     <div class="d-flex justify-content-around">
                         <?php
                         $data = mysqli_query($koneksi, "SELECT * FROM tb_kantin ORDER BY id_kantin ASC");
@@ -118,10 +134,10 @@ $time = date("H:i");
         <div class="col-md-6">
             <div class="tile">
                 <div class="mb-3">
-                    <div class="d-flex justify-content-around">
-                        <button class="btn btn-danger">Agen : <?= $jumlah_agen ?> </button>
-                        <button class="btn btn-info">Karyawan : <?= $jumlah_karyawan ?> </button>
-                        <button class="btn btn-warning" style="color: white;">Cabang : <?= $jumlah_cabang ?> </button>
+                    <div class="d-flex justify-content-around pb-2" style="border-bottom: 1px solid black;">
+                        <button class="btn btn-danger btn-sm">AGEN : <?= $jumlah_agen ?> </button>
+                        <button class="btn btn-info btn-sm">KARYAWAN : <?= $jumlah_karyawan ?> </button>
+                        <button class="btn btn-warning btn-sm" style="color: white;">CABANG : <?= $jumlah_cabang ?> </button>
                     </div>
                 </div>
                 <div>
@@ -134,11 +150,11 @@ $time = date("H:i");
 
         <div class="col-md-6">
             <div class="tile">
-                <div>
-                    <h6>Data Anggota Baru</h6>
+                <div class="text-center" style="border-bottom: 1px solid black;">
+                    <h6 class="text-primary">DATA ANGGOTA BARU</h6>
                 </div>
                 <div>
-                    <div class="embed-responsive embed-responsive-16by9">
+                    <div class=" embed-responsive embed-responsive-16by9">
                         <canvas class="embed-responsive-item" id="barChartDemo"></canvas>
                     </div>
                 </div>

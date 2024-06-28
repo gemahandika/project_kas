@@ -84,7 +84,7 @@ $data_saldo_user = mysqli_fetch_array($saldo_user);
                     <ul class="treeview-menu">
                         <li><a class="treeview-item" href="../data_anggota/index.php" rel="noopener"><i class="icon fa fa-circle-o ml-4"></i>Anggota Aktif</a></li>
                         <li><a class="treeview-item" href="../data_anggota/index_nonaktif.php"><i class="icon fa fa-circle-o ml-4"></i> Anggota Nonaktif</a></li>
-                        <li><a href="../tb_daftar/list_daftar.php" class="treeview-item"><i class="icon fa fa-circle-o ml-4"></i> Anggota Baru</a></li>
+                        <li><a href="../tb_daftar/list_daftar.php" class="treeview-item"><i class="icon fa fa-circle-o ml-4"></i>Register</a></li>
                     </ul>
                 </li>
                 <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-edit"></i><span class="app-menu__label">Transaksi</span><i class="treeview-indicator fa fa-angle-right"></i></a>

@@ -11,9 +11,7 @@ include '../../../app/config/koneksi.php';
             <h1><i class="fa fa-th-list"></i>Data Kantin</h1>
         </div>
         <ul class="app-breadcrumb breadcrumb side">
-            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-            <li class="breadcrumb-item">Tables</li>
-            <li class="breadcrumb-item active"><a href="#">Data Table</a></li>
+            <li class="breadcrumb-item active"><a href="index.php">Back</a></li>
         </ul>
     </div>
 
