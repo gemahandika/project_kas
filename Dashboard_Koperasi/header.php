@@ -110,7 +110,7 @@ $data_saldo_user = mysqli_fetch_array($saldo_user);
             <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-dollar"></i><span class="app-menu__label">Bukti Transfer</span><i class="treeview-indicator fa fa-angle-right"></i></a>
                 <ul class="treeview-menu">
                     <?php if (in_array("user", $_SESSION['admin_akses'])) { ?>
-                        <li><a class="treeview-item" href="../tb_transfer/"><i class="icon fa fa-circle-o ml-4"></i> Unggah Bukti Transfer</a></li>
+                        <li><a class="treeview-item" href="../tb_transfer/index"><i class="icon fa fa-circle-o ml-4"></i> Unggah Bukti Transfer</a></li>
                     <?php } ?>
                     <li><a class="treeview-item" href="../tb_transfer/list_data"><i class="icon fa fa-circle-o ml-4"></i> List Data</a></li>
                 </ul>
