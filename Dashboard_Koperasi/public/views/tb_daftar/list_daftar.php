@@ -14,11 +14,6 @@ $time = date("H:i");
             <h1><i class="fa fa-users"></i> Data List Register</h1>
             <p>Data Seluruh Anggota Yang Ingin Join</p>
         </div>
-        <ul class="app-breadcrumb breadcrumb side">
-            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-            <li class="breadcrumb-item">Tables</li>
-            <li class="breadcrumb-item active"><a href="#">Data Table</a></li>
-        </ul>
     </div>
     <div class="row">
         <div class="col-md-12">

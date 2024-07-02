@@ -8,13 +8,11 @@ $time = date("H:i");
 ?>
 <main class="app-content">
   <div class="app-title">
-    <div>           
-        <h1><i class="fa fa-info"></i> Add Information</h1>
+    <div>
+      <h1><i class="fa fa-info"></i> Add Information</h1>
     </div>
     <ul class="app-breadcrumb breadcrumb side">
-      <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-      <li class="breadcrumb-item"><a href="index.php">Back</a></li>
-      
+      <li class="breadcrumb-item"><a href="index">Back</a></li>
     </ul>
   </div>
   <div class="row">
@@ -25,7 +23,7 @@ $time = date("H:i");
             <div class="row">
               <div class="col-md-8">
                 <div class="form-group">
-                <input type="hidden" name="tgl_info" value="<?= $date ?>" required readonly>
+                  <input type="hidden" name="tgl_info" value="<?= $date ?>" required readonly>
                   <label for="exampleFormControlInput1"><strong>JUDUL INFORMASI</strong></label>
                   <input type="text" name="judul_info" class="form-control" id="exampleFormControlInput1" placeholder="Input Judul Informasi">
                 </div>
@@ -37,8 +35,8 @@ $time = date("H:i");
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="exampleFormControlFile1"><strong>INPUT PHOTO</strong></label>
-                    <input type="file" name="file" class="form-control-file" id="exampleFormControlFile1" onchange="previewImage(this)">
-                    <img id="preview" src="#" alt="Preview" style="display:none; max-width:100%; margin-top:10px;">
+                  <input type="file" name="file" class="form-control-file" id="exampleFormControlFile1" onchange="previewImage(this)">
+                  <img id="preview" src="#" alt="Preview" style="display:none; max-width:100%; margin-top:10px;">
                   <button type="button" class="btn btn-danger btn-sm mt-2" id="removeImage" style="display:none;">Remove</button>
                 </div>
               </div>

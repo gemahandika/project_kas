@@ -23,16 +23,11 @@ include '../../../app/config/koneksi.php';
       <h1><i class="fa fa-edit"></i> Data Transaksi</h1>
       <p>Table Transaksi Iuran Anggota</p>
     </div>
-    <ul class="app-breadcrumb breadcrumb side">
-      <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-      <li class="breadcrumb-item">Tables</li>
-      <li class="breadcrumb-item active"><a href="#">Data Table</a></li>
-    </ul>
   </div>
   <div class="row">
     <div class="col-md-12">
       <div class="tile">
-        <form action="index.php" method="get">
+        <form action="index" method="get">
           <div class="tile-body d-flex align-items-center">
             <label class="control-label">Periode : </label>
             <div class="form-group">
@@ -49,7 +44,7 @@ include '../../../app/config/koneksi.php';
             <label class="ml-2 ">
               <?php
               if (isset($_GET['dari']) && isset($_GET['ke'])) {
-                echo "<p>Data Dari Tanggal " . $_GET['dari'] . " s/d " . $_GET['ke'] . "</p>";
+                echo "<p>Data Dari Tanggal <span style='color:red; font-weight:bold;'>" . $_GET['dari'] . " </span> s/d <span style='color:red; font-weight:bold;'> " . $_GET['ke'] . "</p>";
               } else {
                 echo "-";
               }

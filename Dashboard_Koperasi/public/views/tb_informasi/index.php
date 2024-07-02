@@ -9,18 +9,13 @@ include '../../../app/config/koneksi.php';
     <div>
       <h1><i class="fa fa-info"></i> Information</h1>
     </div>
-    <ul class="app-breadcrumb breadcrumb side">
-      <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-      <li class="breadcrumb-item">Tables</li>
-      <li class="breadcrumb-item active"><a href="#">Data Table</a></li>
-    </ul>
   </div>
 
   <div class="row">
     <div class="col-md-12">
       <div class="tile">
         <div class="tile-body">
-          <a href="add.php" type="button" class="btn btn-success mr-2">Create</a>
+          <a href="add" type="button" class="btn btn-success mr-2">Create</a>
           <form action="../../../app/controller/Report.php" method="post">
             <table class="table table-hover table-bordered table-responsive-sm" id="sampleTable">
               <thead>

@@ -53,7 +53,7 @@
     })
 
     function edit() {
-        document.proses.action = 'approve.php';
+        document.proses.action = 'approve';
         document.proses.submit();
     }
 

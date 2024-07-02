@@ -8,63 +8,64 @@ include '../../../app/config/koneksi.php';
     <div>
       <h1><i class="fa fa-th-list"></i>Usaha Kantin</h1>
     </div>
-    <ul class="app-breadcrumb breadcrumb side">
-      <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-      <li class="breadcrumb-item">Tables</li>
-      <li class="breadcrumb-item active"><a href="#">Data Table</a></li>
-    </ul>
   </div>
   <div class="row">
     <div class="col-md-12">
-      <div class="tile d-flex">
-        <form action="index.php" method="get">
-          <div class="tile-body d-flex justify-content-start">
-            <div class="form-group mr-2">
-              <select class="form-control btn-sm" id="jenis" name="jenis" required>
-                <option value="">- Pilih Katagori -</option>
-                <?php
-                $no = 1;
-                $sql = mysqli_query($koneksi, "SELECT * FROM tb_kantin") or die(mysqli_error($koneksi));
-                $result = array();
-                while ($data = mysqli_fetch_array($sql)) {
-                  $result[] = $data;
-                }
-                foreach ($result as $data) {
-                ?>
-                  <option value="<?= $data['nama_kantin'] ?>"><?= $no++; ?>. <?= $data['nama_kantin'] ?></option>
-                <?php } ?>
-              </select>
-            </div>
-            <!-- <div class="form-group d-flex flex-wrap"> -->
-            <!-- <p><button type="submit" class="btn btn-info icon-btn mr-2 btn-sm"><i class="fa fa-search"></i>Cari</button></p> -->
-            <!-- </div> -->
-            <!-- </div> -->
+      <div class="tile">
+        <form action="index" method="get">
+          <div class="tile-body">
+            <div class="row align-items-center">
+              <div class="col-12 col-md-3 mb-2">
+                <label class="control-label">Katagori :</label>
+                <div class="form-group">
+                  <select class="form-control btn-sm" id="jenis" name="jenis" required>
+                    <option value="">- Pilih Katagori -</option>
+                    <?php
+                    $no = 1;
+                    $sql = mysqli_query($koneksi, "SELECT * FROM tb_kantin") or die(mysqli_error($koneksi));
+                    $result = array();
+                    while ($data = mysqli_fetch_array($sql)) {
+                      $result[] = $data;
+                    }
+                    foreach ($result as $data) {
+                      $selected = isset($_GET['jenis']) && $_GET['jenis'] == $data['nama_kantin'] ? 'selected' : '';
+                    ?>
+                      <option value="<?= $data['nama_kantin'] ?>" <?= $selected ?>><?= $no++; ?>. <?= $data['nama_kantin'] ?></option>
+                    <?php } ?>
+                  </select>
+                </div>
+              </div>
+              <div class="col-12 col-md-2 mb-2">
+                <label class="control-label">Date From :</label>
+                <div class="form-group">
+                  <input class="form-control" type="date" name="dari" value="<?= isset($_GET['dari']) ? $_GET['dari'] : '' ?>" required>
+                </div>
+              </div>
 
-            <!-- <div class="tile-body d-flex align-items-center"> -->
-            <label class="control-label">Periode : </label>
-            <div class="form-group">
-              <input class="form-control" type="date" name="dari" value="<?= $date ?>">
-            </div>
-            <label class="control-label mx-2">-</label>
-            <div class="form-group">
-              <input class="form-control" type="date" name="ke" value="<?= $date ?>">
-            </div>
-            <div class="ml-2">
-              <button type="submit" name="approve" class="btn btn-info icon-btn form-group"><i class="fa fa-search"></i>Cari</button>
-            </div>
-            <label class="ml-2 ">
-              <?php
-              if (isset($_GET['dari']) && isset($_GET['ke'])) {
-                echo "<p>Data Dari Tanggal <span style='color:red; font-weight:bold;'>" . $_GET['dari'] . "</span> s/d <span style='color:red; font-weight:bold;'>" . $_GET['ke'] . "</span></p>";
-              } else {
-                echo "-";
-              }
-              ?>
-            </label>
-            <div class="ml-2 d-flex">
-              <!-- <p><button type="button" class="btn btn-success icon-btn mr-2 " data-bs-toggle="modal" data-bs-target="#kantinModal"><i class="fa fa-plus"></i>Tambah Kantin</button></p> -->
-              <p><a href="data_kantin.php" class="btn btn-secondary mr-2"><i class="fa fa-database" aria-hidden="true"></i>Kantin</a></p>
-              <p><a href="index.php?>" class="btn btn-secondary "><i class="fa fa-refresh" aria-hidden="true"></i></a></p>
+              <div class="col-12 col-md-2 mb-2">
+                <label class="control-label">Date Thru :</label>
+                <div class="form-group">
+                  <input class="form-control" type="date" name="ke" value="<?= isset($_GET['dari']) ? $_GET['dari'] : '' ?>" required>
+                </div>
+              </div>
+              <div class="col-12 col-md-1 mt-4">
+                <button type="submit" name="approve" class="btn btn-info icon-btn form-group btn-sm"><i class="fa fa-search"></i> Cari</button>
+              </div>
+              <div class="col-12 col-md-2 mb-3 d-flex justify-content-between mt-4">
+                <a href="data_kantin" class="btn btn-secondary icon-btn btn-sm"><i class="fa fa-database" aria-hidden="true"></i> Kantin</a>
+                <a href="index?>" class="btn btn-secondary icon-btn btn-sm ml-1"><i class="fa fa-refresh" aria-hidden="true"></i> Refresh</a>
+              </div>
+              <div class="col-12 col-md-2 mb-2 mt-4">
+                <label>
+                  <?php
+                  if (isset($_GET['dari']) && isset($_GET['ke'])) {
+                    echo "<p>Periode :  <span style='color:red; font-weight:bold;'>" . $_GET['dari'] . "</span> s/d <span style='color:red; font-weight:bold;'>" . $_GET['ke'] . "</span></p>";
+                  } else {
+                    echo "-";
+                  }
+                  ?>
+                </label>
+              </div>
             </div>
           </div>
         </form>
@@ -94,7 +95,8 @@ include '../../../app/config/koneksi.php';
               //jika tanggal dari dan tanggal ke ada maka
               if (isset($_GET['jenis'])) {
                 // tampilkan data yang sesuai dengan range tanggal dan jenis buku besar yang dicari
-                $data = mysqli_query($koneksi, "SELECT * FROM usaha_kantin WHERE nama_kantin = '" . $_GET['jenis'] . "' ORDER BY id_usaha DESC");
+                $data = mysqli_query($koneksi, "SELECT * FROM usaha_kantin WHERE nama_kantin = '" . $_GET['jenis'] . "' AND date BETWEEN '" . $_GET['dari'] . "' and '" . $_GET['ke'] . "' ORDER BY id_usaha DESC");
+                // $data = mysqli_query($koneksi, "SELECT * FROM usaha_kantin WHERE nama_kantin = '" . $_GET['jenis'] . "' AND tgl_transaksi BETWEEN '" . $_GET['dari'] . "' and '" . $_GET['ke'] . "' ORDER BY id_usaha DESC");
               } else {
                 // jika tidak ada parameter tanggal dan jenis, tampilkan seluruh data
                 $data = mysqli_query($koneksi, "SELECT * FROM usaha_kantin ORDER BY id_usaha DESC");

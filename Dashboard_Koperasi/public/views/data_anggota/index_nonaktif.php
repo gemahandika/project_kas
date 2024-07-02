@@ -16,13 +16,6 @@ $time = date("H:i");
       <h1><i class="fa fa-users"></i> Data Anggota Nonaktif</h1>
       <p>Table Seluruh Anggota Nonaktif</p>
     </div>
-    <ul class="app-breadcrumb breadcrumb side">
-      <a href="" class="mr-2">
-        <li class="breadcrumb-item"><i class="fa fa-users"></i></li>
-      </a>
-      <li class="breadcrumb-item"><a href="index.php">Anggota Aktif</a></li>
-      <li class="breadcrumb-item active"><a href="#">Anggota Nonaktif</a></li>
-    </ul>
   </div>
 
   <div class="row">

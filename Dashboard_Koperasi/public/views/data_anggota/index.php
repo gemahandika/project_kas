@@ -14,11 +14,6 @@ if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_S
       <h1><i class="fa fa-users"></i> Data Anggota</h1>
       <p>Table Seluruh Anggota Aktif</p>
     </div>
-    <ul class="app-breadcrumb breadcrumb side">
-      <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-      <li class="breadcrumb-item">Tables</li>
-      <li class="breadcrumb-item active"><a href="#">Data Table</a></li>
-    </ul>
   </div>
   <div class="row">
     <div class="col-md-12">
