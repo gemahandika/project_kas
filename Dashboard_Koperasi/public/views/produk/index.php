@@ -25,14 +25,12 @@ include '../../../app/models/Murabahah_models.php';
         </div>
     </div>
 
-
     <div class="row">
         <div class="col-md-12">
             <div class="tile">
                 <div class="tile-body d-flex justify-content-around">
                     <div class="card text-center bg-info mr-2 mb-2" style="width: 18rem;">
                         <div class="card-body">
-
                             <h4 class="card-title text-white text-center d-flex flex-column align-items-center" style="border-bottom: 1px solid white;">
                                 <i class="fas fa-money-check-alt fa-4x mb-1" style="opacity: 0.5;"></i>
                                 <strong>MURABAHAH</strong>
@@ -54,6 +52,7 @@ include '../../../app/models/Murabahah_models.php';
                                 <?php } ?>
                             </div><br>
                             <a href="daftar_murabahah.php" class="btn btn-warning btn-sm">Daftar Disini</a>
+                            <a href="data_murabahah.php" class="btn btn-danger btn-sm">Cek Data</a>
                         </div>
                     </div>
                     <div class="card text-center bg-primary mr-2 mb-2" style="width: 18rem;">

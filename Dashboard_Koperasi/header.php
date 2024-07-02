@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['admin_username'])) {
-    header("location:../login/index.php");
+    header("location:../login/index");
 }
 // if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_SESSION['admin_akses'])) {
 //     echo "Ooopss!! Kamu Tidak Punya Akses";
@@ -65,8 +65,8 @@ $data_saldo_user = mysqli_fetch_array($saldo_user);
             <!-- User Menu-->
             <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
                 <ul class="dropdown-menu settings-menu dropdown-menu-right">
-                    <li><a class="dropdown-item" href="../user_app/profile.php"><i class="fa fa-user fa-lg"></i> Profile</a></li>
-                    <li><a href="../login/logout.php" class="dropdown-item" href="page-login.html"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+                    <li><a class="dropdown-item" href="../user_app/profile"><i class="fa fa-user fa-lg"></i> Profile</a></li>
+                    <li><a href="../login/logout" class="dropdown-item"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -81,51 +81,51 @@ $data_saldo_user = mysqli_fetch_array($saldo_user);
             </div>
         </div>
         <ul class="app-menu">
-            <li><a class="app-menu__item" href="../dashboard/index.php"><i class="app-menu__icon fas fa-university"></i><span class="app-menu__label">Dashboard</span></a></li>
+            <li><a class="app-menu__item" href="../dashboard/index"><i class="app-menu__icon fas fa-university"></i><span class="app-menu__label">Dashboard</span></a></li>
 
             <?php if (in_array("super_admin", $_SESSION['admin_akses']) || in_array("admin", $_SESSION['admin_akses'])) { ?>
                 <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">Anggota</span><i class="treeview-indicator fa fa-angle-right"></i></a>
                     <ul class="treeview-menu">
-                        <li><a class="treeview-item" href="../data_anggota/index.php" rel="noopener"><i class="icon fa fa-circle-o ml-4"></i>Anggota Aktif</a></li>
-                        <li><a class="treeview-item" href="../data_anggota/index_nonaktif.php"><i class="icon fa fa-circle-o ml-4"></i> Anggota Nonaktif</a></li>
-                        <li><a href="../tb_daftar/list_daftar.php" class="treeview-item"><i class="icon fa fa-circle-o ml-4"></i>Register</a></li>
+                        <li><a class="treeview-item" href="../data_anggota/index" rel="noopener"><i class="icon fa fa-circle-o ml-4"></i>Anggota Aktif</a></li>
+                        <li><a class="treeview-item" href="../data_anggota/index_nonaktif"><i class="icon fa fa-circle-o ml-4"></i> Anggota Nonaktif</a></li>
+                        <li><a href="../tb_daftar/list_daftar" class="treeview-item"><i class="icon fa fa-circle-o ml-4"></i>Register</a></li>
                     </ul>
                 </li>
                 <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-edit"></i><span class="app-menu__label">Transaksi</span><i class="treeview-indicator fa fa-angle-right"></i></a>
                     <ul class="treeview-menu">
-                        <li><a class="treeview-item" href="../tb_transaksi/"><i class="icon fa fa-circle-o ml-4"></i> Iuran Anggota</a></li>
-                        <li><a class="treeview-item" href="../buku_besar/"><i class="icon fa fa-circle-o ml-4"></i> Buku Besar</a></li>
-                        <li><a class="treeview-item" href="../tb_tagihan/"><i class="icon fa fa-circle-o ml-4"></i> Tagihan Anggota</a></li>
+                        <li><a class="treeview-item" href="../tb_transaksi/index"><i class="icon fa fa-circle-o ml-4"></i> Iuran Anggota</a></li>
+                        <li><a class="treeview-item" href="../buku_besar/index"><i class="icon fa fa-circle-o ml-4"></i> Buku Besar</a></li>
+                        <li><a class="treeview-item" href="../tb_tagihan/index"><i class="icon fa fa-circle-o ml-4"></i> Tagihan Anggota</a></li>
                         <?php if (in_array("super_admin", $_SESSION['admin_akses'])) { ?>
                             <li><a class="treeview-item" href="form-notifications.html"><i class="icon fa fa-circle-o ml-4"></i> Piutang</a></li>
                             <li><a class="treeview-item" href="form-notifications.html"><i class="icon fa fa-circle-o ml-4"></i> Pengeluaran</a></li>
                         <?php } ?>
                     </ul>
                 </li>
-                <li><a class="app-menu__item" href="../pnl_usaha_kantin/"><i class="app-menu__icon fas fa-utensils"></i><span class="app-menu__label">Usaha Kantin</span></a></li>
+                <li><a class="app-menu__item" href="../pnl_usaha_kantin/index"><i class="app-menu__icon fas fa-utensils"></i><span class="app-menu__label">Usaha Kantin</span></a></li>
             <?php } ?>
             <?php if (in_array("super_admin", $_SESSION['admin_akses']) || in_array("admin", $_SESSION['admin_akses'])) { ?>
-                <li><a class="app-menu__item" href="../tb_informasi"><i class="app-menu__icon fa fa-pie-chart"></i><span class="app-menu__label">Informasi</span></a></li>
+                <li><a class="app-menu__item" href="../tb_informasi/index"><i class="app-menu__icon fa fa-pie-chart"></i><span class="app-menu__label">Informasi</span></a></li>
             <?php } ?>
             <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-dollar"></i><span class="app-menu__label">Bukti Transfer</span><i class="treeview-indicator fa fa-angle-right"></i></a>
                 <ul class="treeview-menu">
                     <?php if (in_array("user", $_SESSION['admin_akses'])) { ?>
                         <li><a class="treeview-item" href="../tb_transfer/"><i class="icon fa fa-circle-o ml-4"></i> Unggah Bukti Transfer</a></li>
                     <?php } ?>
-                    <li><a class="treeview-item" href="../tb_transfer/list_data.php"><i class="icon fa fa-circle-o ml-4"></i> List Data</a></li>
+                    <li><a class="treeview-item" href="../tb_transfer/list_data"><i class="icon fa fa-circle-o ml-4"></i> List Data</a></li>
                 </ul>
             </li>
-            <li><a class="app-menu__item" href="../history/"><i class="app-menu__icon fa fa-file"></i><span class="app-menu__label">History</span></a></li>
-            <li><a class="app-menu__item" href="../produk/"><i class="app-menu__icon fas fa-handshake"></i><span class="app-menu__label">Produk</span></a></li>
+            <li><a class="app-menu__item" href="../history/index"><i class="app-menu__icon fa fa-file"></i><span class="app-menu__label">History</span></a></li>
+            <li><a class="app-menu__item" href="../produk/index"><i class="app-menu__icon fas fa-handshake"></i><span class="app-menu__label">Produk</span></a></li>
             <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">Data Report</span><i class="treeview-indicator fa fa-angle-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a class="treeview-item" href="../master_report/"><i class="icon fa fa-circle-o ml-4"></i> Master Report</a></li>
+                    <li><a class="treeview-item" href="../master_report/index"><i class="icon fa fa-circle-o ml-4"></i> Master Report</a></li>
                 </ul>
             </li>
             <?php if (in_array("super_admin", $_SESSION['admin_akses']) || in_array("admin", $_SESSION['admin_akses'])) { ?>
                 <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-gear"></i><span class="app-menu__label">Setting</span><i class="treeview-indicator fa fa-angle-right"></i></a>
                     <ul class="treeview-menu">
-                        <li><a href="../user_app/" class="treeview-item"><i class="icon fa fa-circle-o ml-4"></i> User</a></li>
+                        <li><a href="../user_app/index" class="treeview-item"><i class="icon fa fa-circle-o ml-4"></i> User</a></li>
                     </ul>
                 </li>
             <?php } ?>

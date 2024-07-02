@@ -25,7 +25,7 @@ if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_S
       <div class="tile">
         <div class="tile-body d-flex justify-content-start">
           <!-- <p><button type="button" class="btn btn-primary icon-btn mr-2" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-plus"></i>Add Data </button></p> -->
-          <p><a href="export.php" type="button" class="btn btn-danger icon-btn mr-2"><i class="fa fa-download"></i>Download</a></p>
+          <p><a href="export" type="button" class="btn btn-danger icon-btn mr-2"><i class="fa fa-download"></i>Download</a></p>
           <!-- <p><button type="button" class="btn btn-info icon-btn" onclick="edit()"><i class="fa fa-paper-plane"></i>Proses</button></p> -->
         </div>
       </div>

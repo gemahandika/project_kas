@@ -3,10 +3,6 @@ include '../../../header.php';
 // include 'modal.php';
 // include 'modal_edit.php';
 include '../../../app/config/koneksi.php';
-if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_SESSION['admin_akses'])) {
-    echo "Ooopss!! Kamu Tidak Punya Akses";
-    exit();
-}
 ?>
 <main class="app-content">
     <div class="app-title">
@@ -38,19 +34,50 @@ if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_S
                                     <th class="small">JENIS</th>
                                     <th class="small">WARNA</th>
                                     <th class="small">HARGA </th>
-                                    <th class="small">ACTION </th>
+                                    <?php if (in_array("super_admin", $_SESSION['admin_akses']) || in_array("admin", $_SESSION['admin_akses'])) { ?>
+                                        <th class="small">ACTION </th>
+                                    <?php } ?>
                                 </tr>
                             </thead>
 
                             <?php
                             $no = 0;
-                            $sql = mysqli_query($koneksi, "SELECT * FROM tb_murabahah WHERE status = 'TERIMA' ORDER BY id_murabahah ASC") or die(mysqli_error($koneksi));
                             $result = array();
-                            while ($data = mysqli_fetch_array($sql)) {
-                                $result[] = $data;
+
+                            if (in_array("admin", $_SESSION['admin_akses']) || in_array("super_admin", $_SESSION['admin_akses'])) {
+                                // Query untuk admin atau super_admin
+                                $stmt = $koneksi->prepare("SELECT * FROM tb_murabahah WHERE status = ? ORDER BY id_murabahah DESC");
+                                $status = 'TERIMA';
+                                $stmt->bind_param("s", $status);
+                            } elseif (in_array("user", $_SESSION['admin_akses'])) {
+                                // Query untuk user
+                                $stmt = $koneksi->prepare("SELECT * FROM tb_murabahah WHERE status = ? AND nik = ? ORDER BY id_murabahah DESC");
+                                $status = 'TERIMA';
+                                $stmt->bind_param("ss", $status, $data2);
                             }
+
+                            // Eksekusi query
+                            if (isset($stmt) && $stmt->execute()) {
+                                $result_query = $stmt->get_result();
+
+                                // Ambil hasil query
+                                while ($data = $result_query->fetch_assoc()) {
+                                    $result[] = $data;
+                                }
+
+                                // Tutup statement
+                                $stmt->close();
+                            }
+
+                            // Tutup koneksi
+                            $koneksi->close();
+
+                            // Output data
                             foreach ($result as $data) {
                                 $no++;
+                                // Contoh output data
+                                // echo "No: $no - Nama: " . $data['nama'] . "<br>";
+
                             ?>
                                 <tbody>
                                     <tr>
@@ -65,8 +92,13 @@ if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_S
                                         <td class="small"><?= $data['warna'] ?></td>
                                         <td class="small"><?= $data['harga'] ?></td>
                                         <td class="small d-flex">
-                                            <a href="#" class="btn btn-warning btn-sm mr-1" data-bs-toggle="modal" data-bs-target="#edit<?= $data['nik'] ?>"><i class="fa fa-fw fa-lg fa-check-circle" aria-hidden="true"></i>Edit</a>
-                                            <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#tolak<?= $data['nik'] ?>"><i class="fa fa-fw fa-lg fa-times-circle" aria-hidden="true"></i>Hapus</a>
+                                            <?php if (in_array("super_admin", $_SESSION['admin_akses']) || in_array("admin", $_SESSION['admin_akses'])) { ?>
+                                                <a href="#" class="btn btn-warning btn-sm mr-1" data-bs-toggle="modal" data-bs-target="#edit<?= $data['nik'] ?>"><i class="fa fa-fw fa-lg fa-check-circle" aria-hidden="true"></i>Edit</a>
+                                                <a href="#" class="btn btn-primary btn-sm mr-1" data-bs-toggle="modal" data-bs-target="#edit<?= $data['nik'] ?>"><i class="fa fa-fw fa-lg fa-check-circle" aria-hidden="true"></i>Bayar Tagihan</a>
+                                            <?php } ?>
+                                            <?php if (in_array("super_admin", $_SESSION['admin_akses'])) { ?>
+                                                <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#tolak<?= $data['nik'] ?>"><i class="fa fa-fw fa-lg fa-times-circle" aria-hidden="true"></i>Hapus</a>
+                                            <?php } ?>
                                         </td>
                                     </tr>
                     </form>

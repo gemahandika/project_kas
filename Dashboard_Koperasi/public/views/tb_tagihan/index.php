@@ -86,7 +86,7 @@ include '../../../app/config/koneksi.php';
                                     <th class="small">JUMLAH TAGIHAN</th>
                                     <th class="small">TANGGAL</th>
                                     <th class="small">KETERANGAN</th>
-                                    <th class="small">ACTION </th>
+                                    <!-- <th class="small">ACTION </th> -->
                                 </tr>
                             </thead>
                             <?php
@@ -99,7 +99,6 @@ include '../../../app/config/koneksi.php';
                             foreach ($result as $d) {
                                 $no++;
                             ?>
-
                                 <tr>
                                     <td class="small"><?= $no ?></td>
                                     <td>
@@ -110,15 +109,13 @@ include '../../../app/config/koneksi.php';
                                     <td class="small">Rp. <?= number_format($d['jumlah_tagihan']) ?></td>
                                     <td class="small"><?= $d['tanggal'] ?></td>
                                     <td class="small"><?= $d['keterangan'] ?></td>
-                                    <td class="d-flex">
+                                    <!-- <td class="d-flex">
                                         <a href="#" class="btn btn-warning btn-sm mr-1" data-bs-toggle="modal" data-bs-target="#tagihanModal<?= $d['id_tagihan'] ?>"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
                                         <?php if (in_array("super_admin", $_SESSION['admin_akses'])) { ?>
                                             <a href="delete.php?id=<?= $d['id_tagihan'] ?>" onclick="return confirm('Yakin Ingin Menghapus Data?')" class="btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                         <?php } ?>
-                                    </td>
+                                    </td> -->
                                 </tr>
-
-
                                 <!-- Modal Edit -->
                                 <div class="modal fade" id="tagihanModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
@@ -145,7 +142,6 @@ include '../../../app/config/koneksi.php';
                                         </form>
                                     </div>
                                 </div>
-
                             <?php } ?>
                         </table>
                     </form>

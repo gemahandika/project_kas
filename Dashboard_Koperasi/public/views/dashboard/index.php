@@ -17,7 +17,7 @@ $time = date("H:i");
     <div class="row">
         <div class="col-md-12">
             <div class="tile">
-                <form action="index.php" method="get">
+                <form action="index" method="get">
                     <div class="tile-body d-flex align-items-center flex-column flex-md-row">
                         <label class="control-label mr-3">Periode : </label>
                         <div class="form-group">
@@ -31,7 +31,7 @@ $time = date("H:i");
                             <button type="submit" name="approve" class="btn btn-primary icon-btn form-group"><i class="fa fa-search"></i>Cari</button>
                         </div>
                         <div class="ml-2">
-                            <p><a href="index.php" class="btn btn-secondary ml-1 btn-sm">Refresh</a></p>
+                            <p><a href="index" class="btn btn-secondary ml-1 btn-sm">Refresh</a></p>
                         </div>
                         <label class="ml-2 ">
                             <?php
@@ -92,7 +92,7 @@ $time = date("H:i");
                 <div class="widget-small warning coloured-icon"><i class="icon fa fa-id-card fa-3x"></i>
                     <div class="info">
                         <h4 style="border-bottom: 1px solid black;">Daftar</h4>
-                        <a href="../tb_daftar/list_daftar.php" style="text-decoration: none;">
+                        <a href="../tb_daftar/list_daftar" style="text-decoration: none;">
                             <h3><strong><?= $data_daftar ?></strong></h3>
                         </a>
                     </div>
@@ -184,7 +184,7 @@ $time = date("H:i");
                                 <i class="fas fa-money-check-alt fa-4x mb-3" style="opacity: 0.6;"></i>
                                 <h6 class="card-title">PRODUK MURABAHAH</h6>
                                 <h1 class="card-text mb-4"><?= $terima_murabahah ?></h1>
-                                <a href="../produk/data_murabahah.php" class="btn btn-primary">Lihat</a>
+                                <a href="../produk/data_murabahah" class="btn btn-primary">Lihat</a>
                             </div>
                         </div>
                     </div>
@@ -194,7 +194,7 @@ $time = date("H:i");
                                 <i class="fas fa-handshake fa-4x mb-3" style="opacity: 0.6;"></i>
                                 <h6 class="card-title">PRODUK MUDHARABAH</h6>
                                 <h1 class="card-text mb-4"><?= $terima_mudharabah ?></h1>
-                                <a href="../produk/data_mudharabah.php" class="btn btn-primary">Lihat</a>
+                                <a href="../produk/data_mudharabah" class="btn btn-primary">Lihat</a>
                             </div>
                         </div>
                     </div>
@@ -204,7 +204,7 @@ $time = date("H:i");
                                 <i class="fas fa-bank fa-4x mb-3" style="opacity: 0.6;"></i>
                                 <h6 class="card-title">TABUNGAN EMAS</h6>
                                 <h1 class="card-text mb-4"><?= $terima_emas ?></h1>
-                                <a href="../produk/data_emas.php" class="btn btn-primary">Lihat</a>
+                                <a href="../produk/data_emas" class="btn btn-primary">Lihat</a>
                             </div>
                         </div>
                     </div>
