@@ -11,31 +11,21 @@ if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_S
 <main class="app-content">
   <div class="app-title">
     <div>
-      <h1><i class="fa fa-users"></i> Data Anggota</h1>
-      <p>Table Seluruh Anggota Aktif</p>
+      <h6><strong> DATA ANGGOTA</strong></h6>
     </div>
   </div>
   <div class="row">
     <div class="col-md-12">
       <div class="tile">
-        <div class="tile-body d-flex justify-content-start">
-          <!-- <p><button type="button" class="btn btn-primary icon-btn mr-2" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-plus"></i>Add Data </button></p> -->
-          <p><a href="export" type="button" class="btn btn-danger icon-btn mr-2"><i class="fa fa-download"></i>Download</a></p>
-          <!-- <p><button type="button" class="btn btn-info icon-btn" onclick="edit()"><i class="fa fa-paper-plane"></i>Proses</button></p> -->
+        <div class="tile-body d-flex justify-content-end">
+          <p><a href="export" type="button" class="btn btn-sm mr-2 btn-danger"><i class="fa fa-download"></i>Download</a></p>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="tile">
         <div class="tile-body">
           <form method="post" name="proses">
-            <table class="table table-hover table-bordered table-responsive-sm" id="sampleTable">
+            <table class="display nowrap" style="width:100%" id="sampleTable">
               <thead>
                 <tr class="btn-primary">
-                  <!-- <th><input type="checkbox" id="select_all"></th> -->
-                  <th class="small">ACTION</th>
+                  <th class="small">NO</th>
                   <th class="small">NIK</th>
                   <th class="small">JOIN DATE</th>
                   <th class="small">NAMA ANGGOTA</th>
@@ -45,7 +35,7 @@ if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_S
                   <th class="small">PHONE</th>
                   <th class="small">ALAMAT</th>
                   <th class="small">SALDO </th>
-                  <th class="small">STATUS </th>
+                  <th class="small">ACTION</th>
                 </tr>
               </thead>
 
@@ -60,15 +50,7 @@ if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_S
                 $no++;
               ?>
                 <tr>
-                  <!-- <td>
-                    <input type="checkbox" name="checked[]" class="check" value="<?= $data['id_anggota'] ?>">
-                  </td> -->
-                  <td class="d-flex">
-                    <a href="#" class="btn btn-warning btn-sm mr-1" data-bs-toggle="modal" data-bs-target="#editModal<?= $data['id_anggota'] ?>"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
-                    <?php if (in_array("super_admin", $_SESSION['admin_akses'])) { ?>
-                      <a href="delete.php?id=<?= $data['id_anggota'] ?>" onclick="return confirm('Yakin Ingin Menghapus Data?')" class="btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                    <?php } ?>
-                  </td>
+                  <td class="small"><?= $no; ?></td>
                   <td class="small"><?= $data['nip'] ?></td>
                   <td class="small"><?= $data['join_date'] ?></td>
                   <td class="small"><?= $data['nama_anggota'] ?></td>
@@ -78,7 +60,12 @@ if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_S
                   <td class="small"><?= $data['phone'] ?></td>
                   <td class="small"><?= $data['alamat'] ?></td>
                   <td class="small"><?= $data['saldo'] ?></td>
-                  <td class="small"><?= $data['status'] ?></td>
+                  <td class="d-flex">
+                    <a href="#" class="btn btn-warning btn-sm mr-1" data-bs-toggle="modal" data-bs-target="#editModal<?= $data['id_anggota'] ?>">Edit</a>
+                    <?php if (in_array("super_admin", $_SESSION['admin_akses'])) { ?>
+                      <a href="delete.php?id=<?= $data['id_anggota'] ?>" onclick="return confirm('Yakin Ingin Menghapus Data?')" class="btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                    <?php } ?>
+                  </td>
                 </tr>
           </form>
           <!-- Modal Edit -->

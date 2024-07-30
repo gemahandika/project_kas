@@ -11,8 +11,7 @@ $time = date("H:i");
 <main class="app-content">
     <div class="app-title">
         <div>
-            <h1><i class="fa fa-users"></i> Data List Register</h1>
-            <p>Data Seluruh Anggota Yang Ingin Join</p>
+            <h6><strong>DATA LIST REGISTER</strong></h6>
         </div>
     </div>
     <div class="row">
@@ -20,7 +19,7 @@ $time = date("H:i");
             <div class="tile">
                 <div class="tile-body">
                     <form method="post" name="proses">
-                        <table class="table table-hover table-bordered table-responsive-sm" id="sampleTable">
+                        <table class="display nowrap" style="width:100%" id="sampleTable">
                             <thead>
                                 <tr class="btn-primary">
                                     <th class="small">NO</th>
@@ -29,7 +28,6 @@ $time = date("H:i");
                                     <th class="small">UNIT</th>
                                     <th class="small">NO HANDPHONE</th>
                                     <th class="small">ALAMAT </th>
-                                    <!-- <th class="small">SYARAT & KETENTUAN </th> -->
                                     <th class="small">TANGGAL</th>
                                     <th class="small">*KARYAWAN *CABANG *AGEN</th>
                                     <th class="small">STATUS KARYAWAN</th>
@@ -54,7 +52,6 @@ $time = date("H:i");
                                     <td class="small"><?= $data['unit_daftar'] ?></td>
                                     <td class="small"><?= $data['hp_daftar'] ?></td>
                                     <td class="small"><?= $data['alamat_daftar'] ?></td>
-                                    <!-- <td class="small"><?= $data['syarat_daftar'] ?></td> -->
                                     <td class="small"><?= $data['tgl_daftar'] ?></td>
                                     <td class="small"><?= $data['status_daftar'] ?></td>
                                     <td class="small"><?= $data['status_karyawan'] ?></td>

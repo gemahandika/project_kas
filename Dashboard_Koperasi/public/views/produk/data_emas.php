@@ -3,15 +3,12 @@ include '../../../header.php';
 // include 'modal.php';
 // include 'modal_edit.php';
 include '../../../app/config/koneksi.php';
-if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_SESSION['admin_akses'])) {
-    echo "Ooopss!! Kamu Tidak Punya Akses";
-    exit();
-}
+
 ?>
 <main class="app-content">
     <div class="app-title">
         <div>
-            <h1><strong> Data Tabungan Emas</strong></h1>
+            <h6><strong> DATA TABUNGAN EMAS</strong></h6>
         </div>
         <ul class="app-breadcrumb breadcrumb side">
             <li class="breadcrumb-item active"><a href="index.php">Back</a></li>
@@ -25,7 +22,7 @@ if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_S
                         <h6>Data Anggota Produk Tabungan Emas. </h6>
                     </div>
                     <form method="post" name="proses">
-                        <table class="table table-hover table-bordered table-responsive-sm" id="sampleTable">
+                        <table class="display nowrap" style="width:100%" id="sampleTable">
                             <thead>
                                 <tr class="btn-success">
                                     <th class="small">NO</th>
@@ -43,13 +40,42 @@ if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_S
 
                             <?php
                             $no = 0;
-                            $sql = mysqli_query($koneksi, "SELECT * FROM tb_emas WHERE status = 'TERIMA' ORDER BY id_emas ASC") or die(mysqli_error($koneksi));
                             $result = array();
-                            while ($data = mysqli_fetch_array($sql)) {
-                                $result[] = $data;
+
+                            if (in_array("admin", $_SESSION['admin_akses']) || in_array("super_admin", $_SESSION['admin_akses'])) {
+                                // Query untuk admin atau super_admin
+                                $stmt = $koneksi->prepare("SELECT * FROM tb_emas WHERE status = ? ORDER BY id_emas DESC");
+                                $status = 'TERIMA';
+                                $stmt->bind_param("s", $status);
+                            } elseif (in_array("user", $_SESSION['admin_akses'])) {
+                                // Query untuk user
+                                $stmt = $koneksi->prepare("SELECT * FROM tb_emas WHERE status = ? AND nik = ? ORDER BY id_emas DESC");
+                                $status = 'TERIMA';
+                                $stmt->bind_param("ss", $status, $data2);
                             }
+
+                            // Eksekusi query
+                            if (isset($stmt) && $stmt->execute()) {
+                                $result_query = $stmt->get_result();
+
+                                // Ambil hasil query
+                                while ($data = $result_query->fetch_assoc()) {
+                                    $result[] = $data;
+                                }
+
+                                // Tutup statement
+                                $stmt->close();
+                            }
+
+                            // Tutup koneksi
+                            $koneksi->close();
+
+                            // Output data
                             foreach ($result as $data) {
                                 $no++;
+                                // Contoh output data
+                                // echo "No: $no - Nama: " . $data['nama'] . "<br>";
+
                             ?>
                                 <tbody>
                                     <tr>
@@ -64,7 +90,6 @@ if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_S
                                         <td class="small"><?= $data['tanggal'] ?></td>
                                         <td class="small d-flex">
                                             <a href="#" class="btn btn-warning btn-sm mr-1" data-bs-toggle="modal" data-bs-target="#edit<?= $data['id_emas'] ?>"><i class="fa fa-fw fa-lg fa-check-circle" aria-hidden="true"></i>Edit</a>
-                                            <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#tolak<?= $data['id_emas'] ?>"><i class="fa fa-fw fa-lg fa-times-circle" aria-hidden="true"></i>Hapus</a>
                                         </td>
                                     </tr>
                     </form>

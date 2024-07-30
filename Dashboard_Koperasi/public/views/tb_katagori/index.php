@@ -7,8 +7,7 @@ include '../../../app/config/koneksi.php';
 <main class="app-content">
   <div class="app-title">
     <div>
-      <h1><i class="fa fa-database"></i> Katagori</h1>
-      <p>Table Detail Katagori</p>
+      <h6><strong>KATAGORI</strong></h6>
     </div>
     <ul class="app-breadcrumb breadcrumb side">
       <li class="breadcrumb-item active"><a href="../buku_besar/index">Back</a></li>
@@ -19,7 +18,7 @@ include '../../../app/config/koneksi.php';
       <div class="tile">
         <div class="tile-body">
           <form action="../../../app/controller/Report.php" method="post">
-            <table class="table table-hover table-bordered" id="sampleTable">
+            <table class="display nowrap" style="width:100%" id="sampleTable">
               <thead>
                 <tr class="btn-secondary">
                   <th class="small">NO</th>

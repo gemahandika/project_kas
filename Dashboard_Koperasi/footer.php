@@ -12,8 +12,9 @@
     $(document).ready(function() {
         $('#sampleTable').DataTable({
             paging: false,
-            scrollCollapse: true,
-            scrollY: '300px'
+            scrollCollapse: false,
+            scrollX: true,
+            scrollY: '500px'
         });
     });
 </script>
@@ -54,6 +55,11 @@
 
     function edit() {
         document.proses.action = 'approve';
+        document.proses.submit();
+    }
+
+    function buat_tagihan() {
+        document.proses.action = 'approve_tagihan';
         document.proses.submit();
     }
 

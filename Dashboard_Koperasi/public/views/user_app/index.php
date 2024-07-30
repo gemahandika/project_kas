@@ -1,8 +1,8 @@
 <?php
 include '../../../header.php';
- if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_SESSION['admin_akses'])) {
-    echo "Ooopss!! Kamu Tidak Punya Akses";
-    exit();
+if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_SESSION['admin_akses'])) {
+  echo "Ooopss!! Kamu Tidak Punya Akses";
+  exit();
 }
 include 'modal.php';
 
@@ -10,24 +10,18 @@ include 'modal.php';
 <main class="app-content">
   <div class="app-title">
     <div>
-      <h1><i class="fa fa-th-list"></i> Data User App</h1>
-      <p>Table Seluruh Anggota Aktif</p>
+      <h6><strong>DATA USER APLIKASI</strong></h6>
     </div>
-    <ul class="app-breadcrumb breadcrumb side">
-      <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-      <li class="breadcrumb-item">Tables</li>
-      <li class="breadcrumb-item active"><a href="#">Data Table</a></li>
-    </ul>
   </div>
   <div class="row">
     <div class="col-md-12">
       <div class="tile">
         <div class="tile-body d-flex justify-content-start">
           <?php if (in_array("super_admin", $_SESSION['admin_akses'])) { ?>
-            <p><button type="button" class="btn btn-primary icon-btn mr-2" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-plus"></i>Add Data </button></p>
+            <p><button type="button" class="btn btn-primary  mr-2" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-plus"></i>Add Data </button></p>
           <?php } ?>
-          <p><a href="export.php" type="button" class="btn btn-danger icon-btn mr-2"><i class="fa fa-download"></i>Download</a></p>
-          <p><a href="aktivasi.php" type="button" class="btn btn-info icon-btn mr-2"><i class="fa fa-download"></i>Aktifasi</a></p>
+          <p><a href="export.php" type="button" class="btn btn-danger mr-2"><i class="fa fa-download"></i>Download</a></p>
+          <p><a href="aktivasi.php" type="button" class="btn btn-info mr-2"><i class="fa fa-download"></i>Aktifasi</a></p>
         </div>
       </div>
     </div>
@@ -37,7 +31,7 @@ include 'modal.php';
     <div class="col-md-12">
       <div class="tile">
         <div class="tile-body">
-          <table class="table table-hover table-bordered table-responsive-sm" id="sampleTable">
+          <table class="display nowrap" style="width:100%" id="sampleTable">
             <thead>
               <tr class="btn-primary">
                 <th class="small">ACTION</th>
@@ -45,7 +39,7 @@ include 'modal.php';
                 <th class="small">USERNAME</th>
                 <th class="small">NAMA USER</th>
                 <th class="small">ROLE</th>
-                <th class="small">AKSES</th>
+                <th class="small text-center">AKSES</th>
               </tr>
             </thead>
             <?php
@@ -66,8 +60,8 @@ include 'modal.php';
                 <td class="small"><?= $data['username'] ?></td>
                 <td class="small"><?= $data['nama_user'] ?></td>
                 <td class="small"><?= $data['status'] ?></td>
-                <td>
-                  <a href="#" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#aksesModal<?= $data['login_id'] ?>">Nonaktif User</a>
+                <td class="small text-center">
+                  <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#aksesModal<?= $data['login_id'] ?>">Nonaktif User</a>
                   <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" id="demoSwal" data-bs-target="#resetModal<?= $data['login_id'] ?>">Reset</a>
                 </td>
               </tr>

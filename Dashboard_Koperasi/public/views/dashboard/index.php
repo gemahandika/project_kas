@@ -10,7 +10,7 @@ $time = date("H:i");
 <main class="app-content">
     <div class="app-title">
         <div>
-            <h1><i class="fas fa-university"></i> Dashboard</h1>
+            <h6><strong>DASHBOARD</strong> </h6>
         </div>
     </div>
 
@@ -31,7 +31,7 @@ $time = date("H:i");
                             <button type="submit" name="approve" class="btn btn-primary icon-btn form-group"><i class="fa fa-search"></i>Cari</button>
                         </div>
                         <div class="ml-2">
-                            <p><a href="index" class="btn btn-secondary ml-1 btn-sm">Refresh</a></p>
+                            <p><a href="index" class="btn btn-secondary ml-1 icon-btn">Refresh</a></p>
                         </div>
                         <label class="ml-2 ">
                             <?php
@@ -53,8 +53,8 @@ $time = date("H:i");
             <div class="col-md-6 col-lg-3 text-center">
                 <div class="widget-small primary coloured-icon"><i class="icon fa fa-dollar fa-3x"></i>
                     <div class="info">
-                        <h4 style="border-bottom: 1px solid black;">Saldo</h4>
-                        <h3><strong><?php echo number_format($saldo) ?></strong></h3>
+                        <h4 style="border-bottom: 1px solid black;"><strong>Saldo</strong></h4>
+                        <h4><strong> <?php echo number_format($saldo) ?></strong></h4>
                     </div>
                 </div>
             </div>
@@ -64,7 +64,7 @@ $time = date("H:i");
                 <div class="widget-small primary coloured-icon"><i class="icon fa fa-dollar fa-3x"></i>
                     <div class="info">
                         <h4 style="border-bottom: 1px solid black;">Saldo</h4>
-                        <h3><b><?= number_format($data_saldo_user['saldo']) ?></b></h3>
+                        <h4><b><?= number_format($data_saldo_user['saldo']) ?></b></h4>
                     </div>
                 </div>
             </div>
@@ -73,7 +73,9 @@ $time = date("H:i");
             <div class="widget-small info coloured-icon"><i class="icon fa fa-users fa-3x"></i>
                 <div class="info">
                     <h4 style="border-bottom: 1px solid black;">Anggota</h4>
-                    <h3><b><?= $jumlah_data3 ?></b></h3>
+                    <a href="../data_anggota/index" style="text-decoration: none;">
+                        <h4><b><?= $jumlah_data3 ?></b></h4>
+                    </a>
                 </div>
             </div>
         </div>
@@ -82,7 +84,7 @@ $time = date("H:i");
                 <div class="widget-small danger coloured-icon"><i class="icon fa fa-file-invoice-dollar fa-3x"></i>
                     <div class="info">
                         <h4 style="border-bottom: 1px solid black;">OTS MURABAHAH</h4>
-                        <h3><b>0</b></h3>
+                        <h4><b>0</b></h4>
                     </div>
                 </div>
             </div>
@@ -93,7 +95,7 @@ $time = date("H:i");
                     <div class="info">
                         <h4 style="border-bottom: 1px solid black;">Daftar</h4>
                         <a href="../tb_daftar/list_daftar" style="text-decoration: none;">
-                            <h3><strong><?= $data_daftar ?></strong></h3>
+                            <h4><strong><?= $data_daftar ?></strong></h4>
                         </a>
                     </div>
                 </div>
@@ -101,9 +103,8 @@ $time = date("H:i");
         <?php } ?>
     </div>
 
-
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="tile">
                 <div class="mb-3" style="border-bottom: 1px solid black;">
                     <div class="d-flex justify-content-around">
@@ -138,7 +139,7 @@ $time = date("H:i");
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="tile">
                 <div class="mb-3">
                     <div class="d-flex justify-content-around pb-2" style="border-bottom: 1px solid black;">
@@ -155,7 +156,7 @@ $time = date("H:i");
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="tile">
                 <div class="mb-3">
                     <div class="text-center pb-2" style="border-bottom: 1px solid black;">

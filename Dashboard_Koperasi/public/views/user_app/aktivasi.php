@@ -11,22 +11,16 @@ $time = date("H:i");
 <main class="app-content">
     <div class="app-title">
         <div>
-            <h1><i class="fa fa-th-list"></i> Data User App</h1>
-            <p>Table User App</p>
+            <h6><strong>DATA USER APLIKASI</strong></h6>
         </div>
-        <ul class="app-breadcrumb breadcrumb side">
-            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-            <li class="breadcrumb-item">Tables</li>
-            <li class="breadcrumb-item active"><a href="#">Data Table</a></li>
-        </ul>
     </div>
     <div class="row">
         <div class="col-md-12">
             <div class="tile">
                 <div class="tile-body">
-                    <table class="table table-hover table-bordered table-responsive-sm" id="sampleTable">
+                    <table class="display nowrap" style="width:100%" id="sampleTable">
                         <thead>
-                            <tr class="btn-warning">
+                            <tr class="btn-secondary">
                                 <th class="small">NO</th>
                                 <th class="small">USERNAME</th>
                                 <th class="small">PASSWORD</th>
@@ -53,9 +47,9 @@ $time = date("H:i");
                                     <td class="small"><?= $data['nama_user'] ?></td>
                                     <td class="small"><?= $data['status'] ?></td>
                                     <td class="d-flex">
-                                        <a href="#" class=" btn btn-info btn-sm mr-1" data-bs-toggle="modal" data-bs-target="#editModal<?= $data['login_id'] ?>">Aktifkan</a>
+                                        <a href="#" class=" btn btn-success btn-sm mr-1" data-bs-toggle="modal" data-bs-target="#editModal<?= $data['login_id'] ?>">Aktifkan</a>
                                         <?php if (in_array("super_admin", $_SESSION['admin_akses'])) { ?>
-                                        <a href="delete.php?id=<?= $data['login_id'] ?>" onclick="return confirm('Yakin Ingin Menghapus Data?')" class="btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                            <a href="delete.php?id=<?= $data['login_id'] ?>" onclick="return confirm('Yakin Ingin Menghapus Data?')" class="btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                         <?php } ?>
                                     </td>
                                 </tr>
@@ -64,8 +58,8 @@ $time = date("H:i");
                                     <div class="modal-dialog">
                                         <form action="../../../app/controller/User_app.php" method="post">
                                             <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Aktifkan User</h1>
+                                                <div class="modal-header btn-secondary">
+                                                    <h6 class="modal-title fs-5" id="exampleModalLabel">AKTIFKAN USER</h6>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">

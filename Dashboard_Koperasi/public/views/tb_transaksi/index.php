@@ -20,8 +20,7 @@ include '../../../app/config/koneksi.php';
 <main class="app-content">
   <div class="app-title">
     <div>
-      <h1><i class="fa fa-edit"></i> Data Transaksi</h1>
-      <p>Table Transaksi Iuran Anggota</p>
+      <h6><strong>DATA TRANSAKSI</strong></h6>
     </div>
   </div>
   <div class="row">
@@ -29,18 +28,18 @@ include '../../../app/config/koneksi.php';
       <div class="tile">
         <form action="index" method="get">
           <div class="tile-body d-flex align-items-center">
-            <label class="control-label">Periode : </label>
-            <div class="form-group">
+            <label class="control-label"><strong>Periode : </strong></label>
+            <div class="form-group ml-2">
               <input class="form-control" type="date" name="dari" value="<?= $date ?>">
             </div>
-            <label class="control-label mx-2">-</label>
+            <label class="control-label mx-2"><strong>-</strong></label>
             <div class="form-group">
               <input class="form-control" type="date" name="ke" value="<?= $date ?>">
             </div>
             <div class="ml-2">
-              <button type="submit" name="approve" class="btn btn-info icon-btn form-group"><i class="fa fa-search"></i>Cari</button>
+              <button type="submit" name="approve" class="btn btn-info form-group"><i class="fa fa-search"></i>Cari</button>
             </div>
-            <p><a href="index.php?>" class="btn btn-secondary ml-1"><i class="fa fa-refresh" aria-hidden="true"></i></a></p>
+            <p><a href="index" class="btn btn-secondary ml-1">Refresh</a></p>
             <label class="ml-2 ">
               <?php
               if (isset($_GET['dari']) && isset($_GET['ke'])) {
@@ -61,7 +60,7 @@ include '../../../app/config/koneksi.php';
       <div class="tile">
         <div class="tile-body">
           <form action="../../../app/controller/Buku_besar.php" method="post">
-            <table class="table table-hover table-bordered table-responsive-sm" id="sampleTable">
+            <table class="display nowrap" style="width:100%" id="sampleTable">
               <thead>
                 <tr class="btn-info">
                   <th class="small">NO</th>
@@ -101,7 +100,7 @@ include '../../../app/config/koneksi.php';
                   <td class="small"><?= $d['keterangan'] ?></td>
                   <td class="small"><?= $d['tgl_transaksi'] ?></td>
                   <td class="d-flex">
-                    <a href="#" class="btn btn-warning btn-sm mr-1" data-bs-toggle="modal" data-bs-target="#editModal<?= $d['id_transaksi'] ?>"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
+                    <a href="#" class="btn btn-warning btn-sm mr-1" data-bs-toggle="modal" data-bs-target="#editModal<?= $d['id_transaksi'] ?>">Edit</a>
                     <?php if (in_array("super_admin", $_SESSION['admin_akses'])) { ?>
                       <a href="delete.php?id=<?= $d['id_transaksi'] ?>" onclick="return confirm('Yakin Ingin Menghapus Data?')" class="btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a>
                     <?php } ?>
@@ -110,11 +109,11 @@ include '../../../app/config/koneksi.php';
 
               <?php } ?>
               <div class="tile-body d-flex flex-wrap align-items-center mt-2">
-                <label class="control-label mx-2">Total :</label>
+                <label class="control-label mx-2"><strong>TOTAL :</strong></label>
                 <div class="form-group">
                   <input class="form-control" type="text" name="pemasukan" value="<?= $pemasukan ?>">
                 </div>
-                <label class="control-label mx-2">Keterangan :</label>
+                <label class="control-label mx-2"><strong>Keterangan :</strong></label>
                 <div class="form-group">
                   <input class="form-control" type="text" name="keterangan" required>
                 </div>
@@ -122,7 +121,7 @@ include '../../../app/config/koneksi.php';
                 <input type="hidden" name="kredit" value=0 required readonly>
                 <input type="hidden" name="date" value=<?= $date ?> required readonly>
                 <div class="ml-2">
-                  <button type="submit" name="post_bukubesar" class="btn btn-danger icon-btn form-group">Post ke Buku Besar </button>
+                  <button type="submit" name="post_bukubesar" class="btn btn-danger form-group">Post ke Buku Besar </button>
                 </div>
               </div>
           </form>

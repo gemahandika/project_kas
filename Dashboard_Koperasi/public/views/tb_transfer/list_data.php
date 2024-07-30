@@ -7,8 +7,7 @@ include '../../../app/config/koneksi.php';
 <main class="app-content">
     <div class="app-title">
         <div>
-            <h1><i class="fa fa-th-list"></i> Detail Bukti Transfer Iuran</h1>
-            <p>Table Seluruh Bukti Transfer Iuran</p>
+            <h6><strong>DETAIL BUKTI TRANSFER IURAN</strong></h6>
         </div>
     </div>
 
@@ -17,7 +16,7 @@ include '../../../app/config/koneksi.php';
             <div class="tile">
                 <div class="tile-body">
                     <form method="post" name="proses">
-                        <table class="table table-hover table-bordered table-responsive-sm" id="sampleTable">
+                        <table class="display nowrap" style="width:100%" id="sampleTable">
                             <thead>
                                 <tr class="btn-primary">
                                     <th class="small">NO</th>

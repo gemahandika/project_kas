@@ -7,7 +7,7 @@ include '../../../app/config/koneksi.php';
 <main class="app-content">
     <div class="app-title">
         <div>
-            <h1><strong> Data Murabahah</strong></h1>
+            <h6><strong> DATA MURABAHAH</strong></h6>
         </div>
         <ul class="app-breadcrumb breadcrumb side">
             <li class="breadcrumb-item active"><a href="index.php">Back</a></li>
@@ -21,7 +21,7 @@ include '../../../app/config/koneksi.php';
                         <h6>Data Anggota Produk Murabahah. </h6>
                     </div>
                     <form method="post" name="proses">
-                        <table class="table table-hover table-bordered table-responsive-sm" id="sampleTable">
+                        <table class="display nowrap" style="width:100%" id="sampleTable">
                             <thead>
                                 <tr class="btn-info">
                                     <th class="small">NO</th>

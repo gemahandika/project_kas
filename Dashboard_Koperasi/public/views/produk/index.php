@@ -52,7 +52,7 @@ include '../../../app/models/Murabahah_models.php';
                                 <?php } ?>
                             </div><br>
                             <a href="daftar_murabahah.php" class="btn btn-warning btn-sm">Daftar Disini</a>
-                            <a href="data_murabahah.php" class="btn btn-danger btn-sm">Cek Data</a>
+                            <!-- <a href="data_murabahah.php" class="btn btn-danger btn-sm">Cek Data</a> -->
                         </div>
                     </div>
                     <div class="card text-center bg-primary mr-2 mb-2" style="width: 18rem;">

@@ -13,8 +13,7 @@ $time = date("H:i");
 <main class="app-content">
   <div class="app-title">
     <div>
-      <h1><i class="fa fa-users"></i> Data Anggota Nonaktif</h1>
-      <p>Table Seluruh Anggota Nonaktif</p>
+      <h6><strong>DATA ANGGOTA NONAKTIF</strong></h6>
     </div>
   </div>
 
@@ -23,7 +22,7 @@ $time = date("H:i");
       <div class="tile">
         <div class="tile-body">
           <form method="post" name="proses">
-            <table class="table table-hover table-bordered" id="sampleTable">
+            <table class="display nowrap" style="width:100%" id="sampleTable">
               <thead>
                 <tr class="btn-primary">
                   <th class="small">NO</th>

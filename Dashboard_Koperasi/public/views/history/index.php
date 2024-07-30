@@ -7,14 +7,8 @@ include '../../../app/config/koneksi.php';
 <main class="app-content">
     <div class="app-title">
         <div>
-            <h1><i class="fa fa-th-list"></i> History Transaksi</h1>
-            <p>Data History</p>
+            <h6><strong>HISTORY TRANSAKSI</strong></h6>
         </div>
-        <!-- <ul class="app-breadcrumb breadcrumb side">
-            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-            <li class="breadcrumb-item">Tables</li>
-            <li class="breadcrumb-item active"><a href="#">Data Table</a></li>
-        </ul> -->
     </div>
 
     <div class="row">
@@ -22,7 +16,7 @@ include '../../../app/config/koneksi.php';
             <div class="tile">
                 <div class="tile-body">
                     <form method="post" name="proses">
-                        <table class="table table-hover table-bordered table-responsive-sm" id="sampleTable">
+                        <table class="display nowrap" style="width:100%" id="sampleTable">
                             <thead>
                                 <tr class="btn-primary">
                                     <th class="small">NO</th>

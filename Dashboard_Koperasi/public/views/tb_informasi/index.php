@@ -7,7 +7,7 @@ include '../../../app/config/koneksi.php';
 <main class="app-content">
   <div class="app-title">
     <div>
-      <h1><i class="fa fa-info"></i> Information</h1>
+      <h6><strong>INFORMASI</strong></h6>
     </div>
   </div>
 
@@ -17,7 +17,7 @@ include '../../../app/config/koneksi.php';
         <div class="tile-body">
           <a href="add" type="button" class="btn btn-success mr-2">Create</a>
           <form action="../../../app/controller/Report.php" method="post">
-            <table class="table table-hover table-bordered table-responsive-sm" id="sampleTable">
+            <table class="display nowrap" style="width:100%" id="sampleTable">
               <thead>
                 <tr class="btn-success">
                   <th class="small">NO</th>

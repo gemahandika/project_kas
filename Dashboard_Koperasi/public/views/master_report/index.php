@@ -22,11 +22,11 @@ include '../../../app/config/koneksi.php';
       <div class="tile">
         <div class="tile-body">
           <div class="tile-body d-flex justify-content-start">
-            <p><a href="export.php" class="btn btn-primary btn-sm mr-2"><i class="fa fa-download" aria-hidden="true"></i>Download</a></p>
-            <p><a href="index.php ?>" class="btn btn-secondary btn-sm"><i class="fa fa-refresh" aria-hidden="true"></i></a></p>
+            <p><a href="export.php" class="btn btn-danger mr-2"><i class="fa fa-download" aria-hidden="true"></i>Download</a></p>
+            <p><a href="index.php ?>" class="btn btn-secondary ">Refresh</a></p>
           </div>
           <form method="post" name="proses">
-            <table class="table table-hover table-bordered table-responsive-sm" id="sampleTable">
+            <table class="display nowrap" style="width:100%" id="sampleTable">
               <thead>
                 <tr class="btn-secondary">
                   <?php if (in_array("super_admin", $_SESSION['admin_akses']) && in_array("admin", $_SESSION['admin_akses'])) { ?>
@@ -72,8 +72,8 @@ include '../../../app/config/koneksi.php';
                       <td class="d-flex align-items-center">
                         <a href="#" class="btn btn-info btn-sm mr-1" data-bs-toggle="modal" data-bs-target="#editModal<?= $data['id_report'] ?>">Update</a>
                         <?php if (in_array("super_admin", $_SESSION['admin_akses'])) { ?>
-                        <a href="delete.php?id=<?= $data['id_report'] ?>" onclick="return confirm('Yakin Ingin Menghapus Data?')" class="btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                         <?php } ?>
+                          <a href="delete.php?id=<?= $data['id_report'] ?>" onclick="return confirm('Yakin Ingin Menghapus Data?')" class="btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                        <?php } ?>
                       </td>
                     <?php } ?>
                   </tr>

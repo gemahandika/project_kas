@@ -7,7 +7,7 @@ if (isset($_POST['approve'])) {
         $saldo = trim(mysqli_real_escape_string($koneksi, $_POST['saldo'][$i]));
         mysqli_query($koneksi, "UPDATE tb_anggota SET saldo = $saldo WHERE nip= '$nik'");
 
-        // $nip = trim(mysqli_real_escape_string($koneksi, $_POST['nik'][$i]));
+        $id_tagihan = trim(mysqli_real_escape_string($koneksi, $_POST['id_tagihan'][$i]));
         $nama_anggota = trim(mysqli_real_escape_string($koneksi, $_POST['nama_anggota'][$i]));
         // $cabang = trim(mysqli_real_escape_string($koneksi, $_POST['cabang'][$i]));
         $jenis_transaksi = trim(mysqli_real_escape_string($koneksi, $_POST['jenis_transaksi'][$i]));
@@ -16,7 +16,7 @@ if (isset($_POST['approve'])) {
         $date_sekarang = trim(mysqli_real_escape_string($koneksi, $_POST['tanggal']));
         $status = trim(mysqli_real_escape_string($koneksi, $_POST['status'][$i]));
 
-        mysqli_query($koneksi, "UPDATE tb_tagihan SET status = '$status' WHERE nik= '$nik'");
+        mysqli_query($koneksi, "UPDATE tb_tagihan SET status = '$status' WHERE id_tagihan= '$id_tagihan'");
 
         mysqli_query($koneksi, "INSERT INTO tb_transaksi ( nip, nama_anggota, jenis_transaksi, jumlah_transaksi, keterangan, tgl_transaksi) 
         VALUES('$nik','$nama_anggota','$jenis_transaksi','$jumlah','$keterangan','$date_sekarang')");
@@ -24,7 +24,7 @@ if (isset($_POST['approve'])) {
         mysqli_query($koneksi, "INSERT INTO tb_history (nama, nik, tanggal, nominal, keterangan) 
             VALUES('$nama_anggota', '$nik', '$date_sekarang', $jumlah, '$keterangan')");
     }
-    showSweetAlert('success', 'Sukses', 'Iuran Berhasil di tambah', '#3085d6', $tujuan);
+    showSweetAlert('success', 'Sukses', 'Iuran Berhasil di tambah', '#3085d6', '../../public/views/tb_tagihan/');
 
     //proses input satu data 
 }

@@ -8,7 +8,7 @@ include '../../../app/config/koneksi.php';
 <main class="app-content">
     <div class="app-title">
         <div>
-            <h1><i class="fa fa-th-list"></i>Data Kantin</h1>
+            <h6><strong>DATA KANTIN</strong></h1>
         </div>
         <ul class="app-breadcrumb breadcrumb side">
             <li class="breadcrumb-item active"><a href="index.php">Back</a></li>
@@ -19,9 +19,9 @@ include '../../../app/config/koneksi.php';
         <div class="col-md-12">
             <div class="tile">
                 <div class="tile-body">
-                    <button type="button" class="btn btn-dark icon-btn btn-sm" data-bs-toggle="modal" data-bs-target="#kantinModal"><i class="fa fa-plus"></i>Tambah Kantin </button>
+                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#kantinModal"><i class="fa fa-plus"></i>Tambah Kantin </button>
                     <form action="../../../app/controller/Usaha_kantin.php" method="post">
-                        <table class="table table-hover table-bordered table-responsive-sm" id="sampleTable">
+                        <table class="display nowrap" style="width:100%" id="sampleTable">
                             <thead>
                                 <tr class="btn-dark">
                                     <th class="small">NO</th>

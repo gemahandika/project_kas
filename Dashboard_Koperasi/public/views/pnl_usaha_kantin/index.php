@@ -6,7 +6,7 @@ include '../../../app/config/koneksi.php';
 <main class="app-content">
   <div class="app-title">
     <div>
-      <h1><i class="fa fa-th-list"></i>Usaha Kantin</h1>
+      <h6><strong>USAHA KANTIN</strong></h6>
     </div>
   </div>
   <div class="row">
@@ -16,7 +16,7 @@ include '../../../app/config/koneksi.php';
           <div class="tile-body">
             <div class="row align-items-center">
               <div class="col-12 col-md-3 mb-2">
-                <label class="control-label">Katagori :</label>
+                <label class="control-label"><strong>Katagori :</strong></label>
                 <div class="form-group">
                   <select class="form-control btn-sm" id="jenis" name="jenis" required>
                     <option value="">- Pilih Katagori -</option>
@@ -36,24 +36,25 @@ include '../../../app/config/koneksi.php';
                 </div>
               </div>
               <div class="col-12 col-md-2 mb-2">
-                <label class="control-label">Date From :</label>
+                <label class="control-label"><strong>Date From :</strong></label>
                 <div class="form-group">
                   <input class="form-control" type="date" name="dari" value="<?= isset($_GET['dari']) ? $_GET['dari'] : '' ?>" required>
                 </div>
               </div>
 
               <div class="col-12 col-md-2 mb-2">
-                <label class="control-label">Date Thru :</label>
+                <label class="control-label"><strong>Date Thru :</strong></label>
                 <div class="form-group">
                   <input class="form-control" type="date" name="ke" value="<?= isset($_GET['dari']) ? $_GET['dari'] : '' ?>" required>
                 </div>
               </div>
+
               <div class="col-12 col-md-1 mt-4">
-                <button type="submit" name="approve" class="btn btn-info icon-btn form-group btn-sm"><i class="fa fa-search"></i> Cari</button>
+                <button type="submit" name="approve" class="btn btn-info form-group"><i class="fa fa-search"></i> Cari</button>
               </div>
               <div class="col-12 col-md-2 mb-3 d-flex justify-content-between mt-4">
-                <a href="data_kantin" class="btn btn-secondary icon-btn btn-sm"><i class="fa fa-database" aria-hidden="true"></i> Kantin</a>
-                <a href="index?>" class="btn btn-secondary icon-btn btn-sm ml-1"><i class="fa fa-refresh" aria-hidden="true"></i> Refresh</a>
+                <a href="data_kantin" class="btn btn-secondary"><i class="fa fa-database" aria-hidden="true"></i> Kantin</a>
+                <a href="index?>" class="btn btn-secondary ml-1"><i class="fa fa-refresh" aria-hidden="true"></i> Refresh</a>
               </div>
               <div class="col-12 col-md-2 mb-2 mt-4">
                 <label>
@@ -76,9 +77,9 @@ include '../../../app/config/koneksi.php';
     <div class="col-md-12">
       <div class="tile">
         <div class="tile-body">
-          <button type="button" class="btn btn-info icon-btn btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-plus"></i>Add Data </button>
+          <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-plus"></i>Add Data </button>
           <form action="../../../app/controller/Usaha_kantin.php" method="post">
-            <table class="table table-hover table-bordered table-responsive-sm" id="sampleTable">
+            <table class="display nowrap" style="width:100%" id="sampleTable">
               <thead>
                 <tr class="btn-info">
                   <th class="small">NO</th>

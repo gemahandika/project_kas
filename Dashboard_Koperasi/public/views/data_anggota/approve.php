@@ -71,7 +71,6 @@ if (!isset($chk)) {
                                             <input type="hidden" name="jumlah_transaksi[]" value="100000">
                                             <input type="hidden" name="keterangan[]" value="iuran bulanan anggota">
 
-
                                             <td class="small"><?= $no ?></td>
                                             <td class="small"><?= $data['nama_anggota'] ?></td>
                                             <td class="small">IURAN BULANAN ANGGOTA </td>

@@ -9,19 +9,14 @@ if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_S
 <main class="app-content">
     <div class="app-title">
         <div>
-            <h1><i class="fa fa-th-list"></i> Download Table Anggota</h1>
+            <h6><strong> DOWNLOAD DATA ANGGOTA</strong></h6>
         </div>
-        <ul class="app-breadcrumb breadcrumb">
-            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-            <li class="breadcrumb-item">Tables</li>
-            <li class="breadcrumb-item active"><a href="#">Simple Tables</a></li>
-        </ul>
     </div>
     <div class="row">
         <div class="clearfix"></div>
         <div class="col-md-12">
             <div class="tile">
-                <h3 class="tile-title">Anggota Aktif</h3>
+                <!-- <p class="tile-title"><strong>ANGGOTA AKTIF</strong></p> -->
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover" id="mauexport">
                         <thead>
@@ -32,6 +27,9 @@ if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_S
                                 <th class="small">NAMA ANGGOTA</th>
                                 <th class="small">DIVISI</th>
                                 <th class="small">CABANG</th>
+                                <th class="small">STATUS KARYAWAN</th>
+                                <th class="small">HANDPHONE</th>
+                                <th class="small">ALAMAT</th>
                                 <th class="small">SALDO </th>
                                 <th class="small">STATUS </th>
                             </tr>
@@ -54,6 +52,9 @@ if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_S
                                     <td class="small"><?= $data['nama_anggota'] ?></td>
                                     <td class="small"><?= $data['divisi'] ?></td>
                                     <td class="small"><?= $data['cabang'] ?></td>
+                                    <td class="small"><?= $data['status_karyawan'] ?></td>
+                                    <td class="small"><?= $data['phone'] ?></td>
+                                    <td class="small"><?= $data['alamat'] ?></td>
                                     <td class="small text-right"><?= $data['saldo'] ?></td>
                                     <td class="small"><?= $data['status'] ?></td>
                                 </tr>
