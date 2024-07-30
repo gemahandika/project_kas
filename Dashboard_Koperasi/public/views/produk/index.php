@@ -20,8 +20,7 @@ include '../../../app/models/Murabahah_models.php';
 <main class="app-content">
     <div class="app-title">
         <div>
-            <h1><i class="fa fa-product-hunt"></i> Produk</h1>
-            <!-- <p>Table Transaksi Iuran Anggota</p> -->
+            <h6><strong>PRODUK</strong></h6>
         </div>
     </div>
 
