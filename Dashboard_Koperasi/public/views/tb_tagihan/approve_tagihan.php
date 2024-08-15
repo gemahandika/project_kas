@@ -19,7 +19,7 @@ if (!isset($chk)) {
                 <h6>DATA TAGIHAN</h6>
             </div>
         </div>
-        <form action="../../../app/controller/Tagihan.php" method="post">
+        <form action="../../../app/controller/Tagihan" method="post">
             <div class="row">
                 <div class="col-md-12">
                     <div class="tile">
