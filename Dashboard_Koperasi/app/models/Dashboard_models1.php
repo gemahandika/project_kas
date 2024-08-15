@@ -6,20 +6,45 @@ if (isset($_GET['dari']) && isset($_GET['ke'])) {
   $sql1 = mysqli_query($koneksi, "SELECT * FROM tb_anggota ") or die(mysqli_error($koneksi));
   $jumlah_data3 = mysqli_num_rows($sql1);
 }
+// ================================================================================================================================================================
+// Definisikan variabel saldo dan data_saldo_user
+$saldo = 0;
+$data_saldo_user = 0;
+$result = array();
 
-// tb_saldo
+// Cek apakah tanggal dari dan ke sudah di-set
 if (isset($_GET['dari']) && isset($_GET['ke'])) {
-  $sql = mysqli_query($koneksi, "SELECT * FROM tb_anggota WHERE join_date BETWEEN '" . $_GET['dari'] . "' and '" . $_GET['ke'] . "'") or die(mysqli_error($koneksi));
+  $dari = $_GET['dari'];
+  $ke = $_GET['ke'];
+
+  // Query untuk mendapatkan data anggota dalam rentang tanggal yang ditentukan
+  $sql = mysqli_query($koneksi, "SELECT * FROM tb_anggota WHERE join_date BETWEEN '$dari' AND '$ke'") or die(mysqli_error($koneksi));
+
+  // Query untuk mendapatkan data transaksi dalam rentang tanggal yang ditentukan
+  $data = mysqli_query($koneksi, "SELECT * FROM tb_transaksi WHERE tgl_transaksi BETWEEN '$dari' AND '$ke'") or die(mysqli_error($koneksi));
 } else {
+  // Query untuk mendapatkan semua data anggota jika tanggal tidak di-set
   $sql = mysqli_query($koneksi, "SELECT * FROM tb_anggota ") or die(mysqli_error($koneksi));
+
+  // Query untuk mendapatkan semua data transaksi jika tanggal tidak di-set
+  $data = mysqli_query($koneksi, "SELECT * FROM tb_transaksi ") or die(mysqli_error($koneksi));
 }
 
-$saldo = 0;
-$result = array();
+// Hitung total saldo dari tb_anggota
 while ($data_in = mysqli_fetch_array($sql)) {
   $saldo += $data_in['saldo'];
   $result[] = $data_in;
 }
+
+// Hitung total saldo transaksi dari tb_transaksi
+while ($d = mysqli_fetch_array($data)) {
+  $data_saldo_user += $d['jumlah_transaksi'];
+}
+
+// Jumlahkan hasil kedua kueri tersebut
+$total_saldo = $saldo + $data_saldo_user;
+
+
 
 // =================================================================================================================================
 
@@ -265,4 +290,45 @@ $result = array();
 while ($data_in = mysqli_fetch_array($sql)) {
   $kredit += $data_in['kredit_report'];
   $result[] = $data;
+}
+
+// Tagihan ==============================================================================================================================
+
+if (isset($_GET['dari']) && isset($_GET['ke'])) {
+  $dari = mysqli_real_escape_string($koneksi, $_GET['dari']);
+  $ke = mysqli_real_escape_string($koneksi, $_GET['ke']);
+
+  // Validasi tanggal agar format sesuai
+  if (validateDate($dari) && validateDate($ke)) {
+    $query = "SELECT * FROM tb_tagihan WHERE nik = '$data2' AND status = 'OTS' AND tanggal BETWEEN '$dari' AND '$ke'";
+    $query_all = "SELECT * FROM tb_tagihan WHERE status = 'OTS' AND tanggal BETWEEN '$dari' AND '$ke'";
+  } else {
+    die("Format tanggal tidak valid.");
+  }
+} else {
+  $query = "SELECT * FROM tb_tagihan WHERE nik = '$data2' AND status = 'OTS'";
+  $query_all = "SELECT * FROM tb_tagihan WHERE status = 'OTS'";
+}
+
+$sql = mysqli_query($koneksi, $query) or die(mysqli_error($koneksi));
+$tagihan = 0;
+$tagihan_all = 0;
+$result = array();
+
+while ($data_in = mysqli_fetch_assoc($sql)) { // Menggunakan fetch_assoc untuk performa lebih baik
+  $tagihan += $data_in['jumlah_tagihan'];
+  $result[] = $data_in;
+}
+
+// Query untuk menghitung tagihan_all
+$sql_all = mysqli_query($koneksi, $query_all) or die(mysqli_error($koneksi));
+while ($data_in_all = mysqli_fetch_assoc($sql_all)) {
+  $tagihan_all += $data_in_all['jumlah_tagihan'];
+}
+
+// Fungsi validasi tanggal
+function validateDate($date, $format = 'Y-m-d')
+{
+  $d = DateTime::createFromFormat($format, $date);
+  return $d && $d->format($format) === $date;
 }

@@ -65,9 +65,10 @@ if (!isset($chk)) {
                                                 <input type="hidden" name="nik[]" value="<?= $data['nip']  ?>">
                                                 <input type="hidden" name="status_karyawan[]" value="<?= $data['status_karyawan'] ?>">
                                                 <input type="hidden" name="nominal[]" value=100000>
-                                                <input type="hidden" name="keterangan[]" value=<?= $j ?>>
+                                                <input type="hidden" name="keterangan[]" value="IURAN WAJIB ANGGOTA">
                                                 <input type="hidden" name="status[]" value="OTS">
                                                 <input type="hidden" class="dateArray" name="date[]" value="<?= $date ?>">
+                                                <input type="hidden" name="ket_history[]" value="TAGIHAN ANDA TELAH DIBUAT">
 
                                                 <td class="small"><?= $no ?></td>
                                                 <td class="small"><?= $data['nama_anggota'] ?></td>

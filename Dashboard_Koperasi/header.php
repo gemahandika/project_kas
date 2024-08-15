@@ -13,7 +13,7 @@ $sql = mysqli_query($koneksi, "SELECT * FROM user WHERE username='$user1'") or d
 $data1 = $sql->fetch_array();
 $data2 = $data1["nip"];
 $saldo_user = mysqli_query($koneksi, "SELECT * FROM tb_anggota WHERE nip ='$data2'") or die(mysqli_error($koneksi));
-$data_saldo_user = mysqli_fetch_array($saldo_user);
+$data_saldo_user1 = mysqli_fetch_array($saldo_user);
 ?>
 <!DOCTYPE html>
 <html lang="en">

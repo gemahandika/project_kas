@@ -18,7 +18,7 @@ if (isset($_POST['add'])) {
     $check_query = "SELECT * FROM tb_daftar WHERE nik_daftar = '$nik'";
     $check_result = $koneksi->query($check_query);
     if ($check_result->num_rows > 0) {
-        showSweetAlert('warning', 'Oops...', 'Anda Sudah Pernah Daftar !!', '#3085d6', '../../public/views/tb_daftar/');
+        showSweetAlert('warning', 'Oops...', 'Anda Sudah Pernah Daftar !!', '#3085d6', '../../public/views/tb_daftar/index');
     } else {
         // Masukan data ke tabel anggota
         mysqli_query($koneksi, "INSERT INTO tb_daftar ( nama_daftar, alamat_daftar, nik_daftar, unit_daftar, hp_daftar, syarat_daftar, tgl_daftar, status_daftar,status_karyawan, generate) 

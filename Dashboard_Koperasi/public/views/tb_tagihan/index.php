@@ -49,7 +49,7 @@ include '../../../app/config/koneksi.php';
                                     <th class="small">NIK</th>
                                     <th class="small">SALDO</th>
                                     <!-- <th class="small">TANGGAL</th> -->
-                                    <!-- <th class="small">KETERANGAN</th> -->
+                                    <th class="small">KETERANGAN</th>
                                     <!-- <th class="small">ACTION </th> -->
                                 </tr>
                             </thead>
@@ -72,7 +72,7 @@ include '../../../app/config/koneksi.php';
                                     <td class="small"><?= $d['nip'] ?></td>
                                     <td class="small"><?= $d['saldo'] ?></td>
                                     <!-- <td class="small"><?= $date; ?></td> -->
-                                    <!-- <td class="small"><?= $d['keterangan'] ?></td> -->
+                                    <td class="small">IURAN WAJIB ANGGOTA</td>
                                     <!-- <td class="d-flex">
                                         <a href="#" class="btn btn-warning btn-sm mr-1" data-bs-toggle="modal" data-bs-target="#tagihanModal<?= $d['id_tagihan'] ?>"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
                                         <?php if (in_array("super_admin", $_SESSION['admin_akses'])) { ?>

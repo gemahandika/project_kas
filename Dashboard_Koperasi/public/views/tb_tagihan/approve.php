@@ -29,10 +29,10 @@ if (!isset($chk)) {
                 <div class="col-md-12">
                     <div class="tile">
                         <div class="tile-body d-flex justify-content-start">
-                            <label class="control-label">Tanggal :</label>
+                            <!-- <label class="control-label">Tanggal :</label>
                             <div class="col-md-4">
-                                <input class="form-control col-md-6" name="tanggal" type="date" value="<?= $date ?>">
-                            </div>
+
+                            </div> -->
                             <p><input type="submit" name="approve" class="btn btn-danger icon-btn" value="Proses"></p>
                         </div>
                     </div>
@@ -69,16 +69,18 @@ if (!isset($chk)) {
                                     ?>
                                             <tr>
                                                 <!-- Dari tabel anggota -->
-                                                <input type="text" name="saldo[]" value="<?= $data['saldo'] + $j ?>">
+                                                <input type="hidden" name="saldo[]" value="<?= $data['saldo'] + $j ?>">
 
                                                 <!-- Dari tabel tagihan -->
-                                                <input type="text" name="id_tagihan[]" value="<?= $data['id_tagihan'] ?>">
-                                                <input type="text" name="nik[]" value="<?= $data['nik'] ?>">
-                                                <input type="text" name="nama_anggota[]" value="<?= $data['nama_anggota'] ?>">
-                                                <input type="text" name="jumlah_transaksi[]" value="<?= $data['jumlah_tagihan'] ?>">
-                                                <input type="text" name="keterangan[]" value="<?= $data['keterangan'] ?>">
-                                                <input type="text" name="jenis_transaksi[]" value="pemasukan">
-                                                <input type="text" name="status[]" value="DONE">
+                                                <input type="hidden" name="id_tagihan[]" value="<?= $data['id_tagihan'] ?>">
+                                                <input type="hidden" name="nik[]" value="<?= $data['nik'] ?>">
+                                                <input type="hidden" name="nama_anggota[]" value="<?= $data['nama_anggota'] ?>">
+                                                <input type="hidden" name="jumlah_transaksi[]" value="<?= $data['jumlah_tagihan'] ?>">
+                                                <input type="hidden" name="keterangan[]" value="<?= $data['keterangan'] ?>">
+                                                <input type="hidden" name="jenis_transaksi[]" value="pemasukan">
+                                                <input type="hidden" name="status[]" value="DONE">
+                                                <input type="hidden" name="ket_history[]" value="IURAN WAJIB ANDA SUDAH DIBAYAR">
+                                                <input type="hidden" name="tanggal" value="<?= $data['tanggal'] ?>" readonly>
 
                                                 <td class="small"><?= $no ?></td>
                                                 <td class="small"><?= $data['nama_anggota'] ?></td>

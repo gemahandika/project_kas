@@ -15,6 +15,7 @@ if (isset($_POST['approve'])) {
         $keterangan = trim(mysqli_real_escape_string($koneksi, $_POST['keterangan'][$i]));
         $date_sekarang = trim(mysqli_real_escape_string($koneksi, $_POST['tanggal']));
         $status = trim(mysqli_real_escape_string($koneksi, $_POST['status'][$i]));
+        $ket_history = trim(mysqli_real_escape_string($koneksi, $_POST['ket_history'][$i]));
 
         mysqli_query($koneksi, "UPDATE tb_tagihan SET status = '$status' WHERE id_tagihan= '$id_tagihan'");
 
@@ -22,9 +23,9 @@ if (isset($_POST['approve'])) {
         VALUES('$nik','$nama_anggota','$jenis_transaksi','$jumlah','$keterangan','$date_sekarang')");
         // Masukan data ke table History
         mysqli_query($koneksi, "INSERT INTO tb_history (nama, nik, tanggal, nominal, keterangan) 
-            VALUES('$nama_anggota', '$nik', '$date_sekarang', $jumlah, '$keterangan')");
+        VALUES('$nama_anggota', '$nik', '$date_sekarang', $jumlah, '$ket_history')");
     }
-    showSweetAlert('success', 'Sukses', 'Iuran Berhasil di tambah', '#3085d6', '../../public/views/tb_tagihan/');
+    showSweetAlert('success', 'Sukses', 'Iuran Berhasil di tambah', '#3085d6', '../../public/views/tb_tagihan/index');
 
     //proses input satu data 
 }

@@ -11,6 +11,7 @@ if (isset($_POST['add_tagihan'])) {
         $date = trim(mysqli_real_escape_string($koneksi, $_POST['date'][$i]));
         $keterangan = trim(mysqli_real_escape_string($koneksi, $_POST['keterangan'][$i]));
         $status = trim(mysqli_real_escape_string($koneksi, $_POST['status'][$i]));
+        $ket_history = trim(mysqli_real_escape_string($koneksi, $_POST['ket_history'][$i]));
 
         // Ekstrak bulan dan tahun dari tanggal
         $month = date('m', strtotime($date));
@@ -21,8 +22,11 @@ if (isset($_POST['add_tagihan'])) {
         $check_result = $koneksi->query($check_query);
 
         if ($check_result->num_rows > 0) {
-            showSweetAlert('warning', 'Oops...', 'NIK sudah terdaftar dalam bulan yang sama.', '#3085d6', '../../public/views/tb_tagihan/cek_tagihan.php');
+            showSweetAlert('warning', 'Oops...', 'Data sudah ada dalam bulan yang sama.', '#3085d6', '../../public/views/tb_tagihan/cek_tagihan.php');
         } else {
+            // insert tb history
+            mysqli_query($koneksi, "INSERT INTO tb_history ( nama, nik, tanggal, nominal, keterangan) 
+            VALUES( '$nama_anggota', '$nik', '$date', '$nominal', '$ket_history')");
             // Insert data ke tabel tb_tagihan
             $insert_query = "INSERT INTO tb_tagihan (nama_anggota, nik, status_karyawan, jumlah_tagihan, tanggal, keterangan, status) 
                              VALUES('$nama_anggota', '$nik', '$status_karyawan', $nominal, '$date' , '$keterangan', '$status')";

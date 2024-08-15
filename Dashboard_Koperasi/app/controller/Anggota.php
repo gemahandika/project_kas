@@ -53,6 +53,7 @@ if (isset($_POST['add'])) {
     $id_daftar = trim(mysqli_real_escape_string($koneksi, $_POST['id_daftar']));
     $generate = trim(mysqli_real_escape_string($koneksi, $_POST['generate']));
     $jumlah_tagihan = trim(mysqli_real_escape_string($koneksi, $_POST['jumlah_tagihan']));
+    $ket_history = trim(mysqli_real_escape_string($koneksi, $_POST['ket_history']));
 
     // Validasi NIK agar tidak ganda
     $check_query = "SELECT * FROM tb_anggota WHERE nip = '$nip'";
@@ -73,12 +74,12 @@ if (isset($_POST['add'])) {
     VALUES('$nip', '$nama_anggota', '$nip', '$pass', '$status_user')");
 
         // Masukan data ke table Tagihan
-        mysqli_query($koneksi, "INSERT INTO tb_tagihan ( nama_anggota, nik, jumlah_tagihan, tanggal, keterangan) 
-    VALUES( '$nama_anggota', '$nip', '$jumlah_tagihan', '$join_date', '$keterangan')");
+        mysqli_query($koneksi, "INSERT INTO tb_tagihan ( nama_anggota, nik, status_karyawan, jumlah_tagihan, tanggal, keterangan) 
+    VALUES( '$nama_anggota', '$nip', '$status_karyawan', $saldo, '$join_date', '$keterangan')");
 
         // Masukan data ke table History
         mysqli_query($koneksi, "INSERT INTO tb_history (nama, nik, tanggal, nominal, keterangan) 
-            VALUES('$nama_anggota', '$nip', '$join_date', $saldo, '$keterangan')");
+            VALUES('$nama_anggota', '$nip', '$join_date', $saldo, '$ket_history')");
 
         showSweetAlert('success', 'Success', $pesan_ok, '#3085d6', $tujuan_2);
     }

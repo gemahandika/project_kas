@@ -34,7 +34,7 @@ if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_S
                   <th class="small">STATUS KARYAWAN</th>
                   <th class="small">PHONE</th>
                   <th class="small">ALAMAT</th>
-                  <th class="small">SALDO </th>
+                  <th class="small">SALDO</th>
                   <th class="small">ACTION</th>
                 </tr>
               </thead>

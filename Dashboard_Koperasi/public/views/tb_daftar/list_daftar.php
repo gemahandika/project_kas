@@ -80,6 +80,7 @@ $time = date("H:i");
                                             <input type="hidden" name="status_user" value="NON AKTIF" readonly>
                                             <input type="hidden" id="pemasukan" name="pemasukan" value="pemasukan" readonly>
                                             <input type="hidden" id="keterangan" name="keterangan" value="IURAN WAJIB ANGGOTA">
+                                            <input type="hidden" id="ket_history" name="ket_history" value="MENERIMA ANGGOTA BARU">
 
                                             <input type="hidden" name="id_daftar" value="<?= $data['id_daftar'] ?>">
                                             <div class="form-group">
@@ -114,7 +115,7 @@ $time = date("H:i");
 
                                             <div class="form-group">
                                                 <label for="saldo">Saldo :</label><br>
-                                                <input class="form-control" type="text" id="saldo" name="saldo" value="0" required onkeypress="return inputAngka(event)">
+                                                <input class="form-control" type="text" id="saldo" name="saldo" value="100000" required onkeypress="return inputAngka(event)">
                                             </div>
                                             <input type="hidden" name="status" value="AKTIF">
                                             <input type="hidden" name="generate" value="diterima">

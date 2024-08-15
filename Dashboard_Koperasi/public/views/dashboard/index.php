@@ -13,41 +13,41 @@ $time = date("H:i");
             <h6><strong>DASHBOARD</strong> </h6>
         </div>
     </div>
-
-    <div class="row">
-        <div class="col-md-12">
-            <div class="tile">
-                <form action="index" method="get">
-                    <div class="tile-body d-flex align-items-center flex-column flex-md-row">
-                        <label class="control-label mr-3">Periode : </label>
-                        <div class="form-group">
-                            <input class="form-control" type="date" name="dari" value="<?= $date ?>">
+    <?php if (in_array("super_admin", $_SESSION['admin_akses']) || in_array("admin", $_SESSION['admin_akses'])) { ?>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="tile">
+                    <form action="index" method="get">
+                        <div class="tile-body d-flex align-items-center flex-column flex-md-row">
+                            <label class="control-label mr-3">Periode : </label>
+                            <div class="form-group">
+                                <input class="form-control" type="date" name="dari" value="<?= $date ?>">
+                            </div>
+                            <label class="control-label mx-2">-</label>
+                            <div class="form-group">
+                                <input class="form-control" type="date" name="ke" value="<?= $date ?>">
+                            </div>
+                            <div class="ml-2">
+                                <button type="submit" name="approve" class="btn btn-primary form-group"><i class="fa fa-search"></i>Cari</button>
+                            </div>
+                            <div class="ml-2">
+                                <p><a href="index" class="btn btn-secondary ml-1">Refresh</a></p>
+                            </div>
+                            <label class="ml-2 ">
+                                <?php
+                                if (isset($_GET['dari']) && isset($_GET['ke'])) {
+                                    echo "<p>Data Dari Tanggal <span style='color:red; font-weight:bold;'>" . $_GET['dari'] . "</span> s/d <span style='color:red; font-weight:bold;'>" . $_GET['ke'] . "</span></p>";
+                                } else {
+                                    echo "-";
+                                }
+                                ?>
+                            </label>
                         </div>
-                        <label class="control-label mx-2">-</label>
-                        <div class="form-group">
-                            <input class="form-control" type="date" name="ke" value="<?= $date ?>">
-                        </div>
-                        <div class="ml-2">
-                            <button type="submit" name="approve" class="btn btn-primary icon-btn form-group"><i class="fa fa-search"></i>Cari</button>
-                        </div>
-                        <div class="ml-2">
-                            <p><a href="index" class="btn btn-secondary ml-1 icon-btn">Refresh</a></p>
-                        </div>
-                        <label class="ml-2 ">
-                            <?php
-                            if (isset($_GET['dari']) && isset($_GET['ke'])) {
-                                echo "<p>Data Dari Tanggal <span style='color:red; font-weight:bold;'>" . $_GET['dari'] . "</span> s/d <span style='color:red; font-weight:bold;'>" . $_GET['ke'] . "</span></p>";
-                            } else {
-                                echo "-";
-                            }
-                            ?>
-                        </label>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-
+    <?php } ?>
     <div class="row">
         <?php if (in_array("super_admin", $_SESSION['admin_akses']) || in_array("admin", $_SESSION['admin_akses'])) { ?>
             <div class="col-md-6 col-lg-3 text-center">
@@ -64,7 +64,7 @@ $time = date("H:i");
                 <div class="widget-small primary coloured-icon"><i class="icon fa fa-dollar fa-3x"></i>
                     <div class="info">
                         <h4 style="border-bottom: 1px solid black;">Saldo</h4>
-                        <h4><b><?= number_format($data_saldo_user['saldo']) ?></b></h4>
+                        <h4><b><?= number_format($data_saldo_user1['saldo']); ?></b></h4>
                     </div>
                 </div>
             </div>
@@ -83,8 +83,8 @@ $time = date("H:i");
             <div class="col-md-4 col-lg-3 text-center">
                 <div class="widget-small danger coloured-icon"><i class="icon fa fa-file-invoice-dollar fa-3x"></i>
                     <div class="info">
-                        <h4 style="border-bottom: 1px solid black;">OTS MURABAHAH</h4>
-                        <h4><b>0</b></h4>
+                        <h4 style="border-bottom: 1px solid black;">OTS IURAN</h4>
+                        <h4><b><?= number_format($tagihan) ?></b></h4>
                     </div>
                 </div>
             </div>
@@ -97,6 +97,14 @@ $time = date("H:i");
                         <a href="../tb_daftar/list_daftar" style="text-decoration: none;">
                             <h4><strong><?= $data_daftar ?></strong></h4>
                         </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-3 text-center">
+                <div class="widget-small danger coloured-icon"><i class="icon fa fa-file-invoice-dollar fa-3x"></i>
+                    <div class="info">
+                        <h4 style="border-bottom: 1px solid black;">OTS IURAN</h4>
+                        <h4><b><?= number_format($tagihan_all) ?></b></h4>
                     </div>
                 </div>
             </div>
