@@ -22,7 +22,7 @@ if (isset($_POST['add_tagihan'])) {
         $check_result = $koneksi->query($check_query);
 
         if ($check_result->num_rows > 0) {
-            showSweetAlert('warning', 'Oops...', 'Data sudah ada dalam bulan yang sama.', '#3085d6', '../../public/views/tb_tagihan/cek_tagihan.php');
+            showSweetAlert('warning', 'Oops...', 'Data sudah ada dalam bulan yang sama.', '#3085d6', '../../public/views/tb_tagihan/cek_tagihan');
         } else {
             // insert tb history
             mysqli_query($koneksi, "INSERT INTO tb_history ( nama, nik, tanggal, nominal, keterangan) 
@@ -31,7 +31,7 @@ if (isset($_POST['add_tagihan'])) {
             $insert_query = "INSERT INTO tb_tagihan (nama_anggota, nik, status_karyawan, jumlah_tagihan, tanggal, keterangan, status) 
                              VALUES('$nama_anggota', '$nik', '$status_karyawan', $nominal, '$date' , '$keterangan', '$status')";
             if ($koneksi->query($insert_query) === TRUE) {
-                showSweetAlert('success', 'Sukses', 'Iuran Berhasil ditambah', '#3085d6', '../../public/views/tb_tagihan/cek_tagihan.php');
+                showSweetAlert('success', 'Sukses', 'Iuran Berhasil ditambah', '#3085d6', '../../public/views/tb_tagihan/cek_tagihan');
             } else {
                 showSweetAlert('error', 'Error', 'Terjadi kesalahan saat menambahkan data.', '#3085d6', $tujuan);
             }
