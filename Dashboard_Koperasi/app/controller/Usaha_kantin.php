@@ -14,7 +14,7 @@ if (isset($_POST['add'])) {
     VALUES( '$nama_kantin', '$pendapatan', '$komisi', '$pembelian', '$keterangan','$tanggal')");
     // Masukan data ke table transaksi
 
-    showSweetAlert('success', 'Sukses', 'Data Berhasil DI kirim', '#3085d6', '../../public/views/pnl_usaha_kantin/');
+    showSweetAlert('success', 'Sukses', 'Data Berhasil DI kirim', '#3085d6', '../../public/views/pnl_usaha_kantin/index');
 } else if (isset($_POST['tambah_kantin'])) {
     $kantin = trim(mysqli_real_escape_string($koneksi, $_POST['kantin']));
 
