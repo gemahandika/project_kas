@@ -89,9 +89,9 @@
                 <div class="row g-4">
                     <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="team-item">
-                            <h5>M YUSUF SAPUTRA</h5>
+                            <h5>WAHYU WIJAYADI</h5>
                             <p class="mb-4">Ketua Koperasi</p>
-                            <img class="img-fluid rounded-circle w-100 mb-4" src="img/team1.jpg" alt="">
+                            <img class="img-fluid rounded-circle w-100 mb-4" src="img/pengurus_koperasi/wahyu.png" alt="">
                             <div class="d-flex justify-content-center">
                                 <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-facebook-f"></i></a>
                                 <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-twitter"></i></a>
@@ -139,7 +139,7 @@
                         <div class="team-item">
                             <h5>AZMI ARSYAD</h5>
                             <p class="mb-4">Bidang Pembiayaan</p>
-                            <img class="img-fluid rounded-circle w-100 mb-4" src="img/12.jpg" alt="">
+                            <img class="img-fluid rounded-circle w-100 mb-4" src="img/pengurus_koperasi/azmi.png" alt="">
                             <div class="d-flex justify-content-center">
                                 <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-facebook-f"></i></a>
                                 <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-twitter"></i></a>
@@ -161,9 +161,9 @@
                     </div>
                     <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                         <div class="team-item">
-                            <h5>WAHYU WIJAYADI</h5>
+                            <h5>REZA HADI NASUTION</h5>
                             <p class="mb-4">Bidang Usaha Bersama</p>
-                            <img class="img-fluid rounded-circle w-100 mb-4" src="img/14.jpg" alt="">
+                            <img class="img-fluid rounded-circle w-100 mb-4" src="img/pengurus_koperasi/reza.png" alt="">
                             <div class="d-flex justify-content-center">
                                 <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-facebook-f"></i></a>
                                 <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-twitter"></i></a>

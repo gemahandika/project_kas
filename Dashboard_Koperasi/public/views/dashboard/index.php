@@ -112,7 +112,7 @@ $time = date("H:i");
     </div>
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="tile">
                 <div class="mb-3" style="border-bottom: 1px solid black;">
                     <div class="d-flex justify-content-around">
@@ -147,7 +147,7 @@ $time = date("H:i");
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="tile">
                 <div class="mb-3">
                     <div class="d-flex justify-content-around pb-2" style="border-bottom: 1px solid black;">
@@ -164,7 +164,7 @@ $time = date("H:i");
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="tile">
                 <div class="mb-3">
                     <div class="text-center pb-2" style="border-bottom: 1px solid black;">
