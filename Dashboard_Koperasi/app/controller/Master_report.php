@@ -9,8 +9,7 @@ if (isset($_POST['add'])) {
     $kredit_report = trim(mysqli_real_escape_string($koneksi, $_POST['kredit_report']));
     mysqli_query($koneksi, "INSERT INTO tb_report ( tgl_report, nama_report, keterangan, debit_report, kredit_report) 
     VALUES( '$tgl_report', '$nama_report', '$keterangan', '$debit_report', '$kredit_report')");
-     showSweetAlert('success', 'Sukses', $pesan_ok, '#3085d6', '../../public/views/master_report/');
-    
+    showSweetAlert('success', 'Sukses', $pesan_ok, '#3085d6', '../../public/views/master_report/index');
 } else if (isset($_POST['update'])) {
     $nama = trim(mysqli_real_escape_string($koneksi, $_POST['nama']));
     $date = trim(mysqli_real_escape_string($koneksi, $_POST['date']));
@@ -18,12 +17,10 @@ if (isset($_POST['add'])) {
     $kredit = trim(mysqli_real_escape_string($koneksi, $_POST['kredit']));
     mysqli_query($koneksi, "UPDATE tb_report SET tgl_report='$date', debit_report='$debit', kredit_report='$kredit'
     WHERE nama_report='$nama'");
-    showSweetAlert('success', 'Success', $pesan_update, '#ffc107','../../public/views/master_report/');
-    
+    showSweetAlert('success', 'Success', $pesan_update, '#ffc107', '../../public/views/master_report/index');
 } else if (isset($_POST['nonaktif'])) {
     $id = trim(mysqli_real_escape_string($koneksi, $_POST['id']));
     $status = trim(mysqli_real_escape_string($koneksi, $_POST['status']));
     mysqli_query($koneksi, "UPDATE tb_report SET status='$status' WHERE id_report='$id'");
-     showSweetAlert('success', 'Success', 'User Berhasil di Non Aktifkan', '#dc3545','../../public/views/master_report/');
-    
+    showSweetAlert('success', 'Success', 'User Berhasil di Non Aktifkan', '#dc3545', '../../public/views/master_report/index');
 }

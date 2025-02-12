@@ -26,7 +26,7 @@ if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_S
                         <h6>Data Anggota yang Mendaftar Produk Tabungan Emas. </h6>
                     </div>
                     <form method="post" name="proses">
-                        <table class="table table-hover table-bordered table-responsive-sm" id="sampleTable">
+                        <table class="display nowrap" style="width:100%" id="sampleTable">
                             <thead>
                                 <tr class="btn-success">
                                     <th class="small">NO</th>
