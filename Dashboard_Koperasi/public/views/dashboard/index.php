@@ -1,4 +1,6 @@
 <?php
+session_name("kas_session");
+session_start();
 include '../../../header.php';
 include '../../../app/models/Dashboard_models1.php';
 include '../../../app/models/Daftar_models.php';
