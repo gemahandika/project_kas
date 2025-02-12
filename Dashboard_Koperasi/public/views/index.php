@@ -1,5 +1,6 @@
 <?php
 include("../../app/config/koneksi.php");
+session_name("kas_session");
 session_start();
 
 // Pengecekan Level Akses

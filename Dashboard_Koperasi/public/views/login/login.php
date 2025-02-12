@@ -1,4 +1,5 @@
 <?php
+session_name("kas_session");
 session_start();
 
 // Jika sudah login, redirect ke halaman index
