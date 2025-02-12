@@ -79,28 +79,28 @@ include '../../../app/config/koneksi.php';
                                 // echo "No: $no - Nama: " . $data['nama'] . "<br>";
 
                             ?>
-                                <tbody>
-                                    <tr>
-                                        <td class="small"><?= $no ?></td>
-                                        <td class="small"><?= $data['nama'] ?></td>
-                                        <td class="small"><?= $data['nik'] ?></td>
-                                        <td class="small"><?= $data['unit'] ?></td>
-                                        <td class="small"><?= $data['alamat'] ?></td>
-                                        <td class="small"><?= $data['tanggal'] ?></td>
-                                        <td class="small"><?= $data['nama_barang'] ?></td>
-                                        <td class="small"><?= $data['jenis'] ?></td>
-                                        <td class="small"><?= $data['warna'] ?></td>
-                                        <td class="small"><?= $data['harga'] ?></td>
-                                        <td class="small d-flex">
-                                            <?php if (in_array("super_admin", $_SESSION['admin_akses']) || in_array("admin", $_SESSION['admin_akses'])) { ?>
-                                                <a href="#" class="btn btn-warning btn-sm mr-1" data-bs-toggle="modal" data-bs-target="#edit<?= $data['nik'] ?>"><i class="fa fa-fw fa-lg fa-check-circle" aria-hidden="true"></i>Edit</a>
-                                                <a href="#" class="btn btn-primary btn-sm mr-1" data-bs-toggle="modal" data-bs-target="#edit<?= $data['nik'] ?>"><i class="fa fa-fw fa-lg fa-check-circle" aria-hidden="true"></i>Bayar Tagihan</a>
-                                            <?php } ?>
-                                            <?php if (in_array("super_admin", $_SESSION['admin_akses'])) { ?>
-                                                <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#tolak<?= $data['nik'] ?>"><i class="fa fa-fw fa-lg fa-times-circle" aria-hidden="true"></i>Hapus</a>
-                                            <?php } ?>
-                                        </td>
-                                    </tr>
+
+                                <tr>
+                                    <td class="small"><?= $no ?></td>
+                                    <td class="small"><?= $data['nama'] ?></td>
+                                    <td class="small"><?= $data['nik'] ?></td>
+                                    <td class="small"><?= $data['unit'] ?></td>
+                                    <td class="small"><?= $data['alamat'] ?></td>
+                                    <td class="small"><?= $data['tanggal'] ?></td>
+                                    <td class="small"><?= $data['nama_barang'] ?></td>
+                                    <td class="small"><?= $data['jenis'] ?></td>
+                                    <td class="small"><?= $data['warna'] ?></td>
+                                    <td class="small"><?= $data['harga'] ?></td>
+                                    <td class="small d-flex">
+                                        <?php if (in_array("super_admin", $_SESSION['admin_akses']) || in_array("admin", $_SESSION['admin_akses'])) { ?>
+                                            <a href="#" class="btn btn-warning btn-sm mr-1" data-bs-toggle="modal" data-bs-target="#edit<?= $data['nik'] ?>"><i class="fa fa-fw fa-lg fa-check-circle" aria-hidden="true"></i>Edit</a>
+                                            <a href="#" class="btn btn-primary btn-sm mr-1" data-bs-toggle="modal" data-bs-target="#edit<?= $data['nik'] ?>"><i class="fa fa-fw fa-lg fa-check-circle" aria-hidden="true"></i>Bayar Tagihan</a>
+                                        <?php } ?>
+                                        <?php if (in_array("super_admin", $_SESSION['admin_akses'])) { ?>
+                                            <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#tolak<?= $data['nik'] ?>"><i class="fa fa-fw fa-lg fa-times-circle" aria-hidden="true"></i>Hapus</a>
+                                        <?php } ?>
+                                    </td>
+                                </tr>
                     </form>
                     <!-- Modal Edit -->
                     <div class="modal fade" id="edit<?= $data['nik'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -186,7 +186,6 @@ include '../../../app/config/koneksi.php';
                         </div>
                     </div>
                 <?php } ?>
-                </tbody>
                 </table>
                 </div>
             </div>

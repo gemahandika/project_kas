@@ -1,4 +1,6 @@
 <?php
+session_name("kas_session");
+session_start();
 include '../../../header.php';
 include 'modal.php';
 include 'modal_katagori.php';

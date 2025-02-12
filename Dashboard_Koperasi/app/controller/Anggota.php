@@ -74,8 +74,8 @@ if (isset($_POST['add'])) {
     VALUES('$nip', '$nama_anggota', '$nip', '$pass', '$status_user')");
 
         // Masukan data ke table Tagihan
-        mysqli_query($koneksi, "INSERT INTO tb_tagihan ( nama_anggota, nik,  jumlah_tagihan, tanggal, keterangan) 
-    VALUES( '$nama_anggota', '$nip',  $saldo, '$join_date', '$keterangan')");
+        mysqli_query($koneksi, "INSERT INTO tb_tagihan ( nama_anggota, nik, status_karyawan,  jumlah_tagihan, tanggal, keterangan) 
+    VALUES( '$nama_anggota', '$nip', '$status_karyawan',  $saldo, '$join_date', '$keterangan')");
 
         // Masukan data ke table History
         mysqli_query($koneksi, "INSERT INTO tb_history (nama, nik, tanggal, nominal, keterangan) 
