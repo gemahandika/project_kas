@@ -1,9 +1,9 @@
 <?php
+session_name("kas_session");
+session_start();
 include '../../../header.php';
 $date = date("Y-m-d");
 $time = date("H:i");
-// include 'modal.php';
-// include 'modal_edit.php';
 include '../../../app/config/koneksi.php';
 include '../../../app/models/Murabahah_models.php';
 ?>

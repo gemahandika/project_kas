@@ -1,9 +1,7 @@
 <?php
+session_name("kas_session");
+session_start();
 include '../../../header.php';
-// if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_SESSION['admin_akses'])) {
-//     echo "Ooopss!! Kamu Tidak Punya Akses";
-//     exit();
-// }
 include '../../../app/config/koneksi.php';
 $date = date("Y-m-d");
 $time = date("H:i");

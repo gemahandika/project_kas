@@ -1,4 +1,6 @@
 <?php
+session_name("kas_session");
+session_start();
 include '../../../header.php';
 
 if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_SESSION['admin_akses'])) {

@@ -1,7 +1,7 @@
 <?php
+session_name("kas_session");
+session_start();
 include '../../../header.php';
-// include 'modal.php';
-// include 'modal_katagori.php';
 include '../../../app/config/koneksi.php';
 ?>
 <main class="app-content">

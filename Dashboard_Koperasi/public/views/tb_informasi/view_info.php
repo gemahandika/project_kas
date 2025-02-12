@@ -1,4 +1,6 @@
     <?php
+    session_name("kas_session");
+    session_start();
     include '../../../app/config/koneksi.php';
 
     $id = $_GET['id'];
@@ -27,8 +29,8 @@
         <link rel="stylesheet" href="assets/css/templatemo-villa-agency.css">
         <link rel="stylesheet" href="assets/css/owl.css">
         <link rel="stylesheet" href="assets/css/animate.css">
-        <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
-    <!--
+        <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+        <!--
 
     TemplateMo 591 villa agency
 
@@ -39,8 +41,8 @@
 
     <body>
 
-    <!-- ***** Preloader Start ***** -->
-    <!-- <div id="js-preloader" class="js-preloader">
+        <!-- ***** Preloader Start ***** -->
+        <!-- <div id="js-preloader" class="js-preloader">
         <div class="preloader-inner">
         <span class="dot"></span>
         <div class="dots">
@@ -50,62 +52,62 @@
         </div>
         </div>
     </div> -->
-    <!-- ***** Preloader End ***** -->
+        <!-- ***** Preloader End ***** -->
 
-    <!-- ***** Header Area Start ***** -->
-    <header class="header-area header-sticky">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav class="main-nav">
-                        <!-- ***** Logo Start ***** -->
-                        <a href="#" class="logo">
-                            <h1>Informasi</h1>
-                        </a>
-                        <!-- ***** Logo End ***** -->
-                        <!-- ***** Menu Start ***** -->
-                        <!-- <ul class="nav"> -->
-                        <!-- <li><a href="index.html">Home</a></li>
+        <!-- ***** Header Area Start ***** -->
+        <header class="header-area header-sticky">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <nav class="main-nav">
+                            <!-- ***** Logo Start ***** -->
+                            <a href="#" class="logo">
+                                <h1>Informasi</h1>
+                            </a>
+                            <!-- ***** Logo End ***** -->
+                            <!-- ***** Menu Start ***** -->
+                            <!-- <ul class="nav"> -->
+                            <!-- <li><a href="index.html">Home</a></li>
                         <li><a href="properties.html">Properties</a></li> -->
-                        <!-- <li><a href="property-details.html" class="active">Property Details</a></li>
+                            <!-- <li><a href="property-details.html" class="active">Property Details</a></li>
                         <li><a href="contact.html">Contact Us</a></li>
                         <li><a href="#"><i class="fa fa-calendar"></i> Schedule a visit</a></li> -->
-                        <!-- </ul>    -->
-                        <a class='menu-trigger'>
-                            <span>Menu</span>
-                        </a>
-                        <!-- ***** Menu End ***** -->
-                    </nav>
+                            <!-- </ul>    -->
+                            <a class='menu-trigger'>
+                                <span>Menu</span>
+                            </a>
+                            <!-- ***** Menu End ***** -->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- ***** Header Area End ***** -->
+
+        <div class="page-heading header-text">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- <span class="breadcrumb"><a href="#">Home</a>  /  Single Property</span> -->
+                        <h3>KREASI ANUGERAH SEJAHTERA</h3>
+                    </div>
                 </div>
             </div>
         </div>
-    </header>
-    <!-- ***** Header Area End ***** -->
 
-    <div class="page-heading header-text">
-        <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-            <!-- <span class="breadcrumb"><a href="#">Home</a>  /  Single Property</span> -->
-            <h3>KREASI ANUGERAH SEJAHTERA</h3>
-            </div>
-        </div>
-        </div>
-    </div>
-
-    <div class="single-property section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="main-image">
-                        <img id="preview" src="../../../app/assets/img/img_notif/<?= $row['image'] ?>" alt="Preview" >
-                    </div>
-                    <div class="main-content">
-                        <!-- <span class="category">Apparment</span> -->
-                        <h4><?= $row['nama_notif']; ?></h4>
-                        <p><?= nl2br($row['isi_notif']); ?></p>
-                    </div> 
-                    <!-- <div class="accordion" id="accordionExample">
+        <div class="single-property section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="main-image">
+                            <img id="preview" src="../../../app/assets/img/img_notif/<?= $row['image'] ?>" alt="Preview">
+                        </div>
+                        <div class="main-content">
+                            <!-- <span class="category">Apparment</span> -->
+                            <h4><?= $row['nama_notif']; ?></h4>
+                            <p><?= nl2br($row['isi_notif']); ?></p>
+                        </div>
+                        <!-- <div class="accordion" id="accordionExample">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingOne">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -143,89 +145,90 @@
                             </div>
                         </div>
                     </div> -->
-                </div>
-                <div class="col-lg-4">
-                    <div class="info-table">
-                        <ul>
-                            <li>
-                                <img src="assets/images/berkah.png" alt="" style="max-width: 52px;">
-                                <h6 style="color: darkgoldenrod;">Keberkahan</h6>
-                            </li>
-                            <li>
-                                <img src="assets/images/adil.png" alt="" style="max-width: 52px;">
-                                <h6 style="color: darkred;">Berkeadilan</h6>
-                            </li>
-                            <li>
-                                <img src="assets/images/bersama.png" alt="" style="max-width: 52px;">
-                                <h6 style="color: darkorange;">Kebersamaan</h6>
-                            </li>
-                            <li>
-                                <img src="assets/images/peduli.png" alt="" style="max-width: 52px;">
-                                <h6 style="color: darkmagenta;">Peduli</h6>
-                            </li>
-                            <li>
-                                <img src="assets/images/pemberdaya.png" alt="" style="max-width: 52px;">
-                                <h6 style="color: darkgreen;">Pemberdayaan</h6>
-                            </li>
-                            <li>
-                                <img src="assets/images/pemasaran.png" alt="" style="max-width: 52px;">
-                                <h6 style="color: darkturquoise;">Pemasaran Bersama</h6>
-                            </li>
-                        </ul>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="section best-deal">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="section-heading">
-                        <h6>| Best Deal</h6>
-                        <h2>Find Your Best Deal Right Now!</h2>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="tabs-content">
-                        <div class="row">
-                            <div class="nav-wrapper ">
-                                <ul class="nav nav-tabs" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <a href="../tb_daftar/index.php" class="nav-link active" type="button" role="tab" aria-controls="appartment" aria-selected="true">Daftar</a>
+                    <div class="col-lg-4">
+                        <div class="info-table">
+                            <ul>
+                                <li>
+                                    <img src="assets/images/berkah.png" alt="" style="max-width: 52px;">
+                                    <h6 style="color: darkgoldenrod;">Keberkahan</h6>
                                 </li>
-                                <li class="nav-item" role="presentation">
-                                    <a href="../login/index.php" class="nav-link" type="button" role="tab" aria-controls="villa" aria-selected="false">Log In</a>
+                                <li>
+                                    <img src="assets/images/adil.png" alt="" style="max-width: 52px;">
+                                    <h6 style="color: darkred;">Berkeadilan</h6>
                                 </li>
-                                </ul>
-                            </div>              
-                            
+                                <li>
+                                    <img src="assets/images/bersama.png" alt="" style="max-width: 52px;">
+                                    <h6 style="color: darkorange;">Kebersamaan</h6>
+                                </li>
+                                <li>
+                                    <img src="assets/images/peduli.png" alt="" style="max-width: 52px;">
+                                    <h6 style="color: darkmagenta;">Peduli</h6>
+                                </li>
+                                <li>
+                                    <img src="assets/images/pemberdaya.png" alt="" style="max-width: 52px;">
+                                    <h6 style="color: darkgreen;">Pemberdayaan</h6>
+                                </li>
+                                <li>
+                                    <img src="assets/images/pemasaran.png" alt="" style="max-width: 52px;">
+                                    <h6 style="color: darkturquoise;">Pemasaran Bersama</h6>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <footer class="footer-no-gap">
-        <div class="container">
-        <div class="col-lg-12">
-            <p>Copyright © 2024 Kreasi Anugerah Sejahtera. @IT_Dev. 
-            
-            <!-- Design: <a rel="nofollow" href="https://templatemo.com" target="_blank">TemplateMo</a></p> -->
-        </div>
-        </div>
-    </footer>
+        <div class="section best-deal">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="section-heading">
+                            <h6>| Best Deal</h6>
+                            <h2>Find Your Best Deal Right Now!</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="tabs-content">
+                            <div class="row">
+                                <div class="nav-wrapper ">
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <a href="../tb_daftar/index.php" class="nav-link active" type="button" role="tab" aria-controls="appartment" aria-selected="true">Daftar</a>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <a href="../login/index.php" class="nav-link" type="button" role="tab" aria-controls="villa" aria-selected="false">Log In</a>
+                                        </li>
+                                    </ul>
+                                </div>
 
-    <!-- Scripts -->
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/isotope.min.js"></script>
-    <script src="assets/js/owl-carousel.js"></script>
-    <script src="assets/js/counter.js"></script>
-    <script src="assets/js/custom.js"></script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer-no-gap">
+            <div class="container">
+                <div class="col-lg-12">
+                    <p>Copyright © 2024 Kreasi Anugerah Sejahtera. @IT_Dev.
+
+                        <!-- Design: <a rel="nofollow" href="https://templatemo.com" target="_blank">TemplateMo</a></p> -->
+                </div>
+            </div>
+        </footer>
+
+        <!-- Scripts -->
+        <!-- Bootstrap core JavaScript -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/isotope.min.js"></script>
+        <script src="assets/js/owl-carousel.js"></script>
+        <script src="assets/js/counter.js"></script>
+        <script src="assets/js/custom.js"></script>
 
     </body>
+
     </html>
