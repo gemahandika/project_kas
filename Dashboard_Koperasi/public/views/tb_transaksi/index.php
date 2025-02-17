@@ -61,7 +61,7 @@ include '../../../app/config/koneksi.php';
     <div class="col-md-12">
       <div class="tile">
         <div class="tile-body">
-          <form action="../../../app/controller/Buku_besar.php" method="post">
+          <form id="myForm" action="../../../app/controller/Buku_besar.php" method="post">
             <table class="display nowrap" style="width:100%" id="sampleTable">
               <thead>
                 <tr class="btn-info">
@@ -79,11 +79,11 @@ include '../../../app/config/koneksi.php';
               //jika tanggal dari dan tanggal ke ada maka
               if (isset($_GET['dari']) && isset($_GET['ke'])) {
                 // tampilkan data yang sesuai dengan range tanggal yang dicari 
-                $data = mysqli_query($koneksi, "SELECT * FROM tb_transaksi WHERE tgl_transaksi BETWEEN '" . $_GET['dari'] . "' and '" . $_GET['ke'] . "'");
+                $data = mysqli_query($koneksi, "SELECT * FROM tb_transaksi WHERE tgl_transaksi BETWEEN '" . $_GET['dari'] . "' and '" . $_GET['ke'] . "' ORDER BY id_transaksi DESC ");
                 $pemasukan = 0;
               } else {
                 //jika tidak ada tanggal dari dan tanggal ke maka tampilkan seluruh data
-                $data = mysqli_query($koneksi, "select * from tb_transaksi");
+                $data = mysqli_query($koneksi, "select * from tb_transaksi ORDER BY id_transaksi DESC");
                 $pemasukan = 0;
               }
               // $no digunakan sebagai penomoran 
@@ -113,7 +113,8 @@ include '../../../app/config/koneksi.php';
               <div class="tile-body d-flex flex-wrap align-items-center mt-2">
                 <label class="control-label mx-2"><strong>TOTAL :</strong></label>
                 <div class="form-group">
-                  <input class="form-control" type="text" name="pemasukan" value="<?= $pemasukan ?>">
+                  <input class="form-control" type="text" name="pemasukan" id="pemasukan"
+                    value="<?= $pemasukan ?>" onfocus="removeFormat(this)" onblur="formatAngka(this)">
                 </div>
                 <label class="control-label mx-2"><strong>Keterangan :</strong></label>
                 <div class="form-group">
@@ -133,5 +134,32 @@ include '../../../app/config/koneksi.php';
     </div>
   </div>
 </main>
+
+<script>
+  function formatAngka(element) {
+    let value = element.value.replace(/\./g, '').replace(/\D/g, ''); // Hapus titik & karakter non-angka
+    if (value) {
+      element.value = new Intl.NumberFormat('id-ID').format(value); // Format angka dengan titik ribuan
+    }
+  }
+
+  function removeFormat(element) {
+    element.value = element.value.replace(/\./g, ''); // Hapus titik saat input mendapat fokus
+  }
+
+  // Otomatis format saat halaman dimuat
+  window.onload = function() {
+    let pemasukanInput = document.getElementById("pemasukan");
+    if (pemasukanInput.value) {
+      formatAngka(pemasukanInput);
+    }
+  };
+
+  // Bersihkan format sebelum data dikirim
+  document.getElementById("myForm").addEventListener("submit", function() {
+    let pemasukanInput = document.getElementById("pemasukan");
+    pemasukanInput.value = pemasukanInput.value.replace(/\./g, ''); // Hapus titik sebelum dikirim
+  });
+</script>
 
 <?php include '../../../footer.php'; ?>

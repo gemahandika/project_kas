@@ -1,4 +1,5 @@
 <?php
+include '../../../app/config/koneksi.php';
 $date = date("Y-m-d");
 $time = date("H:i");
 ?>
@@ -96,9 +97,27 @@ $time = date("H:i");
                                     <option value="CABANG">CABANG</option>
                                     <option value="AGEN">AGEN</option>
                                 </select>
+
+                                <div class="form-group" id="cabang_input" style="display: none;"><br>
+                                    <label class="control-label"><strong>Cabang <strong class="text-danger">*</strong></strong></label>
+                                    <select class="form-control" name="status_karyawan" type="text" id="cabang" required>
+                                        <?php
+                                        $no = 1;
+                                        $sql = mysqli_query($koneksi, "SELECT * FROM tb_cabang") or die(mysqli_error($koneksi));
+                                        $result = array();
+                                        while ($data = mysqli_fetch_array($sql)) {
+                                            $result[] = $data;
+                                        }
+                                        foreach ($result as $data) {
+                                        ?>
+                                            <option value="<?= $data['nama_cabang'] ?>"><?= $no++; ?>. <?= $data['nama_cabang'] ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+
                                 <div class="form-group" id="status_input" style="display: none;"><br>
                                     <label class="control-label"><strong>Status Karyawan <strong class="text-danger">*</strong></strong></label>
-                                    <select class="form-control" name="status_karyawan" type="text" id="role" onchange="showInput()" required>
+                                    <select class="form-control" name="status_karyawan" type="text" id="status" onchange="showInput()" required>
                                         <option value="-">- Select Status -</option>
                                         <option value="KARYAWAN TETAP">KARYAWAN TETAP</option>
                                         <option value="KARYAWAN PKWT">PKWT</option>
@@ -106,10 +125,16 @@ $time = date("H:i");
                                     </select>
                                 </div>
 
-                                <div class="form-group mt-2">
+                                <div class="form-group mt-2" id="unit_input">
                                     <label class="control-label"><strong>Unit <strong class="text-danger">*</strong></strong></label>
-                                    <input class="form-control" type="text" name="unit" placeholder="Input Unit" required oninput="convertToUppercase(this)">
+                                    <input class="form-control" type="text" name="unit" id="unit" placeholder="Input Unit" required oninput="convertToUppercase(this)">
                                 </div>
+
+                                <div class="form-group mt-2" id="agen_input" style="display: none;">
+                                    <label class="control-label"><strong>Nama Agen <strong class="text-danger">*</strong></strong></label>
+                                    <input class="form-control" type="text" name="unit" id="agen" placeholder="Input Unit" required oninput="convertToUppercase(this)">
+                                </div>
+
                                 <div class="form-group">
                                     <label class="control-label"><strong>Alamat <strong class="text-danger">*</strong></strong></label>
                                     <input class="form-control" type="text" name="alamat" placeholder="Enter full address" required oninput="convertToUppercase(this)">
@@ -143,15 +168,54 @@ $time = date("H:i");
         function showInput() {
             var role = document.getElementById("role").value;
             var statusInput = document.getElementById("status_input");
+            var statusField = document.getElementById("status"); // Input status
+            var cabangInput = document.getElementById("cabang_input");
+            var cabangField = document.getElementById("cabang"); // Input cabang
+            var agenInput = document.getElementById("agen_input");
+            var agenField = document.getElementById("agen"); // Input agen
+            var unitInput = document.getElementById("unit_input");
+            var unitField = document.getElementById("unit"); // Input unit
 
             if (role === "KARYAWAN") {
-
                 statusInput.style.display = "block";
-            } else {
+                statusField.disabled = false; // Aktifkan input status
+                unitInput.style.display = "block";
+                unitField.disabled = false; // Aktifkan input status
+                cabangInput.style.display = "none";
+                cabangField.disabled = true; // Nonaktifkan input cabang agar tidak terkirim
+                agenInput.style.display = "none";
+                agenField.disabled = true; // Nonaktifkan input cabang agar tidak terkirim
+            } else if (role === "CABANG") {
+                cabangInput.style.display = "block";
+                cabangField.disabled = false; // Aktifkan input cabang
+                unitInput.style.display = "block";
+                unitField.disabled = false; // Aktifkan input status
                 statusInput.style.display = "none";
+                statusField.disabled = true; // Nonaktifkan input status agar tidak terkirim
+                agenInput.style.display = "none";
+                agenField.disabled = true; // Nonaktifkan input cabang agar tidak terkirim
+            } else if (role === "AGEN") {
+                cabangInput.style.display = "none";
+                cabangField.disabled = true; // Aktifkan input cabang
+                statusInput.style.display = "none";
+                statusField.disabled = false; // Nonaktifkan input status agar tidak terkirim
+                agenInput.style.display = "block";
+                agenField.disabled = false; // Nonaktifkan input cabang agar tidak terkirim
+                unitInput.style.display = "none";
+                unitField.disabled = true; // Aktifkan input status
+            } else {
+                cabangInput.style.display = "none";
+                cabangField.disabled = true;
+                statusInput.style.display = "none";
+                statusField.disabled = true;
+                agenInput.style.display = "none";
+                agenField.disabled = true;
+                unitInput.style.display = "none";
+                unitField.disabled = true;
             }
         }
     </script>
+
     <script>
         function inputAngka(evt) {
             var charCode = (evt.which) ? evt.which : event.keyCode
