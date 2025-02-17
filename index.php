@@ -559,7 +559,7 @@ foreach ($result as $data) {
                     ?>
                     <p><i class="fa fa-map-marker-alt me-3"></i>Komp. ATC, Blok F10 Medan</p>
                     <a href="<?php echo $url_google_maps; ?>" target="_blank" class="btn btn-primary">Lihat di Google Maps</a>
-                    <p><i class="fa fa-phone-alt me-3 mt-4"></i>+62 823 8457 1175</p>
+                    <p><i class="fa fa-phone-alt me-3 mt-4"></i>+62 812-3520-3441</p>
                     <!-- Tautan ke Google Maps -->
 
                 </div>
