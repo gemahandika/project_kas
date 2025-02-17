@@ -1,9 +1,9 @@
 <?php
 if (isset($_GET['dari']) && isset($_GET['ke'])) {
-  $sql1 = mysqli_query($koneksi, "SELECT * FROM tb_anggota WHERE join_date BETWEEN '" . $_GET['dari'] . "' and '" . $_GET['ke'] . "'") or die(mysqli_error($koneksi));
+  $sql1 = mysqli_query($koneksi, "SELECT * FROM tb_anggota WHERE status 'AKTIF' AND join_date BETWEEN '" . $_GET['dari'] . "' and '" . $_GET['ke'] . "'") or die(mysqli_error($koneksi));
   $jumlah_data3 = mysqli_num_rows($sql1);
 } else {
-  $sql1 = mysqli_query($koneksi, "SELECT * FROM tb_anggota ") or die(mysqli_error($koneksi));
+  $sql1 = mysqli_query($koneksi, "SELECT * FROM tb_anggota status 'AKTIF' AND ") or die(mysqli_error($koneksi));
   $jumlah_data3 = mysqli_num_rows($sql1);
 }
 // ================================================================================================================================================================
