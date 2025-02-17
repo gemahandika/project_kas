@@ -101,7 +101,7 @@ $time = date("H:i");
                                     <select class="form-control" name="status_karyawan" type="text" id="role" onchange="showInput()" required>
                                         <option value="-">- Select Status -</option>
                                         <option value="KARYAWAN TETAP">KARYAWAN TETAP</option>
-                                        <option value="KARYAWAN TETAP">PKWT</option>
+                                        <option value="KARYAWAN PKWT">PKWT</option>
                                         <option value="OUTSOURCING">OUTSOURCING</option>
                                     </select>
                                 </div>
