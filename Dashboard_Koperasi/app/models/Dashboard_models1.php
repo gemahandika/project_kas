@@ -1,11 +1,28 @@
 <?php
+
 if (isset($_GET['dari']) && isset($_GET['ke'])) {
-  $sql1 = mysqli_query($koneksi, "SELECT * FROM tb_anggota WHERE status = 'AKTIF' AND join_date BETWEEN '" . $_GET['dari'] . "' and '" . $_GET['ke'] . "'") or die(mysqli_error($koneksi));
-  $jumlah_data3 = mysqli_num_rows($sql1);
+  // Ambil tanggal dari input GET dan validasi
+  $dari = $_GET['dari'];
+  $ke = $_GET['ke'];
+
+  // Validasi format tanggal (YYYY-MM-DD)
+  if (DateTime::createFromFormat('Y-m-d', $dari) && DateTime::createFromFormat('Y-m-d', $ke)) {
+    // Gunakan prepared statement untuk keamanan
+    $stmt = $koneksi->prepare("SELECT * FROM tb_anggota WHERE status = 'AKTIF' AND join_date BETWEEN ? AND ?");
+    $stmt->bind_param("ss", $dari, $ke);
+    $stmt->execute();
+    $sql1 = $stmt->get_result();
+  } else {
+    die("Format tanggal tidak valid!");
+  }
 } else {
   $sql1 = mysqli_query($koneksi, "SELECT * FROM tb_anggota WHERE status = 'AKTIF'") or die(mysqli_error($koneksi));
-  $jumlah_data3 = mysqli_num_rows($sql1);
 }
+
+// Hitung jumlah data
+$jumlah_data3 = mysqli_num_rows($sql1);
+
+
 // ================================================================================================================================================================
 // Definisikan variabel saldo dan data_saldo_user
 $saldo = 0;
@@ -58,10 +75,10 @@ if ($dari != '' && $ke != '') {
 
 // Query untuk mengambil data dari database
 $sql = "SELECT 'cabang' AS cabang, COUNT(*) AS total FROM tb_anggota WHERE cabang = 'CABANG' $where_clause
-        UNION 
-        SELECT 'karyawan' AS cabang, COUNT(*) AS total FROM tb_anggota WHERE cabang = 'KARYAWAN' $where_clause
-        UNION 
-        SELECT 'agen' AS cabang, COUNT(*) AS total FROM tb_anggota WHERE cabang = 'AGEN' $where_clause";
+UNION
+SELECT 'karyawan' AS cabang, COUNT(*) AS total FROM tb_anggota WHERE cabang = 'KARYAWAN' $where_clause
+UNION
+SELECT 'agen' AS cabang, COUNT(*) AS total FROM tb_anggota WHERE cabang = 'AGEN' $where_clause";
 $result = mysqli_query($koneksi, $sql);
 
 if (!$result) {
@@ -189,7 +206,7 @@ $json_datasets = json_encode($datasets);
 // ===========================================================================================//
 
 
-// BAR CHART 
+// BAR CHART
 // Fungsi untuk mengambil data dari database
 function getDataForBarChart($koneksi, $dari = '', $ke = '')
 {
