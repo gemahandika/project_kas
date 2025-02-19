@@ -43,7 +43,7 @@ if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_S
 
               <?php
               $no = 0;
-              $sql = mysqli_query($koneksi, "SELECT * FROM tb_anggota WHERE status = 'AKTIF' ORDER BY id_anggota ASC") or die(mysqli_error($koneksi));
+              $sql = mysqli_query($koneksi, "SELECT * FROM tb_anggota WHERE status = 'AKTIF' ORDER BY id_anggota DESC") or die(mysqli_error($koneksi));
               $result = array();
               while ($data = mysqli_fetch_array($sql)) {
                 $result[] = $data;

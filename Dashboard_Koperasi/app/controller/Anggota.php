@@ -54,6 +54,8 @@ if (isset($_POST['add'])) {
     $generate = trim(mysqli_real_escape_string($koneksi, $_POST['generate']));
     $jumlah_tagihan = trim(mysqli_real_escape_string($koneksi, $_POST['jumlah_tagihan']));
     $ket_history = trim(mysqli_real_escape_string($koneksi, $_POST['ket_history']));
+    $status_tagihan = trim(mysqli_real_escape_string($koneksi, $_POST['status_tagihan']));
+    $jumlah_ots = trim(mysqli_real_escape_string($koneksi, $_POST['jumlah_ots']));
 
     // Validasi NIK agar tidak ganda
     $check_query = "SELECT * FROM tb_anggota WHERE nip = '$nip'";
@@ -65,8 +67,8 @@ if (isset($_POST['add'])) {
         mysqli_query($koneksi, "INSERT INTO tb_anggota ( nip, join_date, nama_anggota, divisi, cabang, status_karyawan, phone, alamat, saldo, status) 
     VALUES( '$nip', '$join_date', '$nama_anggota', '$divisi', '$cabang','$status_karyawan','$phone','$alamat',$saldo,'$status')");
         // Masukan data ke table transaksi
-        mysqli_query($koneksi, "INSERT INTO tb_transaksi (nip, nama_anggota, jenis_transaksi, jumlah_transaksi, keterangan, tgl_transaksi) 
-    VALUES('$nip', '$nama_anggota', '$pemasukan', $saldo, '$keterangan', '$join_date')");
+        //     mysqli_query($koneksi, "INSERT INTO tb_transaksi (nip, nama_anggota, jenis_transaksi, jumlah_transaksi, keterangan, tgl_transaksi) 
+        // VALUES('$nip', '$nama_anggota', '$pemasukan', $saldo, '$keterangan', '$join_date')");
         // Update status tb daftar
         mysqli_query($koneksi, "UPDATE tb_daftar SET generate='$generate' WHERE id_daftar='$id_daftar'");
         //  Masukan data ke table User Aplikasi
@@ -74,8 +76,8 @@ if (isset($_POST['add'])) {
     VALUES('$nip', '$nama_anggota', '$nip', '$pass', '$status_user')");
 
         // Masukan data ke table Tagihan
-        mysqli_query($koneksi, "INSERT INTO tb_tagihan ( nama_anggota, nik, status_karyawan,  jumlah_tagihan, tanggal, keterangan) 
-    VALUES( '$nama_anggota', '$nip', '$status_karyawan',  $saldo, '$join_date', '$keterangan')");
+        mysqli_query($koneksi, "INSERT INTO tb_tagihan ( nama_anggota, nik, status_karyawan,  jumlah_tagihan, tanggal, keterangan, status) 
+    VALUES( '$nama_anggota', '$nip', '$status_karyawan',  $jumlah_ots, '$join_date', '$keterangan', '$status_tagihan')");
 
         // Masukan data ke table History
         mysqli_query($koneksi, "INSERT INTO tb_history (nama, nik, tanggal, nominal, keterangan) 

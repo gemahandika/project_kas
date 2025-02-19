@@ -70,7 +70,7 @@ $time = date("H:i");
                     <!-- Modal Edit -->
                     <div class="modal fade" id="editModal<?= $data['id_daftar'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
-                            <form action="../../../app/controller/Anggota.php" method="post">
+                            <form action="../../../app/controller/Anggota.php" method="post" onsubmit="sendWhatsApp(); return true;">
                                 <div class="modal-content">
                                     <div class="modal-header btn btn-primary">
                                         <h5 class="modal-title fs-5" id="exampleModalLabel">Tambah Anggota Baru</h5>
@@ -115,12 +115,12 @@ $time = date("H:i");
                                                 <input class="form-control" type="text" id="status_karyawan" name="status_karyawan" value="<?= $data['status_karyawan'] ?>" required>
                                             </div>
 
-                                            <div class="form-group">
-                                                <label for="saldo">Saldo :</label><br>
-                                                <input class="form-control" type="text" id="saldo" name="saldo" value="100000" required onkeypress="return inputAngka(event)">
-                                            </div>
+
+                                            <input type="hidden" id="saldo" name="saldo" value="0" required onkeypress="return inputAngka(event)">
+                                            <input type="hidden" name="jumlah_ots" value="100000">
                                             <input type="hidden" name="status" value="AKTIF">
                                             <input type="hidden" name="generate" value="diterima">
+                                            <input type="hidden" name="status_tagihan" value="OTS">
 
                                             <!-- UNTUK KE TABLE TAGIHAN -->
                                             <input type="hidden" name="jumlah_tagihan" value=100000>
@@ -135,6 +135,35 @@ $time = date("H:i");
                             </form>
                         </div>
                     </div>
+
+                    <script>
+                        function sendWhatsApp() {
+                            let hp = document.getElementById('hp').value;
+                            let pesan = `Terimakasih sudah bergabung
+
+Silahkan Login ke dashboard KAS
+
+Silahkan Akses Link berikut untuk Login:
+https://kreasianugerahsejahtera.com/Dashboard_Koperasi/public/views/login/login
+
+User: xxxxx
+Password: 123
+
+Silahkan transfer ke rekening berikut:
+Bank BNI : 1897138134 an Koperasi Jasa Kreasi Sejahtera
+
+Sebesar RP.100.000
+dan upload bukti transfer di dashboard user`;
+
+                            // Format nomor HP agar sesuai dengan WhatsApp (hilangkan 0 di awal, ganti dengan 62)
+                            hp = hp.replace(/^0/, "62");
+
+                            // Redirect ke WhatsApp
+                            let url = `https://wa.me/${hp}?text=${encodeURIComponent(pesan)}`;
+                            window.open(url, '_blank');
+                        }
+                    </script>
+
 
                     <!-- Modal Tolak -->
                     <div class="modal fade" id="tolakModal<?= $data['id_daftar'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
