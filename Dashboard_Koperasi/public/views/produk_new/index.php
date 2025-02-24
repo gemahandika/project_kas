@@ -33,9 +33,9 @@ $result = mysqli_query($koneksi, $query);
         <div class="row">
             <div class="col-md-12">
                 <div class="tile">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-plus"></i>TAMBAH PRODUK </button>
-                    <a href="list_data.php" type="button" class="btn btn-primary mb-2"><i class="fa fa-database"></i>LIST DATA </a>
-                    <a href="list_daftar.php" type="button" class="btn btn-primary"><i class="fa fa-user"></i>LIST DAFTAR </a>
+                    <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-plus"></i>TAMBAH PRODUK </button>
+                    <a href="list_data.php" type="button" class="btn btn-primary mt-2"><i class="fa fa-database"></i>LIST DATA </a>
+                    <a href="list_daftar.php" type="button" class="btn btn-primary mt-2"><i class="fa fa-user"></i>LIST DAFTAR </a>
                 </div>
             </div>
         </div>
