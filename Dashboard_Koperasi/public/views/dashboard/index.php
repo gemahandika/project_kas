@@ -117,7 +117,7 @@ $time = date("H:i");
         <div class="col-md-4">
             <div class="tile">
                 <div class="mb-3" style="border-bottom: 1px solid black;">
-                    <div class="d-flex flex-wrap justify-content-around">
+                    <div class="d-flex justify-content-around">
                         <?php
                         $data = mysqli_query($koneksi, "SELECT * FROM tb_kantin ORDER BY id_kantin ASC");
                         $no = 1;
@@ -127,16 +127,19 @@ $time = date("H:i");
                             "rgba(255, 206, 86, 1)", // Kuning
                             "rgba(75, 192, 192, 1)", // Hijau
                             "rgba(153, 102, 255, 1)", // Ungu
+                            // Anda bisa menambahkan warna tambahan sesuai kebutuhan
                         ];
                         while ($d = mysqli_fetch_array($data)) {
-                            $color_index = ($no - 1) % count($colors);
-                            $btn_style = "background-color: " . $colors[$color_index] . ";";
+                            // Gunakan indeks untuk mendapatkan warna dari palet warna
+                            $color_index = $no - 1;
+                            $btn_style = "background-color: " . $colors[$color_index] . ";"; // Style untuk tombol
                         ?>
-                            <h6 class="btn btn-dark btn-sm m-1 text-truncate kantin-btn" style="<?= $btn_style ?>">
-                                <span><?= $d['nama_kantin'] ?></span>
+                            <h6 class="btn btn-dark btn-sm ml-1" style="<?= $btn_style ?>">
+                                <span style="font-size: 9px;"><?= $d['nama_kantin'] ?></span>
                             </h6>
+
                         <?php
-                            $no++;
+                            $no++; // Naikkan nomor untuk warna selanjutnya
                         }
                         ?>
                     </div>
@@ -148,7 +151,6 @@ $time = date("H:i");
                 </div>
             </div>
         </div>
-
 
         <div class="col-md-4">
             <div class="tile">
