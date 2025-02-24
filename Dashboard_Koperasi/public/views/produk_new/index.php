@@ -7,7 +7,7 @@ $time = date("H:i");
 
 include '../../../app/config/koneksi.php';
 include '../../../app/models/Murabahah_models.php';
-include 'modal_produk.php';
+// include 'modal_produk.php';
 
 $query = "SELECT * FROM katagori_produk";
 $result = mysqli_query($koneksi, $query);
@@ -61,10 +61,6 @@ $result = mysqli_query($koneksi, $query);
             </div>
         </div>
     </div>
-
-
-
-
 </main>
 
 <?php include '../../../footer.php'; ?>
