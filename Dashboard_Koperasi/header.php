@@ -116,7 +116,7 @@ $data_saldo_user1 = mysqli_fetch_array($saldo_user);
                 </ul>
             </li>
             <li><a class="app-menu__item" href="../history/index"><i class="app-menu__icon fa fa-file"></i><span class="app-menu__label">History</span></a></li>
-            <li><a class="app-menu__item" href="../produk/index"><i class="app-menu__icon fas fa-handshake"></i><span class="app-menu__label">Produk</span></a></li>
+            <li><a class="app-menu__item" href="../produk_new/index"><i class="app-menu__icon fas fa-handshake"></i><span class="app-menu__label">Produk</span></a></li>
             <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">Data Report</span><i class="treeview-indicator fa fa-angle-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a class="treeview-item" href="../master_report/index"><i class="icon fa fa-circle-o ml-4"></i> Master Report</a></li>
