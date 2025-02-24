@@ -4,11 +4,13 @@ session_start();
 include '../../../header.php';
 $date = date("Y-m-d");
 $time = date("H:i");
+
 include '../../../app/config/koneksi.php';
 include '../../../app/models/Murabahah_models.php';
-// include 'modal_produk.php';
+include 'modal_produk.php';
 
-
+$query = "SELECT * FROM katagori_produk";
+$result = mysqli_query($koneksi, $query);
 
 ?>
 <style>
@@ -40,11 +42,7 @@ include '../../../app/models/Murabahah_models.php';
         <div class="col-md-12">
             <div class="tile">
                 <div class="tile-body d-flex flex-wrap justify-content-center gap-3">
-                    <?php
-                    $query = "SELECT * FROM katagori_produk";
-                    $result = mysqli_query($koneksi, $query);
-                    while ($row = mysqli_fetch_assoc($result)) {
-                    ?>
+                    <?php while ($row = mysqli_fetch_assoc($result)) { ?>
                         <div class="card text-center bg-info m-1" style="width: 18rem;">
                             <div class="card-body d-flex flex-column align-items-center">
                                 <h4 class="card-title text-white text-center" style="border-bottom: 1px solid white;">
