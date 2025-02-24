@@ -4,10 +4,10 @@ session_start();
 include '../../../header.php';
 $date = date("Y-m-d");
 $time = date("H:i");
-include 'modal_produk.php';
-include '../../../app/config/koneksi.php';
-// include '../../../app/models/Murabahah_models.php';
 
+include '../../../app/config/koneksi.php';
+include '../../../app/models/Murabahah_models.php';
+include 'modal_produk.php';
 
 $query = "SELECT * FROM katagori_produk";
 $result = mysqli_query($koneksi, $query);
