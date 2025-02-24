@@ -115,11 +115,11 @@ while ($row = mysqli_fetch_assoc($result)) {
 // Konversi array $pdata menjadi format JSON
 $json_data = json_encode($pdata);
 
-$karyawan = mysqli_query($koneksi, "SELECT * FROM tb_anggota WHERE cabang = 'karyawan' $where_clause") or die(mysqli_error($koneksi));
+$karyawan = mysqli_query($koneksi, "SELECT * FROM tb_anggota WHERE cabang = 'karyawan' AND status = 'AKTIF' $where_clause") or die(mysqli_error($koneksi));
 $jumlah_karyawan = mysqli_num_rows($karyawan);
-$cabang = mysqli_query($koneksi, "SELECT * FROM tb_anggota WHERE cabang = 'cabang' $where_clause") or die(mysqli_error($koneksi));
+$cabang = mysqli_query($koneksi, "SELECT * FROM tb_anggota WHERE cabang = 'cabang' AND status = 'AKTIF' $where_clause") or die(mysqli_error($koneksi));
 $jumlah_cabang = mysqli_num_rows($cabang);
-$agen = mysqli_query($koneksi, "SELECT * FROM tb_anggota WHERE cabang = 'agen' $where_clause") or die(mysqli_error($koneksi));
+$agen = mysqli_query($koneksi, "SELECT * FROM tb_anggota WHERE cabang = 'agen' AND status = 'AKTIF' $where_clause") or die(mysqli_error($koneksi));
 $jumlah_agen = mysqli_num_rows($agen);
 
 // ==================================================================================================
