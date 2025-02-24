@@ -6,7 +6,7 @@ $date = date("Y-m-d");
 $time = date("H:i");
 include 'modal_produk.php';
 include '../../../app/config/koneksi.php';
-include '../../../app/models/Murabahah_models.php';
+// include '../../../app/models/Murabahah_models.php';
 
 
 $query = "SELECT * FROM katagori_produk";
