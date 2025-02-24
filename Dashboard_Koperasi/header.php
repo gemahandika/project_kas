@@ -77,8 +77,9 @@ $data_saldo_user1 = mysqli_fetch_array($saldo_user);
     <aside class="app-sidebar">
         <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="../../../app/assets/img/User.png" alt="profile" style="width: 50px; height: 50px;">
             <div>
-                <p class="app-sidebar__user-name"><?= $user1 ?></p>
+                <p class="app-sidebar__user-name" style="font-size: 12px;"><?= $user1 ?></p>
             </div>
+
         </div>
         <ul class="app-menu">
             <li><a class="app-menu__item" href="../dashboard/index"><i class="app-menu__icon fas fa-university"></i><span class="app-menu__label">Dashboard</span></a></li>
