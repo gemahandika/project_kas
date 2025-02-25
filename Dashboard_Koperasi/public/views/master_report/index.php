@@ -3,6 +3,7 @@ session_name("kas_session");
 session_start();
 include '../../../header.php';
 include '../../../app/config/koneksi.php';
+$date = date("Y-m-d");
 ?>
 <main class="app-content">
   <div class="app-title">
@@ -33,7 +34,7 @@ include '../../../app/config/koneksi.php';
                     <th class="small">ACTION</th>
                   <?php } ?>
                   <th class="small">NO</th>
-                  <th class="small">TANGGAL</th>
+                  <th class="small">TANGGAL UPDATE</th>
                   <th class="small">NAMA REPORT</th>
                   <th class="small">KETERANGAN</th>
                   <th class="small">DEBIT</th>
@@ -102,7 +103,7 @@ include '../../../app/config/koneksi.php';
                     <div class="report-it">
                       <input type="hidden" name="id" value="<?= $data['id_report'] ?>">
                       <input type="hidden" id="nama" name="nama" value="<?= $data['nama_report'] ?>">
-                      <input type="hidden" id="date" name="date" value="<?= $data['tgl_report'] ?>">
+                      <input type="hidden" id="date" name="date" value="<?= $date ?> ">
                       <input type="hidden" id="debit" name="debit" value="<?= $simpanan3 ?>">
                       <input type="hidden" id="kredit" name="kredit" value="<?= $simpanan4 ?>">
                       <h6>Apakah Ingin Update Data <b><?= $data['nama_report'] ?></b> ? </h6>

@@ -122,6 +122,9 @@ $data_saldo_user1 = mysqli_fetch_array($saldo_user);
                 <ul class="treeview-menu">
                     <li><a class="treeview-item" href="../master_report/index"><i class="icon fa fa-circle-o ml-4"></i> Master Report</a></li>
                 </ul>
+                <!-- <ul class="treeview-menu">
+                    <li><a class="treeview-item" href="../laporan_koperasi/index"><i class="icon fa fa-circle-o ml-4"></i> Laporan Koperasi</a></li>
+                </ul> -->
             </li>
             <?php if (in_array("super_admin", $_SESSION['admin_akses']) || in_array("admin", $_SESSION['admin_akses'])) { ?>
                 <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-gear"></i><span class="app-menu__label">Setting</span><i class="treeview-indicator fa fa-angle-right"></i></a>
