@@ -146,8 +146,6 @@ if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_S
 
                                                 <!-- Kolom Kanan -->
                                                 <div class="col-md-6">
-
-
                                                     <div class="form-group">
                                                         <label for="nama_barang">NAMA BARANG :</label><br>
                                                         <input class="form-control" type="text" id="nama_barang" name="nama_barang" value="<?= $data['nama_barang'] ?>" onkeypress="return inputAngka(event)">
@@ -176,7 +174,6 @@ if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_S
                                                         <label for="lama_menabung">LAMA MENABUNG:</label><br>
                                                         <input class="form-control" type="text" id="lama_menabung" name="lama_menabung" value="<?= $data['lama_menabung'] ?>" onkeypress="return inputAngka(event)">
                                                     </div>
-                                                    <!-- <input type="hidden" id="status" name="status" value="AKTIF"> -->
                                                 </div>
                                             </div>
                                         </div>

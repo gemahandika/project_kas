@@ -92,20 +92,25 @@ if (isset($_POST['add'])) {
     $nama_anggota = trim(mysqli_real_escape_string($koneksi, $_POST['nama_anggota']));
     $divisi = trim(mysqli_real_escape_string($koneksi, $_POST['divisi']));
     $cabang = trim(mysqli_real_escape_string($koneksi, $_POST['cabang']));
-    $saldo = trim(mysqli_real_escape_string($koneksi, $_POST['saldo']));
+
+    $status_karyawan = trim(mysqli_real_escape_string($koneksi, $_POST['status_karyawan']));
+    $phone = trim(mysqli_real_escape_string($koneksi, $_POST['phone']));
+    $alamat = trim(mysqli_real_escape_string($koneksi, $_POST['alamat']));
+
+    // $saldo = trim(mysqli_real_escape_string($koneksi, $_POST['saldo']));
     $status = trim(mysqli_real_escape_string($koneksi, $_POST['status']));
     // Validasi NIK agar tidak ganda
-    // $check_query = "SELECT * FROM tb_anggota WHERE nip = '$nip'";
-    // $check_result = $koneksi->query($check_query);
-    // if ($check_result->num_rows > 0) {
-    //     showSweetAlert('warning', 'Oops...', $pesan, '#3085d6', '../../public/views/data_anggota/index');
-    // } else {
-    mysqli_query($koneksi, "UPDATE tb_anggota SET nip='$nip', join_date='$join_date', nama_anggota='$nama_anggota', divisi='$divisi', cabang='$cabang', saldo='$saldo',
-    status='$status' WHERE id_anggota='$id'");
-    mysqli_query($koneksi, "UPDATE user SET nama_user='$nama_anggota' WHERE nip='$nip'");
-    mysqli_query($koneksi, "UPDATE user SET nip='$nip' WHERE nama_user='$nama_anggota'");
-    showSweetAlert('success', 'Success', $pesan_update, '#3085d6', '../../public/views/data_anggota/index');
-    // }
+    $check_query = "SELECT * FROM tb_anggota WHERE nip = '$nip'";
+    $check_result = $koneksi->query($check_query);
+    if ($check_result->num_rows > 0) {
+        showSweetAlert('warning', 'Oops...', $pesan, '#3085d6', '../../public/views/data_anggota/index');
+    } else {
+        mysqli_query($koneksi, "UPDATE tb_anggota SET nip='$nip', join_date='$join_date', nama_anggota='$nama_anggota', divisi='$divisi', cabang='$cabang',
+    status_karyawan='$status_karyawan', phone='$phone', alamat='$alamat',  status='$status' WHERE id_anggota='$id'");
+        mysqli_query($koneksi, "UPDATE user SET nama_user='$nama_anggota' WHERE nip='$nip'");
+        mysqli_query($koneksi, "UPDATE user SET nip='$nip' WHERE nama_user='$nama_anggota'");
+        showSweetAlert('success', 'Success', $pesan_update, '#3085d6', '../../public/views/data_anggota/index');
+    }
 } else if (isset($_POST['ambil'])) {
     $id = $_POST['id'];
     $saldo_update = trim(mysqli_real_escape_string($koneksi, $_POST['saldo_update']));

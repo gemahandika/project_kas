@@ -72,7 +72,7 @@ if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_S
           </form>
           <!-- Modal Edit -->
           <div class="modal fade" id="editModal<?= $data['id_anggota'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-lg">
               <form action="../../../app/controller/Anggota.php" method="post">
                 <div class="modal-content">
                   <div class="modal-header btn btn-info">
@@ -82,36 +82,81 @@ if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_S
                   <div class="modal-body">
                     <div class="report-it">
                       <input type="hidden" name="id" value="<?= $data['id_anggota'] ?>">
-                      <div class="form-group">
-                        <label for="nip">NIP :</label><br>
-                        <input class="form-control" type="text" id="nip" name="nip" value="<?= $data['nip'] ?>">
-                      </div>
-                      <div class="form-group">
-                        <label for="join_date">Join Date :</label><br>
-                        <input class="form-control" type="date" id="join_date" name="join_date" value="<?= $data['join_date'] ?>">
-                      </div>
-                      <div class="form-group">
-                        <label for="nama_anggota">Nama Anggota :</label><br>
-                        <input class="form-control" type="text" id="nama_anggota" name="nama_anggota" value="<?= $data['nama_anggota'] ?>">
-                      </div>
-                      <div class="form-group">
-                        <label for="divisi">Divisi :</label><br>
-                        <input class="form-control" type="text" id="divisi" name="divisi" value="<?= $data['divisi'] ?>">
-                      </div>
-                      <div class="form-group">
-                        <label for="cabang">Cabang :</label><br>
-                        <input class="form-control" type="text" id="cabang" name="cabang" value="<?= $data['cabang'] ?>">
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleSelect1">Status : </label>
-                        <select class="form-control" id="exampleSelect1" name="status">
-                          <option value="<?= ($data['status']) ?>"><?= ($data['status']) ?></option>
-                          <option value="NON AKTIF">NON AKTIF</option>
-                        </select>
-                      </div>
-                      <div class="form-group">
-                        <label for="saldo">Saldo :</label><br>
-                        <input class="form-control" type="text" id="saldo" name="saldo" value="<?= $data['saldo'] ?>" onkeypress="return inputAngka(event)">
+
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="nip">NIP :</label><br>
+                            <input class="form-control" type="text" id="nip" name="nip" value="<?= $data['nip'] ?>">
+                          </div>
+                          <div class="form-group">
+                            <label for="join_date">Join Date :</label><br>
+                            <input class="form-control" type="date" id="join_date" name="join_date" value="<?= $data['join_date'] ?>">
+                          </div>
+                          <div class="form-group">
+                            <label for="nama_anggota">Nama Anggota :</label><br>
+                            <input class="form-control" type="text" id="nama_anggota" name="nama_anggota" value="<?= $data['nama_anggota'] ?>">
+                          </div>
+                          <div class="form-group">
+                            <label for="divisi">Divisi :</label><br>
+                            <input class="form-control" type="text" id="divisi" name="divisi" value="<?= $data['divisi'] ?>">
+                          </div>
+                          <div class="form-group">
+                            <label for="cabang">Status Anggota :</label><br>
+                            <select class="form-control" name="cabang" type="cabang" id="cabang" onchange="showInput()" required>
+                              <option value="<?= $data['cabang'] ?>"><?= $data['cabang'] ?></option>
+                              <option value="KARYAWAN">KARYAWAN</option>
+                              <option value="CABANG">CABANG</option>
+                              <option value="AGEN">AGEN</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="cabang">Status Karyawan :</label><br>
+                            <select class="form-control" name="status_karyawan" type="text" id="status" onchange="showInput()" required>
+                              <option value="<?= $data['status_karyawan'] ?>"><?= $data['status_karyawan'] ?></option>
+                              <option value="KARYAWAN TETAP">1. KARYAWAN TETAP</option>
+                              <option value="KARYAWAN PKWT">2. PKWT</option>
+                              <option value="OUTSOURCING">3. OUTSOURCING</option>
+                              <?php
+                              $no = 4;
+                              $sql = mysqli_query($koneksi, "SELECT * FROM tb_cabang") or die(mysqli_error($koneksi));
+                              $result = array();
+                              while ($data1 = mysqli_fetch_array($sql)) {
+                                $result[] = $data1;
+                              }
+                              foreach ($result as $data1) {
+                              ?>
+                                <option value="<?= $data1['nama_cabang'] ?>"><?= $no++; ?>. <?= $data1['nama_cabang'] ?></option>
+                              <?php } ?>
+                            </select>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="phone">Phone :</label><br>
+                            <input class="form-control" type="text" id="phone" name="phone" value="<?= $data['phone'] ?>" onkeypress="return inputAngka(event)">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="alamat">Alamat :</label><br>
+                            <input class="form-control" type="text" id="alamat" name="alamat" value="<?= $data['alamat'] ?>">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="saldo">Saldo :</label><br>
+                            <input class="form-control" type="text" id="saldo" name="saldo" value="<?= number_format($data['saldo']) ?>" onkeypress="return inputAngka(event)" readonly>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="exampleSelect1">Status : </label>
+                            <select class="form-control" id="exampleSelect1" name="status">
+                              <option value="<?= ($data['status']) ?>"><?= ($data['status']) ?></option>
+                              <option value="NON AKTIF">NON AKTIF</option>
+                            </select>
+                          </div>
+                        </div>
                       </div>
                       <!-- <input type="hidden" id="status" name="status" value="AKTIF"> -->
                     </div>
