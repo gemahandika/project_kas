@@ -20,6 +20,10 @@ $time = date("H:i");
                 <div class="modal-body">
                     <div class="report-it">
                         <div class="form-group">
+                            <label for="nik">NIK :</label><br>
+                            <input type="text" class="form-control" id="report" name="nik" required onkeyup="myFunction()">
+                        </div>
+                        <div class="form-group">
                             <label for="user_id">User ID :</label><br>
                             <input type="text" class="form-control" id="report" name="user_id" required onkeyup="myFunction()">
                         </div>
