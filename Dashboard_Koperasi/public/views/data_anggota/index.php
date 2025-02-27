@@ -87,7 +87,7 @@ if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_S
                         <div class="col-md-6">
                           <div class="form-group">
                             <label for="nip">NIP :</label><br>
-                            <input class="form-control" type="text" id="nip" name="nip" value="<?= $data['nip'] ?>">
+                            <input class="form-control" type="text" id="nip" name="nip" value="<?= $data['nip'] ?>" readonly>
                           </div>
                           <div class="form-group">
                             <label for="join_date">Join Date :</label><br>
