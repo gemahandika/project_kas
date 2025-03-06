@@ -5,6 +5,9 @@ include '../../../header.php';
 include '../../../app/models/Dashboard_models1.php';
 include '../../../app/models/Daftar_models.php';
 include '../../../app/models/Murabahah_models.php';
+$query = "SELECT * FROM katagori_produk";
+$result = mysqli_query($koneksi, $query);
+// include 'modal_produk.php';
 $date = date("Y-m-d");
 $time = date("H:i");
 ?>
@@ -186,45 +189,26 @@ $time = date("H:i");
 
         <div class="col-md-12">
             <div class="tile">
-                <div class="mb-3">
-                    <div class="text-center" style="border-bottom: 1px solid black;">
-                        <h6 class="text-info"><strong>PRODUK YANG DIMINATI</strong></h6>
-                    </div>
-                </div>
-                <div class="d-flex align-items-center justify-content-center flex-column flex-md-row">
-                    <div class="col-md-3">
-                        <div class="card">
-                            <div class="card-body text-center">
-                                <i class="fas fa-money-check-alt fa-4x mb-3" style="opacity: 0.6;"></i>
-                                <h6 class="card-title">PRODUK MURABAHAH</h6>
-                                <h1 class="card-text mb-4"><?= $terima_murabahah ?></h1>
-                                <a href="../produk/data_murabahah" class="btn btn-primary">Lihat</a>
+                <div class="tile-body d-flex flex-wrap justify-content-center gap-2">
+                    <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+                        <div class="card text-center bg-info m-1" style="width: 14rem;">
+                            <div class="card-body d-flex flex-column align-items-center p-2">
+                                <h5 class="card-title text-white text-center" style="border-bottom: 1px solid white; font-size: 14px;">
+                                    <strong><?= $row['nama_produk'] ?></strong>
+                                </h5>
+                                <div style="width: 100%; height: 120px; background-color: white; display: flex; align-items: center; justify-content: center;">
+                                    <img src="../../../app/assets/img/produk/<?= $row['poto_produk']; ?>"
+                                        alt="<?= $row['poto_produk']; ?>"
+                                        style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                </div>
+                                <!-- <a href="daftar.php" class="btn btn-warning btn-sm mt-2">Daftar Disini</a> -->
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card">
-                            <div class="card-body text-center">
-                                <i class="fas fa-handshake fa-4x mb-3" style="opacity: 0.6;"></i>
-                                <h6 class="card-title">PRODUK MUDHARABAH</h6>
-                                <h1 class="card-text mb-4"><?= $terima_mudharabah ?></h1>
-                                <a href="../produk/data_mudharabah" class="btn btn-primary">Lihat</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card">
-                            <div class="card-body text-center">
-                                <i class="fas fa-bank fa-4x mb-3" style="opacity: 0.6;"></i>
-                                <h6 class="card-title">TABUNGAN EMAS</h6>
-                                <h1 class="card-text mb-4"><?= $terima_emas ?></h1>
-                                <a href="../produk/data_emas" class="btn btn-primary">Lihat</a>
-                            </div>
-                        </div>
-                    </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>
+
     </div>
 
 </main>
