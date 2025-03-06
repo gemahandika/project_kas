@@ -1,3 +1,8 @@
+<?php
+include 'Dashboard_Koperasi/app/config/koneksi.php';
+$query = "SELECT * FROM katagori_produk";
+$result = mysqli_query($koneksi, $query);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,7 +52,7 @@
             <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
                 <a href="index.html" class="navbar-brand p-0">
 
-                    <h2 class="m-0"><img src="img/LOGO1.png" alt="LOGO1.png">KREASI ANUGRAH SEJAHTERA </h2>
+                    <h5 class="m-0"><img src="img/LOGO1.png" alt="LOGO1.png">KREASI ANUGRAH SEJAHTERA </h5>
 
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -76,107 +81,94 @@
 
             <div class="container-xxl bg-primary page-header">
                 <div class="container text-center">
-                    <h1 class="text-white animated zoomIn mb-3">NANTIKAN PRODUK KAMI</h1>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb justify-content-center">
-                            <li class="breadcrumb-item"><a class="text-white" href="index.php">BACK HOME</a></li>
-
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
-        <!-- Navbar & Hero End -->
-
-        <!-- 404 Start -->
-        <div class="container-xxl py-2 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="container text-center">
-                <div class="row justify-content-center">
-                    <div class="col-lg-6">
-                        <i class="bi bi-exclamation-triangle display-1 text-primary"></i>
-                        <h1 class="mb-4">Penawaran Tidak Tersedia</h1>
-                        <p class="mb-4">Mohon maaf, produk akan kami update setelah tersedia, mohon menunggu dan kembali untuk melihat penawaran kami</p>
-                        <a class="btn btn-primary rounded-pill py-3 px-5" href="index.php">Go Back To Home</a>
+                    <h1 class="text-white animated zoomIn mb-4">Product</h1>
+                    <div class="col-md-12">
+                        <div class="tile">
+                            <div class="tile-body d-flex flex-wrap justify-content-center gap-2">
+                                <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+                                    <div class="card text-center bg-white m-1" style="width: 14rem;">
+                                        <div class="card-body d-flex flex-column align-items-center p-2">
+                                            <h5 class="card-title text-black text-center" style="border-bottom: 1px solid black; font-size: 14px;">
+                                                <strong><?= $row['nama_produk'] ?></strong>
+                                            </h5>
+                                            <div style="width: 100%; height: 120px; background-color: white; display: flex; align-items: center; justify-content: center;">
+                                                <img src="Dashboard_Koperasi/app/assets/img/produk/<?= $row['poto_produk']; ?>"
+                                                    alt="<?= $row['poto_produk']; ?>"
+                                                    style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                            </div>
+                                            <!-- <a href="daftar.php" class="btn btn-warning btn-sm mt-2">Daftar Disini</a> -->
+                                        </div>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- 404 End -->
+    </div>
 
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer pt-5 wow fadeIn" data-wow-delay="0.1s" style="margin-top: 6rem;">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-md-6 col-lg-3">
+                    <h5 class="text-white mb-4">Lokasi kami</h5>
+                    <?php
+                    // Koordinat untuk lokasi Anda
 
-        <!-- Footer Start -->
-        <!-- <div class="container-fluid bg-dark text-light footer pt-5 wow fadeIn" data-wow-delay="0.1s" style="margin-top: 6rem;">-->
-        <!--     <div class="container py-5">-->
-        <!--         <div class="row g-5">-->
-        <!--             <div class="col-md-6 col-lg-3">-->
-        <!--                 <h5 class="text-white mb-4">Get In Touch</h5>-->
-        <!--                 <p><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>-->
-        <!--                 <p><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>-->
-        <!--                 <p><i class="fa fa-envelope me-3"></i>info@example.com</p>-->
-        <!--                 <div class="d-flex pt-2">-->
-        <!--                     <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>-->
-        <!--                     <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>-->
-        <!--                     <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>-->
-        <!--                     <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-instagram"></i></a>-->
-        <!--                     <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>-->
-        <!--                 </div>-->
-        <!--             </div>-->
-        <!--             <div class="col-md-6 col-lg-3">-->
-        <!--                 <h5 class="text-white mb-4">Quick Link</h5>-->
-        <!--                 <a class="btn btn-link" href="">About Us</a>-->
-        <!--                 <a class="btn btn-link" href="">Contact Us</a>-->
-        <!--                 <a class="btn btn-link" href="">Privacy Policy</a>-->
-        <!--                 <a class="btn btn-link" href="">Terms & Condition</a>-->
-        <!--                 <a class="btn btn-link" href="">Career</a>-->
-        <!--             </div>-->
-        <!--             <div class="col-md-6 col-lg-3">-->
-        <!--                 <h5 class="text-white mb-4">Popular Link</h5>-->
-        <!--                 <a class="btn btn-link" href="">About Us</a>-->
-        <!--                 <a class="btn btn-link" href="">Contact Us</a>-->
-        <!--                 <a class="btn btn-link" href="">Privacy Policy</a>-->
-        <!--                 <a class="btn btn-link" href="">Terms & Condition</a>-->
-        <!--                 <a class="btn btn-link" href="">Career</a>-->
-        <!--             </div>-->
-        <!--             <div class="col-md-6 col-lg-3">-->
-        <!--                 <h5 class="text-white mb-4">Newsletter</h5>-->
-        <!--                 <p>Lorem ipsum dolor sit amet elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulpu</p>-->
-        <!--                 <div class="position-relative w-100 mt-3">-->
-        <!--                     <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text" placeholder="Your Email" style="height: 48px;">-->
-        <!--                     <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i class="fa fa-paper-plane text-primary fs-4"></i></button>-->
-        <!--                 </div>-->
-        <!--             </div>-->
-        <!--         </div>-->
-        <!--     </div>-->
-        <!--     <div class="container">-->
-        <!--         <div class="copyright">-->
-        <!--             <div class="row">-->
-        <!--                 <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">-->
-        <!--                     &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved. -->
+                    $latitude = 3.536116123814281;
+                    $longitude = 98.73714831566002;
 
-        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-        <!--Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>-->
-        <!--                     <br>Distributed By: <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>-->
-        <!--                 </div>-->
-        <!--                 <div class="col-md-6 text-center text-md-end">-->
-        <!--                     <div class="footer-menu">-->
-        <!--                         <a href="">Home</a>-->
-        <!--                         <a href="">Cookies</a>-->
-        <!--                         <a href="">Help</a>-->
-        <!--                         <a href="">FQAs</a>-->
-        <!--                     </div>-->
-        <!--                 </div>-->
-        <!--             </div>-->
-        <!--         </div>-->
-        <!--     </div>-->
-        <!-- </div>-->
-        <!-- Footer End -->
+                    // Fungsi untuk menghasilkan URL Google Maps
+                    function generateGoogleMapsURL($latitude, $longitude)
+                    {
+                        // Format URL untuk Google Maps dengan koordinat tertentu
+                        $url = "https://www.google.com/maps?q={$latitude},{$longitude}";
 
+                        return $url;
+                    }
 
+                    // Generate URL Google Maps
+                    $url_google_maps = generateGoogleMapsURL($latitude, $longitude);
+                    ?>
+                    <p><i class="fa fa-map-marker-alt me-3"></i>Komp. ATC, Blok F10 Medan</p>
+                    <a href="<?php echo $url_google_maps; ?>" target="_blank" class="btn btn-primary">Lihat di Google Maps</a>
+                    <p><i class="fa fa-phone-alt me-3 mt-4"></i>+62 812-3520-3441</p>
+                    <!-- Tautan ke Google Maps -->
+
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        &copy; <a class="border-bottom" href="#">kreasianugerahsejahtera.com</a>, All Right Reserved.
+
+                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                        Designed By <a class="border-bottom" href="#">It_development</a>
+                        <br>Distributed By : Kreasi Anugerah Sejahtera <a class="border-bottom" href="#"></a>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <div class="footer-menu">
+                            <!--<a href="">Home</a>-->
+                            <!--<a href="">Cookies</a>-->
+                            <!--<a href="">Help</a>-->
+                            <!--<a href="">FQAs</a>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+    <div>
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
 
-    <!-- JavaScript Libraries -->
+
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="lib/wow/wow.min.js"></script>
