@@ -30,12 +30,13 @@ $time = date("H:i");
                             <label for="nominal">NOMINAL :</label><br>
                             <input class="form-control" type="number" id="nominal" name="nominal" min="0" value="0" onkeypress="return inputAngka(event)" required>
                         </div>
-                        <div class="form-group">
+                        <input type="hidden" name="keterangan" value="AKTIF" readonly>
+                        <!-- <div class="form-group">
                             <label for="tahun">TAHUN :</label><br>
                             <select class="form-control" id="tahun" name="tahun" required>
                                 <option value="">Pilih Tahun</option>
                             </select>
-                        </div>
+                        </div> -->
 
                     </div>
                 </div>

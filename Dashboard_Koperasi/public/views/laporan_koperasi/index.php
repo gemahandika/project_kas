@@ -23,7 +23,8 @@ include '../../../app/models/Laporan_models.php'
                     </div>
                     <table id="example" class="display" style="width:100%">
                         <thead>
-                            <tr class="bg-secondary text-white">
+                            <tr class="bg-primary text-white">
+                                <th class=" text-center">ACTION</th>
                                 <th class=" text-center">NO</th>
                                 <th class=" text-center">PENDAPATAN USAHA</th>
                                 <th class=" text-center">PENDAPATAN</th>
@@ -31,7 +32,7 @@ include '../../../app/models/Laporan_models.php'
                         </thead>
                         <?php
                         $no = 0;
-                        $sql = mysqli_query($koneksi, "SELECT * FROM laporan_koperasi WHERE jenis_laporan = '1' ORDER BY id_laporan DESC") or die(mysqli_error($koneksi));
+                        $sql = mysqli_query($koneksi, "SELECT * FROM laporan_koperasi WHERE jenis_laporan = '1' AND keterangan = 'AKTIF' ORDER BY id_laporan DESC") or die(mysqli_error($koneksi));
                         $result = array();
                         while ($data = mysqli_fetch_array($sql)) {
                             $result[] = $data;
@@ -41,10 +42,75 @@ include '../../../app/models/Laporan_models.php'
                         ?>
 
                             <tr>
+                                <td class="small text-center">
+                                    <a href="#" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal<?= $data['id_laporan'] ?>">Update</a>
+                                    <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapusModal<?= $data['id_laporan'] ?>">Hapus</a>
+                                </td>
                                 <td class=" text-center"><?= $no ?></td>
                                 <td class=" text-center"><?= $data['nama_laporan'] ?></td>
                                 <td class=" text-right mr-4"><?= number_format($data['nominal']) ?></td>
                             </tr>
+
+                            <!-- Modal Update Pendapatan -->
+                            <div class="modal fade" id="editModal<?= $data['id_laporan'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <form action="../../../app/controller/Laporan.php" method="post">
+                                        <div class="modal-content">
+                                            <div class="modal-header btn btn-primary">
+                                                <h5 class="modal-title fs-5" id="exampleModalLabel">Edit Data Laporan</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="report-it">
+                                                    <input type="hidden" name="id" value="<?= $data['id_laporan'] ?>" readonly>
+                                                    <div class="form-group text-center text-primary">
+                                                        <label for="nama_laporan"><b>PENDAPATAN USAHA</b></label><br>
+                                                        <input class="form-control text-center" type="text" id="nama_laporan" name="nama_laporan" value="<?= $data['nama_laporan'] ?>" required>
+                                                    </div>
+                                                    <div class="form-group text-center text-primary">
+                                                        <label for="nominal"><b>NOMINAL</b></label><br>
+                                                        <input class="form-control text-center" type="text" id="nominal" name="nominal" value="<?= number_format($data['nominal']) ?>" min="0" onkeypress="return inputAngka(event)" required>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <input type="submit" name="edit_laporan" class="btn btn-primary" value="Update">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- Modal Nonaktif Pendapatan -->
+                            <div class="modal fade" id="hapusModal<?= $data['id_laporan'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <form action="../../../app/controller/Laporan.php" method="post">
+                                        <div class="modal-content">
+                                            <div class="modal-header btn btn-danger">
+                                                <h5 class="modal-title fs-5" id="exampleModalLabel">Hapus Data Laporan</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="report-it">
+                                                    <input type="hidden" name="id" value="<?= $data['id_laporan'] ?>" readonly>
+                                                    <div class="form-group text-center text-danger">
+                                                        <label for="nama_laporan"><b>Apakah Anda Ingin Menghapus Data ini ?</b></label><br>
+                                                    </div>
+                                                    <div class="form-group text-center text-danger">
+                                                        <label for="nominal"><b>NOMINAL</b></label><br>
+                                                        <input class="form-control text-center" type="number" id="nominal" name="nominal" value="<?= $data['nominal'] ?>" required readonly>
+                                                    </div>
+                                                    <input type="hidden" name="keterangan" value="NONAKTIF" readonly>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <input type="submit" name="nonaktif_laporan" class="btn btn-danger" value="Hapus">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
 
                         <?php } ?>
                     </table>
@@ -60,7 +126,8 @@ include '../../../app/models/Laporan_models.php'
                     </div>
                     <table id="example1" class="display" style="width:100%">
                         <thead>
-                            <tr class="bg-secondary text-white">
+                            <tr class="bg-info text-white">
+                                <th class="text-center">ACTION</th>
                                 <th class="text-center">NO</th>
                                 <th class="text-center">BEBAN USAHA</th>
                                 <th class="text-center">BEBAN</th>
@@ -68,7 +135,7 @@ include '../../../app/models/Laporan_models.php'
                         </thead>
                         <?php
                         $no = 0;
-                        $sql = mysqli_query($koneksi, "SELECT * FROM laporan_koperasi WHERE jenis_laporan = '2' ORDER BY id_laporan DESC") or die(mysqli_error($koneksi));
+                        $sql = mysqli_query($koneksi, "SELECT * FROM laporan_koperasi WHERE jenis_laporan = '2' AND keterangan = 'AKTIF' ORDER BY id_laporan DESC") or die(mysqli_error($koneksi));
                         $result = array();
                         while ($data = mysqli_fetch_array($sql)) {
                             $result[] = $data;
@@ -77,11 +144,75 @@ include '../../../app/models/Laporan_models.php'
                             $no++;
                         ?>
                             <tr>
+                                <td class="small text-center">
+                                    <a href="#" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal<?= $data['id_laporan'] ?>">Update</a>
+                                    <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapusModal<?= $data['id_laporan'] ?>">Hapus</a>
+                                </td>
                                 <td class="text-center"><?= $no ?></td>
                                 <td class="text-center"><?= $data['nama_laporan'] ?></td>
                                 <td class="text-right mr-4"><?= number_format($data['nominal']) ?></td>
                             </tr>
 
+                            <!-- Modal Update Beban -->
+                            <div class="modal fade" id="editModal<?= $data['id_laporan'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <form action="../../../app/controller/Laporan.php" method="post">
+                                        <div class="modal-content">
+                                            <div class="modal-header btn btn-info">
+                                                <h5 class="modal-title fs-5" id="exampleModalLabel">Edit Data Laporan</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="report-it">
+                                                    <input type="hidden" name="id" value="<?= $data['id_laporan'] ?>" readonly>
+                                                    <div class="form-group text-center text-info">
+                                                        <label for="nama_laporan"><b>BEBAN USAHA</b></label><br>
+                                                        <input class="form-control text-center" type="text" id="nama_laporan" name="nama_laporan" value="<?= $data['nama_laporan'] ?>" required>
+                                                    </div>
+                                                    <div class="form-group text-center text-info">
+                                                        <label for="nominal"><b>NOMINAL</b></label><br>
+                                                        <input class="form-control text-center" type="number" id="nominal" name="nominal" value="<?= $data['nominal'] ?>" min="0" onkeypress="return inputAngka(event)" required>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <input type="submit" name="edit_laporan" class="btn btn-info" value="Update">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- Modal Nonaktif BEBAN -->
+                            <div class="modal fade" id="hapusModal<?= $data['id_laporan'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <form action="../../../app/controller/Laporan.php" method="post">
+                                        <div class="modal-content">
+                                            <div class="modal-header btn btn-danger">
+                                                <h5 class="modal-title fs-5" id="exampleModalLabel">Hapus Data Laporan</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="report-it">
+                                                    <input type="hidden" name="id" value="<?= $data['id_laporan'] ?>" readonly>
+                                                    <div class="form-group text-center text-danger">
+                                                        <label for="nama_laporan"><b>Apakah Anda Ingin Menghapus Data ini ?</b></label><br>
+                                                    </div>
+                                                    <div class="form-group text-center text-danger">
+                                                        <label for="nominal"><b>NOMINAL</b></label><br>
+                                                        <input class="form-control text-center" type="number" id="nominal" name="nominal" value="<?= $data['nominal'] ?>" required readonly>
+                                                    </div>
+                                                    <input type="hidden" name="keterangan" value="NONAKTIF" readonly>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <input type="submit" name="nonaktif_laporan" class="btn btn-danger" value="Hapus">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         <?php } ?>
                     </table>
                     <div class="tile-body d-flex justify-content-between mr-2">
