@@ -8,7 +8,7 @@ if (!isset($_SESSION['admin_username'])) {
 //     exit();
 // }
 include 'app/config/koneksi.php';
-$user1 = $_SESSION['admin_username'];
+$user1 = $_SESSION['admin_status'];
 $sql = mysqli_query($koneksi, "SELECT * FROM user WHERE username='$user1'") or die(mysqli_error($koneksi));
 $data1 = $sql->fetch_array();
 $data2 = $data1["nip"];
