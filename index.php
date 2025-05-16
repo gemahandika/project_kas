@@ -298,100 +298,7 @@ foreach ($result as $data) {
             </div>
         </div>
         <!-- Service End -->
-
-
-        <!-- Features Start
-            <div class="container-xxl py-6">
-                <div class="container">
-                    <div class="row g-5">
-                        <div class="col-lg-5 wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="d-inline-block border rounded-pill text-primary px-4 mb-3">Features</div>
-                            <h2 class="mb-4">Program Kami </p>
-                        </div>
-                        <div class="col-lg-7">
-                            <div class="row g-5">
-                                <div class="col-sm-6 wow fadeIn" data-wow-delay="0.1s">
-                                    <div class="d-flex align-items-center mb-3">
-                                        <div class="flex-shrink-0 btn-square bg-primary rounded-circle me-3">
-                                            <i class="fa fa-cubes text-white"></i>
-                                        </div>
-                                        <h6 class="mb-0">Kesejahteraan Bersama</h6>
-                                    </div>
-                                    <span>Koperasi bertujuan untuk meningkatkan kesejahteraan bersama anggotanya. Keuntungan yang diperoleh dari operasi koperasi dapat dibagikan kembali kepada anggota.</span>
-                                </div>
-                                <div class="col-sm-6 wow fadeIn" data-wow-delay="0.2s">
-                                    <div class="d-flex align-items-center mb-3">
-                                            <div class="flex-shrink-0 btn-square bg-primary rounded-circle me-3">
-                                            <i class="fa fa-percent text-white"></i>
-                                        </div>
-                                        <h6 class="mb-0">Partisipasi dalam Pengambilan Keputusan</h6>
-                                    </div>
-                                    <span>Anggota memiliki hak untuk berpartisipasi dalam pengambilan keputusan koperasi. Ini memberikan mereka kontrol langsung atas operasi koperasi dan memastikan kebijakan yang sesuai dengan kebutuhan mereka.</span>
-                                </div>
-                                <div class="col-sm-6 wow fadeIn" data-wow-delay="0.3s">
-                                    <div class="d-flex align-items-center mb-3">
-                                        <div class="flex-shrink-0 btn-square bg-primary rounded-circle me-3">
-                                            <i class="fa fa-award text-white"></i>
-                                        </div>
-                                        <h6 class="mb-0">Akses ke Layanan dan Sumber Daya</h6>
-                                    </div>
-                                    <span>Koperasi dapat menyediakan akses anggota ke layanan atau sumber daya yang mungkin sulit atau mahal untuk diperoleh secara individu. Contohnya termasuk pelayanan kredit, pemasaran bersama, atau sumber daya lainnya.</span>
-                                </div>
-                                <div class="col-sm-6 wow fadeIn" data-wow-delay="0.4s">
-                                    <div class="d-flex align-items-center mb-3">
-                                        <div class="flex-shrink-0 btn-square bg-primary rounded-circle me-3">
-                                            <i class="fa fa-smile-beam text-white"></i>
-                                        </div>
-                                        <h6 class="mb-0">Keberlanjutan Bisnis</h6>
-                                    </div>
-                                    <span>Koperasi dapat menjadi sarana untuk mendukung keberlanjutan bisnis anggota. Dengan bekerja sama dalam suatu koperasi, anggota dapat memperoleh keuntungan yang mungkin tidak bisa mereka dapatkan secara independen.</span>
-                                </div>
-                                <div class="col-sm-6 wow fadeIn" data-wow-delay="0.5s">
-                                    <div class="d-flex align-items-center mb-3">
-                                        <div class="flex-shrink-0 btn-square bg-primary rounded-circle me-3">
-                                            <i class="fa fa-user-tie text-white"></i>
-                                        </div>
-                                        <h6 class="mb-0">Keamanan Ekonomi</h6>
-                                    </div>
-                                    <span>Koperasi sering kali memberikan keamanan ekonomi bagi anggotanya. Misalnya, dalam koperasi kredit, anggota dapat memperoleh pinjaman dengan suku bunga yang lebih rendah dibandingkan dengan lembaga keuangan lainnya.</span>
-                                </div>
-                                <div class="col-sm-6 wow fadeIn" data-wow-delay="0.6s">
-                                    <div class="d-flex align-items-center mb-3">
-                                        <div class="flex-shrink-0 btn-square bg-primary rounded-circle me-3">
-                                            <i class="fa fa-headset text-white"></i>
-                                        </div>
-                                        <h6 class="mb-0">Kerja Sama dan Kebersamaan</h6>
-                                    </div>
-                                    <span>Konsep kerja sama dan kebersamaan merupakan nilai inti koperasi. Orang sering memilih koperasi karena keinginan untuk bekerja sama dengan orang lain untuk mencapai tujuan bersama.</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-        <!-- Features End -->
-
-
-        <!-- Client Start -->
-        <!--<div class="container-xxl bg-primary my-6 py-5 wow fadeInUp" data-wow-delay="0.1s">-->
-        <!--    <div class="container">-->
-        <!--        <div class="owl-carousel client-carousel">-->
-        <!--            <a href="#"><img class="img-fluid" src="img/JNE.png" alt=""></a>-->
-        <!--            <a href="#"><img class="img-fluid" src="img/ASPERINDO.png" alt=""></a>-->
-        <!--            <a href="#"><img class="img-fluid" src="img/lazada.png" alt=""></a>-->
-        <!--            <a href="#"><img class="img-fluid" src="img/shopee.png" alt=""></a>-->
-        <!--            <a href="#"><img class="img-fluid" src="img/kas.png" alt=""></a>-->
-        <!--            <a href="#"><img class="img-fluid" src="img/it.png" alt=""></a>-->
-        <!--            <a href="#"><img class="img-fluid" src="img/topedd.png" alt=""></a>-->
-        <!--            <a href="#"><img class="img-fluid" src="img/blibli.png" alt=""></a>-->
-        <!--        </div>-->
-        <!--    </div>-->
-        <!--</div>-->
-        <!-- Client End -->
-
-
-        <!-- Program Kerja -->
-        <div class="container-xxl py-6">
+        <!-- <div class="container-xxl py-6">
             <div class="container">
                 <div class="mx-auto text-center wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                     <div class="d-inline-block border rounded-pill text-primary px-4 mb-3"></div>
@@ -431,9 +338,8 @@ foreach ($result as $data) {
                     <?php } ?>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <!-- Project and informasi end  -->
 
 
         <!-- Team Start -->
@@ -521,9 +427,7 @@ foreach ($result as $data) {
                         <p class="mb-4">Bidang Usaha Bersama</p>
                         <img class="img-fluid rounded-circle w-100 mb-4" src="img/pengurus_koperasi/reza.png" alt="">
                         <div class="d-flex justify-content-center">
-                            <!-- <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-linkedin-in"></i></a> -->
+
                         </div>
                     </div>
                 </div>
@@ -554,13 +458,11 @@ foreach ($result as $data) {
                         return $url;
                     }
 
-                    // Generate URL Google Maps
                     $url_google_maps = generateGoogleMapsURL($latitude, $longitude);
                     ?>
                     <p><i class="fa fa-map-marker-alt me-3"></i>Komp. ATC, Blok F10 Medan</p>
                     <a href="<?php echo $url_google_maps; ?>" target="_blank" class="btn btn-primary">Lihat di Google Maps</a>
                     <p><i class="fa fa-phone-alt me-3 mt-4"></i>+62 812-3520-3441</p>
-                    <!-- Tautan ke Google Maps -->
 
                 </div>
             </div>
@@ -571,16 +473,11 @@ foreach ($result as $data) {
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
                         &copy; <a class="border-bottom" href="#">kreasianugerahsejahtera.com</a>, All Right Reserved.
 
-                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
                         Designed By <a class="border-bottom" href="#">It_development</a>
                         <br>Distributed By : Kreasi Anugerah Sejahtera <a class="border-bottom" href="#"></a>
                     </div>
                     <div class="col-md-6 text-center text-md-end">
                         <div class="footer-menu">
-                            <!--<a href="">Home</a>-->
-                            <!--<a href="">Cookies</a>-->
-                            <!--<a href="">Help</a>-->
-                            <!--<a href="">FQAs</a>-->
                         </div>
                     </div>
                 </div>
