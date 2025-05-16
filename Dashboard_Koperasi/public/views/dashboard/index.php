@@ -56,7 +56,7 @@ $time = date("H:i");
     <div class="row">
         <?php if (in_array("super_admin", $_SESSION['admin_akses']) || in_array("admin", $_SESSION['admin_akses'])) { ?>
             <div class="col-md-6 col-lg-3 text-center">
-                <div class="widget-small primary coloured-icon"><i class="icon fa fa-dollar fa-3x"></i>
+                <div class="widget-small primary coloured-icon"><i class="icon fa fa-money fa-3x"></i>
                     <div class="info">
                         <h4 style="border-bottom: 1px solid black;"><strong>Saldo</strong></h4>
                         <h4><strong> <?php echo number_format($saldo) ?></strong></h4>
@@ -66,7 +66,7 @@ $time = date("H:i");
         <?php } ?>
         <?php if (in_array("user", $_SESSION['admin_akses'])) { ?>
             <div class="col-md-6 col-lg-3 text-center">
-                <div class="widget-small primary coloured-icon"><i class="icon fa fa-dollar fa-3x"></i>
+                <div class="widget-small primary coloured-icon"><i class="icon fa fa-money fa-3x"></i>
                     <div class="info">
                         <h4 style="border-bottom: 1px solid black;">Saldo</h4>
                         <h4><b><?= number_format($data_saldo_user1['saldo']); ?></b></h4>
